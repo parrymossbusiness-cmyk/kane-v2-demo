@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
-a { color: inherit; }
+a { color: inherit; text-decoration: none; }
 .container {
   max-width: 1160px;
   margin: 0 auto;
@@ -231,6 +231,44 @@ section { padding: 4rem 0; }
 }
 @media (max-width: 640px) {
   .stat-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Product showcase (full-bleed stacked promo sections) ---------- */
+.product-showcase {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+}
+.product-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(28,27,26,0.92) 30%, rgba(28,27,26,0.55) 70%, rgba(28,27,26,0.3) 100%);
+}
+.product-showcase-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  padding: 3.5rem 0;
+}
+.product-showcase h3 {
+  color: var(--white);
+  font-size: 2.1rem;
+  margin: 0.5rem 0 1rem;
+}
+.product-showcase p.lede {
+  color: #E8E3DC;
+  margin-bottom: 1.75rem;
+}
+.product-showcase + .product-showcase { border-top: 1px solid rgba(255,255,255,0.08); }
+@media (max-width: 640px) {
+  .product-showcase { min-height: 420px; }
+  .product-showcase h3 { font-size: 1.6rem; }
 }
 
 /* ---------- Grids & cards ---------- */
