@@ -271,6 +271,7 @@ section { padding: 4rem 0; }
   gap: 2rem;
   margin-top: 2.5rem;
 }
+.steps-grid.steps-grid-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 900px) {
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
 }
