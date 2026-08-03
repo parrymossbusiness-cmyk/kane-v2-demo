@@ -199,6 +199,12 @@ section { padding: 4rem 0; }
   background: linear-gradient(90deg, rgba(28,27,26,0.92) 20%, rgba(28,27,26,0.55) 65%, rgba(28,27,26,0.35) 100%);
 }
 .hero-inner { position: relative; z-index: 1; padding: 5rem 0; }
+.hero .container {
+  max-width: none;
+  margin: 0;
+  padding-left: clamp(1.25rem, 5vw, 6rem);
+  padding-right: 1.25rem;
+}
 .hero h1 { color: var(--white); max-width: 680px; font-size: 2.75rem; text-align: left; }
 @media (max-width: 640px) {
   .hero h1 { font-size: 2rem; }
