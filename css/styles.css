@@ -294,7 +294,7 @@ section { padding: 4rem 0; }
   color: #E8E3DC;
   margin-bottom: 1.75rem;
 }
-.product-showcase + .product-showcase { border-top: 2px solid rgba(255,255,255,0.18); }
+.product-showcase + .product-showcase { border-top: 8px solid var(--orange); }
 @media (max-width: 640px) {
   .product-showcase { min-height: 420px; }
   .product-showcase h3 { font-size: 1.6rem; }
