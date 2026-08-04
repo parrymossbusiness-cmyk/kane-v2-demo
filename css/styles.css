@@ -211,8 +211,6 @@ section { padding: 4rem 0; }
 .hero-simple { min-height: 50vh; }
 .hero--subject-right { background-position: center; }
 
-.h1-mobile { display: none; }
-
 @media (max-width: 640px) {
   .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; }
   .hero::before {
@@ -223,8 +221,6 @@ section { padding: 4rem 0; }
   .hero .lede { font-size: 1rem; margin-top: 1rem; }
   .hero--subject-right { background-position: 71% 0%; background-size: auto 159%; }
   .hero--ball-floor { background-position: center bottom; background-size: auto 220%; }
-  .h1-desktop { display: none; }
-  .h1-mobile { display: inline; }
 }
 
 .trust-bar {
