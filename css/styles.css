@@ -5,7 +5,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   margin: 0;
   background: var(--light);
@@ -219,7 +223,7 @@ section { padding: 4rem 0; }
   .hero-inner { padding-top: 0; padding-bottom: 2.5rem; }
   .hero h1 { font-size: 1.6rem; }
   .hero .lede { font-size: 1rem; margin-top: 1rem; }
-  .hero--subject-right { background-position: 71% 0%; background-size: auto 159%; }
+  .hero--subject-right { background-position: 71% 20%; background-size: auto 159%; }
   .hero--ball-floor { background-position: center bottom; background-size: auto 220%; }
 }
 
@@ -324,6 +328,9 @@ section { padding: 4rem 0; }
 @media (max-width: 640px) {
   .product-showcase { min-height: 420px; }
   .product-showcase h3 { font-size: 1.6rem; }
+  .product-showcase::before {
+    background: linear-gradient(90deg, rgba(28,27,26,0.72) 40%, rgba(28,27,26,0.25) 75%, rgba(28,27,26,0.08) 100%);
+  }
 }
 
 /* ---------- Grids & cards ---------- */
@@ -622,7 +629,7 @@ article.post-body p { margin: 0 0 1.25rem; }
   justify-content: space-between;
   gap: 0.75rem;
 }
-.footer-bottom a { color: #D8D2CA; }
+.footer-bottom a { color: #D8D2CA; font-size: 0.85rem; }
 
 /* ---------- Breadcrumbs (visible, small) ---------- */
 .breadcrumb-nav {
