@@ -225,6 +225,7 @@ section { padding: 4rem 0; }
   margin: 0;
 }
 .hero h1 { color: var(--white); max-width: 680px; font-size: 2.75rem; text-align: left; }
+.hero--subject-right h1 { font-size: 2.25rem; }
 .hero .lede { color: #E8E3DC; max-width: 560px; margin-top: 1.25rem; font-size: 1.2rem; text-align: left; }
 .hero-simple { min-height: 50vh; }
 .hero--subject-right { background-position: center; }
