@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Parent Confidence Score | The Basketball Parent Coach</title>
+<meta name="description" content="A two minute check for basketball parents. Answer honestly, get your Confidence Score, and see exactly where to focus next.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F1E8; --card:#FBF6EF; --border:#F1C1B2;
+    --ink:#1C1714; --ink-dim:#7A6E64; --accent:#E16143;
+    --accent-soft:rgba(225,97,67,0.12); --track:#EFE1D6;
+    --navy:#1F3050; --on-navy:#F7F1E8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5;}
+  .wrap{max-width:620px; margin:0 auto; padding:0 22px 90px;}
+  .eyebrow{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 14px;}
+  h1,h2{font-family:'Fraunces',serif; font-weight:600; margin:0; color:var(--ink);}
+  .screen{display:none;}
+  .screen.active{display:block; animation:fadeUp .5s ease both;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){ .screen.active{animation:none;} *{transition:none !important; animation-duration:.001s !important;} }
+
+  .intro{padding-top:64px;}
+  .intro h1{font-size:32px; line-height:1.15; margin-bottom:16px;}
+  .intro p.lede{font-size:16px; color:var(--ink-dim); max-width:52ch; margin-bottom:30px;}
+  .btn{display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#FFF9F5; border:none; font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:15px 26px; border-radius:999px; cursor:pointer; text-decoration:none;}
+  .btn:hover{background:#CB4F33;}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .meta-line{margin-top:18px; font-size:13px; color:var(--ink-dim);}
+  .meta-line b{color:var(--ink);}
+
+  .checklist{padding-top:54px;}
+  .progress-label{font-size:13px; color:var(--ink-dim); margin-bottom:8px;}
+  .progress-track{height:4px; background:var(--track); border-radius:4px; margin-bottom:30px; overflow:hidden;}
+  .progress-fill{height:100%; width:0%; background:var(--accent); transition:width .3s ease;}
+  h2.q-head{font-size:24px; margin-bottom:6px;}
+  p.q-sub{color:var(--ink-dim); font-size:14px; margin:0 0 26px;}
+  .row{display:flex; align-items:flex-start; gap:14px; padding:16px; margin-bottom:10px; background:var(--card); border:1px solid var(--border); border-radius:14px; cursor:pointer; user-select:none;}
+  .row:hover{border-color:var(--accent);}
+  .row input{appearance:none; -webkit-appearance:none; width:22px; height:22px; min-width:22px; margin-top:1px; border:2px solid #D9B8AB; border-radius:6px; background:#FFF; display:grid; place-content:center; cursor:pointer;}
+  .row input::before{content:""; width:12px; height:12px; border-radius:3px; background:var(--accent); transform:scale(0); transition:transform .12s ease;}
+  .row input:checked::before{transform:scale(1);}
+  .row input:checked{border-color:var(--accent);}
+  .row.checked{background:var(--accent-soft); border-color:var(--accent);}
+  .row label{font-size:15.5px; line-height:1.45; cursor:pointer; color:var(--ink);}
+  .continue-wrap{margin-top:30px; text-align:center;}
+  .helper-note{font-size:13px; color:var(--ink-dim); margin-top:14px;}
+
+  .gate{padding-top:70px; text-align:center;}
+  .gate h2{font-size:26px; margin-bottom:10px;}
+  .gate p{color:var(--ink-dim); font-size:15px; max-width:44ch; margin:0 auto 30px;}
+  .field{text-align:left; margin-bottom:14px;}
+  .field label{display:block; font-size:12.5px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input{width:100%; padding:13px 14px; font-size:15px; font-family:inherit; background:#FFF; border:1px solid var(--border); border-radius:10px; color:var(--ink);}
+  .field input::placeholder{color:#B7A99C;}
+  .form-error{color:var(--accent); font-size:13px; margin-top:10px; display:none;}
+
+  .result{padding-top:56px; text-align:center;}
+  .score-card{background:var(--navy); border:1px solid var(--navy); border-radius:20px; padding:38px 24px 30px; margin-bottom:26px;}
+  .score-label{font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:#B9C2D4; margin-bottom:10px;}
+  .score-number{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:76px; line-height:1; color:var(--on-navy); letter-spacing:-.02em;}
+  .score-number .out-of{color:#8290A8; font-size:34px;}
+  .band-name{font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#F0A98C; margin:10px 0 22px;}
+  .meter-track{height:10px; background:#33456B; border-radius:999px; overflow:hidden; margin:0 auto; max-width:340px;}
+  .meter-fill{height:100%; width:0%; background:var(--accent); border-radius:999px; transition:width 1s cubic-bezier(.2,.8,.2,1);}
+  .result-message{font-size:16px; line-height:1.6; color:var(--ink); max-width:48ch; margin:0 auto 30px;}
+  .result-note{font-size:13px; color:var(--ink-dim);}
+
+  .notfound{padding-top:80px; text-align:center;}
+  .notfound p{color:var(--ink-dim); font-size:15px; max-width:44ch; margin:0 auto 26px;}
+
+  footer{max-width:620px; margin:60px auto 0; padding:22px 22px 0; border-top:1px solid var(--border); font-size:12.5px; color:var(--ink-dim); text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section id="screen-loading" class="screen active intro">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1>Loading your check...</h1>
+  </section>
+
+  <section id="screen-notfound" class="screen notfound">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1>This link needs a moment.</h1>
+    <p>The Parent Confidence Score for this guide is not live yet. Check back soon, or head back to the guide you were reading.</p>
+  </section>
+
+  <section id="screen-intro" class="screen intro">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1 id="intro-heading">The Parent Confidence Score</h1>
+    <p class="lede">Ten questions. Two minutes. Answer honestly and get your Confidence Score, plus exactly what it means for your family right now.</p>
+    <button class="btn" id="start-btn" type="button">Start the check <span>&rarr;</span></button>
+    <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from real conversations with basketball parents, not guesswork.</p>
+  </section>
+
+  <section id="screen-checklist" class="screen checklist">
+    <p class="progress-label" id="progress-label">0 of 10 checked</p>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <h2 class="q-head">Check anything that's true right now.</h2>
+    <p class="q-sub">There's no wrong answer here. This is just where things actually stand.</p>
+    <div id="row-container"></div>
+    <div class="continue-wrap">
+      <button class="btn" id="see-score-btn" type="button">See my Confidence Score <span>&rarr;</span></button>
+      <p class="helper-note">You can check zero boxes and still see your score.</p>
+    </div>
+  </section>
+
+  <section id="screen-gate" class="screen gate">
+    <h2>Your Confidence Score is ready.</h2>
+    <p>Tell us where to send it, and it's yours.</p>
+    <form id="gate-form">
+      <div class="field">
+        <label for="first-name">First name</label>
+        <input type="text" id="first-name" placeholder="Your first name" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@email.com" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit">Show my score <span>&rarr;</span></button>
+      <p class="form-error" id="form-error">Enter a real first name and email to see your score.</p>
+    </form>
+  </section>
+
+  <section id="screen-result" class="screen result">
+    <div class="score-card">
+      <p class="score-label">Your Confidence Score</p>
+      <div class="score-number"><span id="score-value">0</span><span class="out-of">/10</span></div>
+      <p class="band-name" id="band-name">&nbsp;</p>
+      <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+    </div>
+    <p class="result-message" id="result-message"></p>
+    <a class="btn" id="cta-link" href="/services/playbooks/">Get The Kane Parental System &middot; $47 <span>&rarr;</span></a>
+    <p class="result-note">Your full score, and what to do about it, is also on its way to your inbox.</p>
+  </section>
+
+  <footer>The Basketball Parent Coach &middot; The Work Over The Hype. Always.</footer>
+</div>
+
+<script>
+(function () {
+  // Paste the Google Sheet web app URL between the quotes. It ends in /exec.
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbySUOM1WH_X01EIl94VukpBiRRnQqlxtE_BkqRX5KFm3HEVxUzzY9Ynks4TmWT1lJH2bg/exec";
+
+  var params = new URLSearchParams(window.location.search);
+  var guideKey = params.get('guide') || 'preseason';
+  var guideData = null;
+  var checkedCount = 0;
+
+  // The questions live inside this page, so it works the same whether it is
+  // opened from a computer or served from the live site. To add a guide
+  // later, add one more entry here with ten items and three messages.
+  var GUIDES = {
+    preseason: {
+      title: "The Pre-Season & Tryout Blueprint",
+      items: [
+        "I've told my child something like \"today's the day, go prove yourself\" before a tryout.",
+        "I've pointed out or sized up other kids in the gym before or during a tryout.",
+        "I've coached from the sideline, or noticed my child glancing at me during a tryout.",
+        "I've asked my child \"how did you do\" right after a tryout or game.",
+        "I've talked to a coach, or wanted to, in the middle of a tryout process.",
+        "I've compared my child's tryout to another kid's performance.",
+        "When a roster list didn't include my child, I treated it as a statement about who he is.",
+        "I've blamed a coach's decision instead of asking what my child could improve.",
+        "I've made a call, sent an email, or stepped in on my child's behalf instead of letting him handle it.",
+        "I've gone quiet, or the mood at home changed, after a disappointing result."
+      ],
+      messages: {
+        steady:  "You are already doing most of this right. The Kane Parental System will help you protect that steady hand through the rest of the season, not just tryout week.",
+        leaking: "A few of these are already costing your child some of his confidence. The Kane Parental System walks through exactly how to close these gaps before the next big moment.",
+        redflag: "Right now, several of the habits that quietly damage a kid's confidence are already in play. The Kane Parental System is the fastest way to turn this around before tryout season does real damage."
+      }
+    }
+  };
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function bandFor(score) {
+    if (score >= 8) return 'steady';
+    if (score >= 5) return 'leaking';
+    return 'redflag';
+  }
+  var BAND_NAMES = { steady: 'Steady Hand', leaking: 'Leaking Confidence', redflag: 'Red Flag' };
+
+  function init() {
+    var data = GUIDES[guideKey];
+    if (!data) {
+      showScreen('screen-notfound');
+      return;
+    }
+    guideData = data;
+    buildChecklist(data.items);
+    showScreen('screen-intro');
+  }
+
+  function buildChecklist(items) {
+    var container = document.getElementById('row-container');
+    items.forEach(function (text, i) {
+      var row = document.createElement('label');
+      row.className = 'row';
+      row.setAttribute('for', 'item-' + i);
+      row.innerHTML = '<input type="checkbox" id="item-' + i + '"><span>' + text + '</span>';
+      container.appendChild(row);
+
+      var input = row.querySelector('input');
+      input.addEventListener('change', function () {
+        row.classList.toggle('checked', input.checked);
+        checkedCount += input.checked ? 1 : -1;
+        document.getElementById('progress-label').textContent = checkedCount + ' of 10 checked';
+        document.getElementById('progress-fill').style.width = (checkedCount / 10 * 100) + '%';
+      });
+    });
+  }
+
+  document.getElementById('start-btn').addEventListener('click', function () { showScreen('screen-checklist'); });
+  document.getElementById('see-score-btn').addEventListener('click', function () { showScreen('screen-gate'); });
+
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstName = document.getElementById('first-name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var errorEl = document.getElementById('form-error');
+
+    if (!firstName || !email || email.indexOf('@') === -1) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    var score = 10 - checkedCount;
+    var band = bandFor(score);
+
+    revealResult(score, band);
+
+    // Which statements the parent checked, as numbers and as words.
+    // Saved so each follow up email can speak to their exact habits.
+    var checkedNumbers = [];
+    var checkedText = [];
+    guideData.items.forEach(function (text, i) {
+      var box = document.getElementById('item-' + i);
+      if (box && box.checked) { checkedNumbers.push(i + 1); checkedText.push(text); }
+    });
+
+    if (SHEET_URL.indexOf('PASTE') === -1) {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: firstName,
+          email: email,
+          guide: guideKey,
+          score: score,
+          band: BAND_NAMES[band],
+          checkedNumbers: checkedNumbers.join(', '),
+          checkedText: checkedText.join(' | ')
+        })
+      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
+    }
+  });
+
+  function revealResult(score, band) {
+    document.getElementById('band-name').textContent = BAND_NAMES[band];
+    document.getElementById('result-message').textContent = guideData.messages[band];
+    showScreen('screen-result');
+
+    var el = document.getElementById('score-value');
+    var meter = document.getElementById('meter-fill');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      el.textContent = score;
+      meter.style.width = (score / 10 * 100) + '%';
+      return;
+    }
+
+    var current = 0;
+    var steps = score === 0 ? 1 : score;
+    var stepTime = Math.max(600 / steps, 60);
+    var timer = setInterval(function () {
+      current++;
+      el.textContent = Math.min(current, score);
+      if (current >= score) clearInterval(timer);
+    }, stepTime);
+
+    setTimeout(function () { meter.style.width = (score / 10 * 100) + '%'; }, 50);
+  }
+
+  init();
+})();
+</script>
+
+</body>
+</html>
