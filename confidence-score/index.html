@@ -41,6 +41,26 @@
   .progress-fill{height:100%; width:0%; background:var(--accent); transition:width .3s ease;}
   h2.q-head{font-size:24px; margin-bottom:6px;}
   p.q-sub{color:var(--ink-dim); font-size:14px; margin:0 0 26px;}
+
+  .q-card{background:var(--card); border:1px solid var(--border); border-radius:18px; padding:30px 26px; margin-bottom:18px;}
+  .q-number{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 12px;}
+  .q-text{font-family:'Fraunces',serif; font-size:21px; line-height:1.4; color:var(--ink); margin:0;}
+  .q-actions{display:flex; gap:12px; margin-top:24px;}
+  .q-btn{flex:1; padding:14px 16px; border-radius:12px; font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:14.5px; cursor:pointer; border:1px solid var(--border); background:#FFF; color:var(--ink);}
+  .q-btn:hover{border-color:var(--accent);}
+  .q-btn.yes{background:var(--accent); border-color:var(--accent); color:#FFF9F5;}
+  .q-btn.yes:hover{background:#CB4F33;}
+  .q-btn:disabled{opacity:.45; cursor:default;}
+
+  .reaction{
+    display:none; background:var(--navy); border-radius:16px; padding:22px 24px; margin-bottom:22px;
+    animation:fadeUp .4s ease both;
+  }
+  .reaction.show{display:block;}
+  .reaction-label{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:#8FA0BE; font-weight:600; margin:0 0 8px;}
+  .reaction-text{font-size:15.5px; line-height:1.55; color:#F2EEE7; margin:0;}
+  .next-wrap{text-align:center; margin-top:4px;}
+
   .row{display:flex; align-items:flex-start; gap:14px; padding:16px; margin-bottom:10px; background:var(--card); border:1px solid var(--border); border-radius:14px; cursor:pointer; user-select:none;}
   .row:hover{border-color:var(--accent);}
   .row input{appearance:none; -webkit-appearance:none; width:22px; height:22px; min-width:22px; margin-top:1px; border:2px solid #D9B8AB; border-radius:6px; background:#FFF; display:grid; place-content:center; cursor:pointer;}
@@ -102,20 +122,31 @@
   </section>
 
   <section id="screen-checklist" class="screen checklist">
-    <p class="progress-label" id="progress-label">0 of 10 checked</p>
+    <p class="progress-label" id="progress-label">Question 1 of 10</p>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-    <h2 class="q-head">Check anything that's true right now.</h2>
-    <p class="q-sub">There's no wrong answer here. This is just where things actually stand.</p>
-    <div id="row-container"></div>
-    <div class="continue-wrap">
-      <button class="btn" id="see-score-btn" type="button">See my Confidence Score <span>&rarr;</span></button>
-      <p class="helper-note">You can check zero boxes and still see your score.</p>
+
+    <div class="q-card">
+      <p class="q-number" id="q-number">Question 1</p>
+      <p class="q-text" id="q-text"></p>
+      <div class="q-actions">
+        <button class="q-btn" id="no-btn" type="button">Not really</button>
+        <button class="q-btn yes" id="yes-btn" type="button">Yes, that's me</button>
+      </div>
+    </div>
+
+    <div class="reaction" id="reaction">
+      <p class="reaction-label">Coach Kane</p>
+      <p class="reaction-text" id="reaction-text"></p>
+    </div>
+
+    <div class="next-wrap" id="next-wrap" style="display:none;">
+      <button class="btn" id="next-btn" type="button">Next <span>&rarr;</span></button>
     </div>
   </section>
 
   <section id="screen-gate" class="screen gate">
     <h2>Your Confidence Score is ready.</h2>
-    <p>Tell us where to send it, and it's yours.</p>
+    <p>Tell us where to send it. You'll get your score, plus the full Pre-Season &amp; Tryout Blueprint as our gift.</p>
     <form id="gate-form">
       <div class="field">
         <label for="first-name">First name</label>
@@ -139,7 +170,7 @@
     </div>
     <p class="result-message" id="result-message"></p>
     <a class="btn" id="cta-link" href="/services/playbooks/">Get The Kane Parental System &middot; $47 <span>&rarr;</span></a>
-    <p class="result-note">Your full score, and what to do about it, is also on its way to your inbox.</p>
+    <p class="result-note">Your full score, and the Pre-Season &amp; Tryout Blueprint, are also on their way to your inbox.</p>
   </section>
 
   <footer>The Basketball Parent Coach &middot; The Work Over The Hype. Always.</footer>
@@ -153,11 +184,16 @@
   var params = new URLSearchParams(window.location.search);
   var guideKey = params.get('guide') || 'preseason';
   var guideData = null;
+
+  var currentIndex = 0;
   var checkedCount = 0;
+  var answers = []; // true/false per question, same order as items
 
   // The questions live inside this page, so it works the same whether it is
-  // opened from a computer or served from the live site. To add a guide
-  // later, add one more entry here with ten items and three messages.
+  // opened from a computer or served from the live site. comments is what
+  // Coach Kane says right after a "yes, that's me" answer, only shown then.
+  // To add a guide later, add one more entry here with ten items, ten
+  // comments in the same order, and three messages.
   var GUIDES = {
     preseason: {
       title: "The Pre-Season & Tryout Blueprint",
@@ -172,6 +208,18 @@
         "I've blamed a coach's decision instead of asking what my child could improve.",
         "I've made a call, sent an email, or stepped in on my child's behalf instead of letting him handle it.",
         "I've gone quiet, or the mood at home changed, after a disappointing result."
+      ],
+      comments: [
+        "I hear this one in almost every parking lot. It comes from love, and it still lands as pressure. He hears that the next two hours decide who he is.",
+        "This teaches him to measure himself against the room instead of the rep in front of him. Say nothing about the other kids next time. It's harder than it sounds.",
+        "A kid who checks the bleachers after every possession isn't free out there. Sit where he can't find you. It changes how he plays.",
+        "That question asks for a verdict he isn't ready to give. He'll guess, and he'll usually guess low. Ask what he competed hardest at instead.",
+        "Anything said during an evaluation window reads as lobbying, and it attaches your name to his. That conversation, if it needs to happen, happens after the list.",
+        "It feels like reassurance. What it teaches him is that his standing depends on someone else's bad day. Compare him only to his own tape from last season.",
+        "A roster is a coach's read of a fit, for one week, for one team. Your reaction is what turns it into a statement about his worth.",
+        "It feels loyal. It teaches him that outcomes are decided by other people, which is the start of every excuse he'll make for the next ten years.",
+        "The adversity was the curriculum. Stepping in removes the lesson. If a question needs asking, he asks it. You drive him there.",
+        "Kids read withdrawal faster than criticism. Same voice, same warmth, same night. Especially that night."
       ],
       messages: {
         steady:  "You are already doing most of this right. The Kane Parental System will help you protect that steady hand through the rest of the season, not just tryout week.",
@@ -201,31 +249,55 @@
       return;
     }
     guideData = data;
-    buildChecklist(data.items);
     showScreen('screen-intro');
   }
 
-  function buildChecklist(items) {
-    var container = document.getElementById('row-container');
-    items.forEach(function (text, i) {
-      var row = document.createElement('label');
-      row.className = 'row';
-      row.setAttribute('for', 'item-' + i);
-      row.innerHTML = '<input type="checkbox" id="item-' + i + '"><span>' + text + '</span>';
-      container.appendChild(row);
+  document.getElementById('start-btn').addEventListener('click', function () {
+    showScreen('screen-checklist');
+    renderQuestion();
+  });
 
-      var input = row.querySelector('input');
-      input.addEventListener('change', function () {
-        row.classList.toggle('checked', input.checked);
-        checkedCount += input.checked ? 1 : -1;
-        document.getElementById('progress-label').textContent = checkedCount + ' of 10 checked';
-        document.getElementById('progress-fill').style.width = (checkedCount / 10 * 100) + '%';
-      });
-    });
+  function renderQuestion() {
+    var total = guideData.items.length;
+    document.getElementById('progress-label').textContent = 'Question ' + (currentIndex + 1) + ' of ' + total;
+    document.getElementById('progress-fill').style.width = (currentIndex / total * 100) + '%';
+    document.getElementById('q-number').textContent = 'Question ' + (currentIndex + 1);
+    document.getElementById('q-text').textContent = guideData.items[currentIndex];
+
+    document.getElementById('reaction').classList.remove('show');
+    document.getElementById('next-wrap').style.display = 'none';
+    document.getElementById('yes-btn').disabled = false;
+    document.getElementById('no-btn').disabled = false;
   }
 
-  document.getElementById('start-btn').addEventListener('click', function () { showScreen('screen-checklist'); });
-  document.getElementById('see-score-btn').addEventListener('click', function () { showScreen('screen-gate'); });
+  function answer(isYes) {
+    answers[currentIndex] = isYes;
+    document.getElementById('yes-btn').disabled = true;
+    document.getElementById('no-btn').disabled = true;
+
+    if (isYes) {
+      checkedCount++;
+      document.getElementById('reaction-text').textContent = guideData.comments[currentIndex];
+      document.getElementById('reaction').classList.add('show');
+      document.getElementById('next-wrap').style.display = 'block';
+    } else {
+      advance();
+    }
+  }
+
+  function advance() {
+    currentIndex++;
+    if (currentIndex >= guideData.items.length) {
+      document.getElementById('progress-fill').style.width = '100%';
+      showScreen('screen-gate');
+    } else {
+      renderQuestion();
+    }
+  }
+
+  document.getElementById('yes-btn').addEventListener('click', function () { answer(true); });
+  document.getElementById('no-btn').addEventListener('click', function () { answer(false); });
+  document.getElementById('next-btn').addEventListener('click', advance);
 
   document.getElementById('gate-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -244,13 +316,10 @@
 
     revealResult(score, band);
 
-    // Which statements the parent checked, as numbers and as words.
-    // Saved so each follow up email can speak to their exact habits.
     var checkedNumbers = [];
     var checkedText = [];
     guideData.items.forEach(function (text, i) {
-      var box = document.getElementById('item-' + i);
-      if (box && box.checked) { checkedNumbers.push(i + 1); checkedText.push(text); }
+      if (answers[i]) { checkedNumbers.push(i + 1); checkedText.push(text); }
     });
 
     if (SHEET_URL.indexOf('PASTE') === -1) {
