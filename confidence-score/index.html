@@ -74,6 +74,11 @@
   .continue-wrap{margin-top:30px; text-align:center;}
   .helper-note{font-size:13px; color:var(--ink-dim); margin-top:14px;}
 
+  .skip-line{margin:16px 0 0; font-size:14px; color:var(--ink-dim);}
+  .skip-link{background:none; border:none; padding:0; font:inherit; color:var(--accent); font-weight:600; text-decoration:underline; cursor:pointer;}
+  .sent{padding-top:80px; text-align:center;}
+  .sent h2{font-size:28px; margin-bottom:12px;}
+  .sent p{color:var(--ink-dim); font-size:15.5px; max-width:44ch; margin:0 auto 12px;}
   .gate{padding-top:70px; text-align:center;}
   .gate h2{font-size:26px; margin-bottom:10px;}
   .gate p{color:var(--ink-dim); font-size:15px; max-width:44ch; margin:0 auto 30px;}
@@ -123,6 +128,7 @@
     <p class="lede">Ten questions. Two minutes. Answer honestly and get your Confidence Score, plus exactly what it means for your kid right now.</p>
     <p class="gift-note">Thank you for asking for the <b>Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these ten questions, along with your score.</p>
     <button class="btn" id="start-btn" type="button">Question #1 <span>&rarr;</span></button>
+    <p class="skip-line">Just want the Blueprint? <button class="skip-link" id="skip-link" type="button">Send it now.</button></p>
     <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from real conversations with basketball parents, not guesswork.</p>
   </section>
 
@@ -164,6 +170,29 @@
       <button class="btn" type="submit">Show my score <span>&rarr;</span></button>
       <p class="form-error" id="form-error">Enter a real first name and email to see your score.</p>
     </form>
+  </section>
+
+  <section id="screen-skip" class="screen gate">
+    <h2>Where should Coach Kane send it?</h2>
+    <p>Enter your name and email, and your Pre-Season &amp; Tryout Blueprint goes straight to your inbox.</p>
+    <form id="skip-form">
+      <div class="field">
+        <label for="skip-first-name">First name</label>
+        <input type="text" id="skip-first-name" placeholder="Your first name" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="skip-email">Email</label>
+        <input type="email" id="skip-email" placeholder="you@email.com" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit">Send My Blueprint <span>&rarr;</span></button>
+      <p class="form-error" id="skip-error">Enter a real first name and email to get your Blueprint.</p>
+    </form>
+  </section>
+
+  <section id="screen-sent" class="screen sent">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h2>Your Blueprint is on its way.</h2>
+    <p>Check your inbox in the next few minutes. If you do not see it, check your spam folder.</p>
   </section>
 
   <section id="screen-result" class="screen result">
@@ -304,6 +333,40 @@
     }
   }
 
+  document.getElementById('skip-link').addEventListener('click', function () { showScreen('screen-skip'); });
+
+  document.getElementById('skip-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstName = document.getElementById('skip-first-name').value.trim();
+    var email = document.getElementById('skip-email').value.trim();
+    var errorEl = document.getElementById('skip-error');
+
+    if (!firstName || !email || email.indexOf('@') === -1) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    showScreen('screen-sent');
+
+    if (SHEET_URL.indexOf('PASTE') === -1) {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: firstName,
+          email: email,
+          guide: guideKey,
+          score: '',
+          band: '',
+          checkedNumbers: '',
+          checkedText: '',
+          path: 'skipped'
+        })
+      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
+    }
+  });
+
   document.getElementById('yes-btn').addEventListener('click', function () { answer(true); });
   document.getElementById('no-btn').addEventListener('click', function () { answer(false); });
   document.getElementById('next-btn').addEventListener('click', advance);
@@ -343,7 +406,8 @@
           score: score,
           band: BAND_NAMES[band],
           checkedNumbers: checkedNumbers.join(', '),
-          checkedText: checkedText.join(' | ')
+          checkedText: checkedText.join(' | '),
+          path: 'quiz'
         })
       }).catch(function (err) { console.error('Could not save to the sheet:', err); });
     }
