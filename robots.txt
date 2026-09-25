@@ -22,4 +22,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://kaneacademy.sales.com/sitemap.xml
+Sitemap: https://kanebasketballacademy.com/sitemap.xml
