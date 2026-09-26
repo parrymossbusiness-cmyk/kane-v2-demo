@@ -8,6 +8,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/video-testimonials.css">
 <style>
   .ty-body { background: var(--light); min-height: 100vh; display: flex; flex-direction: column; }
   .ty-header { background: var(--dark); padding: 0.6rem 1.25rem; display: flex; justify-content: center; }
@@ -40,7 +41,11 @@
   .ty-avatar { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--card) url('/images/coach.kane.webp') 50% 33% / 700% auto no-repeat; border: 2px solid var(--orange); }
   .ty-coach b { display: block; color: var(--dark); font-family: var(--font-head); font-size: 0.95rem; }
 
+  .ty-proof { max-width: 960px; margin: 2.5rem auto 0; padding: 2rem 2.5rem; background: var(--white); border-radius: var(--radius-card); box-shadow: 0 10px 40px rgba(28,27,26,0.08); }
+  .ty-proof .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+
   @media (max-width: 760px) {
+    .ty-proof { margin-top: 1.25rem; padding: 1.5rem 1.25rem; }
     .ty-header img { height: 44px; }
     .ty-confirm-inner { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
     .ty-main { padding: 1rem 0.75rem 2rem; }
@@ -91,9 +96,25 @@
       <a href="/" class="ty-skip">No thanks, I'll decide after my call</a>
     </div>
   </div>
+  <div class="ty-proof">
+    <div class="vt-feature">
+        <div class="vt-media">
+          <video preload="none" poster="/videos/kamal-assaf.jpg" aria-label="Kamal Assaf talks about Coach Kane"><source src="/videos/kamal-assaf.mp4" type="video/mp4"></video>
+          <button class="vt-play" type="button" aria-label="Play video from Kamal Assaf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+          <span class="vt-length">0:33</span>
+        </div>
+      <div>
+        <span class="eyebrow">Why families trust Coach Kane</span>
+        <p class="vt-feature-quote">“He's demanding, but not demeaning.”</p>
+        <p class="vt-feature-name">Kamal Assaf<span>Coach, La Jolla High School, 2004 to 2012</span></p>
+        <a href="https://buy.stripe.com/28E4gAgjxeDKdXxd8eds402?prefilled_promo_code=AUDIT300" class="btn btn-primary btn-lg">Enroll Now for $2,200</a>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer class="ty-footer">&copy; 2026 The Kane Academy</footer>
 
+<script src="/js/video-testimonials.js" defer></script>
 </body>
 </html>
