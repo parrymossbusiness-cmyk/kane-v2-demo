@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup | The Basketball Parent IQ System</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kaneOrange: '#F95B12',
+            kaneDark: '#121214',
+            kaneSidebar: '#18181B',
+            kaneCard: '#1E1E24',
+            kaneBorder: '#2E2E36'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Clean custom scrollbars */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #121214; }
+    ::-webkit-scrollbar-thumb { background: #2E2E36; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-kaneDark text-gray-100 flex flex-col min-h-screen font-sans selection:bg-kaneOrange selection:text-white">
+
+  <!-- TOP MOBILE APP BAR -->
+  <header class="lg:hidden sticky top-0 z-40 bg-kaneSidebar/95 backdrop-blur-md border-b border-kaneBorder px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <button onclick="toggleMobileDrawer()" class="p-1.5 rounded-lg border border-kaneBorder text-gray-300 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <span class="text-xs font-black uppercase tracking-widest text-kaneOrange">Kane Academy</span>
+    </div>
+    <span id="mobile-top-title" class="text-xs font-bold text-gray-200 truncate max-w-[170px]">Day 0: Start</span>
+  </header>
+
+  <!-- APP SHELL: SIDEBAR + MAIN CONTENT AREA -->
+  <div class="flex-1 flex max-w-7xl w-full mx-auto">
+
+    <!-- 1. PERSISTENT TABLE OF CONTENTS (DESKTOP PINNED / MOBILE DRAWER) -->
+    <aside id="toc-drawer" class="fixed inset-y-0 left-0 z-50 w-72 bg-kaneSidebar border-r border-kaneBorder transform -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-4.5rem)] lg:sticky lg:top-0 transition-transform duration-300 ease-in-out flex flex-col">
+      <div class="p-5 border-b border-kaneBorder flex items-center justify-between">
+        <div>
+          <span class="text-[10px] uppercase font-black text-kaneOrange tracking-widest">Portal Navigation</span>
+          <h2 class="text-sm font-extrabold text-white">System Table of Contents</h2>
+        </div>
+        <button onclick="toggleMobileDrawer()" class="lg:hidden text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+
+      <!-- Navigation List -->
+      <nav id="toc-links" class="flex-1 overflow-y-auto p-3 space-y-1 text-xs">
+        <!-- Rendered dynamically via JavaScript -->
+      </nav>
+
+      <!-- Sidebar Coach Dennis Direct Line -->
+      <div class="p-4 border-t border-kaneBorder bg-kaneSidebar/60">
+        <a href="sms:+13103453033?&body=Hi%20Coach%20Kane," class="flex items-center justify-center space-x-2 w-full py-2.5 bg-kaneCard hover:border-kaneOrange border border-kaneBorder rounded-xl text-xs font-bold text-gray-300 transition">
+          <svg class="w-4 h-4 text-kaneOrange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <span>Text Dennis: (310) 345-3033</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- 2. MAIN ACTIVE READING & INTERACTIVE CONTAINER -->
+    <main class="flex-1 min-w-0 px-4 sm:px-10 py-8 lg:py-10 pb-40 max-w-3xl">
+      <div id="page-content" class="space-y-8 animate-fade">
+        <!-- Dynamic content mounts here -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- 3. PERSISTENT BOTTOM NAVIGATION BAR (ARROWS & PROGRESSION) -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 bg-kaneSidebar/95 backdrop-blur-md border-t border-kaneBorder py-3 px-4">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Back Arrow Control -->
+      <button id="prev-btn" onclick="prevStep()" class="flex items-center space-x-2 text-xs font-bold text-gray-300 hover:text-white px-3.5 py-2 rounded-xl bg-kaneCard border border-kaneBorder transition disabled:opacity-30 disabled:pointer-events-none">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <span class="hidden sm:inline" id="prev-title">Previous</span>
+      </button>
+
+      <!-- Center Progress Dial -->
+      <div class="text-center">
+        <p id="progress-indicator" class="text-xs font-bold text-white tracking-wide">Step 1 of 5</p>
+        <div class="w-32 sm:w-48 bg-gray-800 rounded-full h-1 mt-1 overflow-hidden">
+          <div id="progress-meter" class="bg-kaneOrange h-1 rounded-full transition-all duration-300" style="width: 20%"></div>
+        </div>
+      </div>
+
+      <!-- Forward Arrow Control -->
+      <button id="next-btn" onclick="nextStep()" class="flex items-center space-x-2 text-xs font-bold text-white px-4 py-2 rounded-xl bg-kaneOrange hover:bg-orange-600 transition disabled:opacity-30 disabled:pointer-events-none">
+        <span class="hidden sm:inline" id="next-title">Next</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+    </div>
+  </footer>
+
+  <!-- 4. FLOATING CONVERSATION VAULT AUDIO PLAYER (60-SECOND AUDIOS) -->
+  <div id="vault-player" class="hidden fixed bottom-16 sm:bottom-20 left-4 right-4 max-w-lg mx-auto bg-kaneCard border border-kaneOrange/40 rounded-2xl p-4 shadow-2xl z-50 flex items-center justify-between gap-4">
+    <div class="flex items-center space-x-3 overflow-hidden">
+      <div class="w-9 h-9 rounded-full bg-kaneOrange/20 text-kaneOrange flex items-center justify-center flex-shrink-0">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8v4l6-2-6-2z"/></svg>
+      </div>
+      <div class="truncate">
+        <span class="text-[10px] text-kaneOrange font-black uppercase tracking-wider block">Conversation Vault</span>
+        <p id="vault-title" class="text-xs font-bold text-white truncate">Audio Track</p>
+      </div>
+    </div>
+    <audio id="native-audio" controls class="h-8 max-w-[180px]"></audio>
+    <button onclick="dismissAudio()" class="text-gray-400 hover:text-white text-base font-bold px-1">&times;</button>
+  </div>
+
+  <!-- JAVASCRIPT APP LOGIC -->
+  <script>
+    // Chapter Mockup Data: 4 Representative Pages from the System
+    const pages = [
+      {
+        id: "intro",
+        section: "Getting Started",
+        navLabel: "Start Here & Intro",
+        title: "Everyone is building your child's basketball IQ. Nobody is building yours.",
+        tagline: "440 Wins. 71 College Players. 12 Pros. 1,000+ Parent Conversations.",
+        bodyHTML: `
+          <div class="space-y-6 text-gray-300 leading-relaxed text-sm sm:text-base">
+            <p>Ask any college coach what they recruit for and you will hear two words: <strong class="text-white">basketball IQ</strong>. Reading the floor, making the right decision fast, knowing what to do when the play breaks down. It has become the most wanted skill in the game.</p>
+            <p>Now ask who is building the IQ of the person who drives that child to the gym, pays for the season, and has the last word on the ride home. Until now, nobody.</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3">
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder text-center">
+                <span class="text-2xl font-black text-kaneOrange">+46%</span>
+                <p class="text-[11px] text-gray-400 mt-1">Rise in family sports spend</p>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder text-center">
+                <span class="text-2xl font-black text-white">49%</span>
+                <p class="text-[11px] text-gray-400 mt-1">Expect a scholarship</p>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder text-center">
+                <span class="text-2xl font-black text-white">1 in 100</span>
+                <p class="text-[11px] text-gray-400 mt-1">Make Division 1</p>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder text-center">
+                <span class="text-2xl font-black text-kaneOrange">Zero</span>
+                <p class="text-[11px] text-gray-400 mt-1">Parent training required</p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-kaneCard border border-kaneBorder">
+              <h4 class="text-xs uppercase font-bold text-kaneOrange tracking-wider">Coach Kane's Core Rule</h4>
+              <p class="text-base text-white font-medium mt-1">"Players play. Coaches coach. Referees ref. Parents encourage, love, and support."</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "day-0",
+        section: "Part 1: The Playbook",
+        navLabel: "Day 0: Baseline Check",
+        title: "Day 0: Where Are You Starting From?",
+        tagline: "10-minute check-in. Fill this out tonight before Day 1.",
+        bodyHTML: `
+          <div class="space-y-6">
+            <p class="text-sm text-gray-300">Do these two things tonight. You will look at these answers again on Day 14. Your entries save to your device automatically.</p>
+            
+            <!-- Interactive Slider -->
+            <div class="p-6 rounded-2xl bg-kaneCard border border-kaneBorder space-y-4">
+              <div class="flex justify-between items-center">
+                <label class="text-sm font-bold text-white">1. Love of the Game (Scale 1 to 10)</label>
+                <span id="display-love" class="text-2xl font-black text-kaneOrange">8</span>
+              </div>
+              <p class="text-xs text-gray-400">Ask your child directly. Don't guess, and don't react to the number.</p>
+              <input type="range" id="input_love" min="1" max="10" value="8" class="w-full accent-kaneOrange h-2 bg-gray-700 rounded-lg cursor-pointer" oninput="updateLoveScore(this.value)">
+              
+              <div id="love-alert" class="hidden p-3 rounded-xl bg-red-950/40 border border-red-500/50 text-red-300 text-xs">
+                <strong>Attention:</strong> If the love-of-the-game number is below 7, that comes before everything else in this system. Read Day 11 tonight, then return here.
+              </div>
+            </div>
+
+            <!-- Two Words Input -->
+            <div class="p-6 rounded-2xl bg-kaneCard border border-kaneBorder space-y-3">
+              <label class="text-sm font-bold text-white block">2. Describe basketball in two words (theirs, not yours):</label>
+              <input type="text" id="input_words" placeholder="e.g. Fast, Challenging" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-sm text-white focus:outline-none focus:border-kaneOrange" oninput="saveInput('day0_words', this.value)">
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "day-1",
+        section: "Part 1: The Playbook",
+        navLabel: "Day 1: Your Job in 4 Lines",
+        title: "Day 1: Players Play. Coaches Coach.",
+        tagline: "The car ride home is the most important ten minutes in youth basketball.",
+        bodyHTML: `
+          <div class="space-y-6 text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p>Your child just played in front of a crowd. Maybe they made the mistake everyone saw. Their heart is still racing, they are hungry and tired, and they are replaying every mistake in their head. Then the person whose opinion matters most to them starts talking about the game.</p>
+            <p>The car ride home is not your coaching moment. If they want to talk, listen. If they don't, let them process. A child who gets a film session on every drive home learns to dread the drive, and after a while, the game that comes before it.</p>
+            
+            <div class="p-6 rounded-2xl bg-kaneCard border border-kaneBorder space-y-4">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-white">Tonight's Action</h4>
+              <p class="text-xs text-gray-400">Say nothing about the game on the drive home. Later, ask Coach Kane's after-game questions. Record what you observed:</p>
+              <textarea id="input_day1_log" rows="3" placeholder="What I did... What I noticed... What I will do differently tomorrow..." class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-sm text-white focus:outline-none focus:border-kaneOrange" oninput="saveInput('day1_log', this.value)"></textarea>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "day-10",
+        section: "Part 2: The Kane Reset",
+        navLabel: "Day 10: Program Check-In",
+        title: "Day 10 Check-In: Is the Program Developing Your Kid?",
+        tagline: "Score your current club or team on the 10-line Kane Standard.",
+        bodyHTML: `
+          <div class="space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <p class="text-sm text-gray-300">Rate each line from 1 (No) to 5 (Consistent Yes). Starters are usually happy; evaluate based on what happens across the entire roster.</p>
+              
+              <!-- Vault Audio Trigger -->
+              <button onclick="triggerAudio('Audio 09: Before You Evaluate an AAU Program', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneCard border border-kaneBorder hover:border-kaneOrange px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
+                <svg class="w-4 h-4 text-kaneOrange" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                <span>Listen: 60s Vault Audio</span>
+              </button>
+            </div>
+
+            <!-- Interactive 10-Line Scorecard -->
+            <div class="space-y-3">
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+                <span class="text-xs text-gray-200">1. Structured, skill-focused practices (not scrimmages)</span>
+                <select class="score-input bg-kaneDark border border-kaneBorder text-xs text-white rounded-lg p-2 focus:border-kaneOrange" onchange="calcKaneStandard()">
+                  <option value="5">5 - Always</option><option value="4">4 - Mostly</option><option value="3" selected>3 - Sometimes</option><option value="2">2 - Rarely</option><option value="1">1 - Never</option>
+                </select>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+                <span class="text-xs text-gray-200">2. Clear, honest coach communication</span>
+                <select class="score-input bg-kaneDark border border-kaneBorder text-xs text-white rounded-lg p-2 focus:border-kaneOrange" onchange="calcKaneStandard()">
+                  <option value="5">5 - Always</option><option value="4">4 - Mostly</option><option value="3" selected>3 - Sometimes</option><option value="2">2 - Rarely</option><option value="1">1 - Never</option>
+                </select>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+                <span class="text-xs text-gray-200">3. Individual feedback for all players, not just the stars</span>
+                <select class="score-input bg-kaneDark border border-kaneBorder text-xs text-white rounded-lg p-2 focus:border-kaneOrange" onchange="calcKaneStandard()">
+                  <option value="5">5 - Always</option><option value="4">4 - Mostly</option><option value="3" selected>3 - Sometimes</option><option value="2">2 - Rarely</option><option value="1">1 - Never</option>
+                </select>
+              </div>
+              <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+                <span class="text-xs text-gray-200">4. Transparent full-season financial breakdown</span>
+                <select class="score-input bg-kaneDark border border-kaneBorder text-xs text-white rounded-lg p-2 focus:border-kaneOrange" onchange="calcKaneStandard()">
+                  <option value="5">5 - Always</option><option value="4">4 - Mostly</option><option value="3" selected>3 - Sometimes</option><option value="2">2 - Rarely</option><option value="1">1 - Never</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Score Summary Card -->
+            <div class="p-5 rounded-2xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+              <div>
+                <p class="text-xs text-gray-400 font-bold uppercase">Estimated Kane Standard Score</p>
+                <p id="kane-total-text" class="text-xs text-gray-400 mt-1">Status: Moderate Concerns</p>
+              </div>
+              <span id="kane-score-display" class="text-3xl font-black text-kaneOrange">28 / 50</span>
+            </div>
+
+            <!-- Dynamic Upsell Banner (Condition: Score < 30) -->
+            <div id="audit-trigger-card" class="p-5 rounded-2xl bg-orange-950/30 border border-kaneOrange/50 space-y-3">
+              <span class="text-[10px] font-black uppercase text-kaneOrange tracking-wider">Coach Kane Recommendation</span>
+              <h4 class="text-base font-bold text-white">Your program scored under 30. Don't guess on what comes next.</h4>
+              <p class="text-xs text-gray-300 leading-relaxed">A low score tells you something is broken, but not whether to stay and fix it or walk away. Book a Future Success Audit to get an objective third-party evaluation.</p>
+              <a href="https://kanebasketballacademy.com/services/audits" class="inline-block py-2.5 px-5 bg-kaneOrange hover:bg-orange-600 text-white font-bold text-xs rounded-xl transition shadow-lg">Book The Future Success Audit ($300) &rarr;</a>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "day-14",
+        section: "Part 2: The Kane Reset",
+        navLabel: "Day 14: The Final Decision",
+        title: "Day 14 Check-In: The Decision",
+        tagline: "Before you write the next check, make the decision on purpose.",
+        bodyHTML: `
+          <div class="space-y-6 text-sm text-gray-300 leading-relaxed">
+            <p>Fourteen days ago you started with a quiz and a love-of-the-game score. You have audited your calendar, totaled the real money, and scored the program. Tonight is the decision this system was created for.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label class="p-5 rounded-2xl bg-kaneCard border border-kaneBorder cursor-pointer hover:border-kaneOrange transition block space-y-2">
+                <input type="radio" name="decision" value="stay" class="accent-kaneOrange" onchange="selectDecision('stay')">
+                <h5 class="text-white font-bold text-sm">1. Stay The Course</h5>
+                <p class="text-xs text-gray-400">The program passed the standard and your family has healthy perspective.</p>
+              </label>
+              <label class="p-5 rounded-2xl bg-kaneCard border border-kaneBorder cursor-pointer hover:border-kaneOrange transition block space-y-2">
+                <input type="radio" name="decision" value="adjust" class="accent-kaneOrange" onchange="selectDecision('adjust')">
+                <h5 class="text-white font-bold text-sm">2. Adjust</h5>
+                <p class="text-xs text-gray-400">Modify the budget, calendar, or expectations within the current team.</p>
+              </label>
+              <label class="p-5 rounded-2xl bg-kaneCard border border-kaneBorder cursor-pointer hover:border-kaneOrange transition block space-y-2">
+                <input type="radio" name="decision" value="change" class="accent-kaneOrange" onchange="selectDecision('change')">
+                <h5 class="text-white font-bold text-sm">3. Change</h5>
+                <p class="text-xs text-gray-400">Find a local alternative, take an off-season break, or start fresh.</p>
+              </label>
+            </div>
+
+            <!-- Dynamic Decision Next Step -->
+            <div id="gameplan-card" class="hidden p-6 rounded-2xl bg-kaneCard border border-kaneOrange/60 space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-xs uppercase font-black text-kaneOrange tracking-wider">Your Next Move</span>
+                <span class="text-lg font-black text-white">$997</span>
+              </div>
+              <h4 class="text-base font-bold text-white">Need a customized 90-day plan for your decision?</h4>
+              <p class="text-xs text-gray-300">If your decision is to Adjust or Change, Coach Kane will review your film, assess your player's real fundamentals, and write a structured 90-day development roadmap.</p>
+              <a href="https://kanebasketballacademy.com/game-plan" class="block w-full py-3 bg-kaneOrange hover:bg-orange-600 text-center font-bold text-xs text-white rounded-xl transition">Enroll in The Game Plan ($997)</a>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    let activeIndex = 0;
+
+    // Render TOC Navigation Sidebar
+    function buildTOC() {
+      const list = document.getElementById('toc-links');
+      list.innerHTML = '';
+      pages.forEach((p, idx) => {
+        const btn = document.createElement('button');
+        btn.onclick = () => { activeIndex = idx; renderView(); toggleMobileDrawer(false); };
+        btn.className = `w-full text-left px-3.5 py-2.5 rounded-xl transition flex items-center justify-between ${
+          idx === activeIndex 
+            ? 'bg-kaneOrange/15 text-kaneOrange font-bold border border-kaneOrange/30' 
+            : 'text-gray-400 hover:text-white hover:bg-kaneCard'
+        }`;
+        btn.innerHTML = `
+          <span class="truncate">${p.navLabel}</span>
+          <span class="text-[10px] opacity-40">${idx + 1}</span>
+        `;
+        list.appendChild(btn);
+      });
+    }
+
+    // Render Active Content Page
+    function renderView() {
+      const page = pages[activeIndex];
+      const stage = document.getElementById('page-content');
+
+      stage.innerHTML = `
+        <div class="border-b border-kaneBorder pb-6">
+          <span class="text-xs font-black uppercase tracking-widest text-kaneOrange">${page.section}</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 leading-tight">${page.title}</h1>
+          <p class="text-sm text-gray-400 mt-2">${page.tagline}</p>
+        </div>
+        ${page.bodyHTML}
+      `;
+
+      // Update Navigation Bars
+      document.getElementById('mobile-top-title').innerText = page.navLabel;
+      document.getElementById('progress-indicator').innerText = `Step ${activeIndex + 1} of ${pages.length}`;
+      document.getElementById('progress-meter').style.width = `${((activeIndex + 1) / pages.length) * 100}%`;
+
+      // Forward/Back Buttons
+      const prev = document.getElementById('prev-btn');
+      const next = document.getElementById('next-btn');
+      prev.disabled = activeIndex === 0;
+      next.disabled = activeIndex === pages.length - 1;
+
+      if (activeIndex > 0) {
+        document.getElementById('prev-title').innerText = pages[activeIndex - 1].navLabel;
+      }
+      if (activeIndex < pages.length - 1) {
+        document.getElementById('next-title').innerText = pages[activeIndex + 1].navLabel;
+      }
+
+      buildTOC();
+      restoreSavedInputs();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextStep() {
+      if (activeIndex < pages.length - 1) {
+        activeIndex++;
+        renderView();
+      }
+    }
+
+    function prevStep() {
+      if (activeIndex > 0) {
+        activeIndex--;
+        renderView();
+      }
+    }
+
+    function toggleMobileDrawer(forceClose) {
+      const drawer = document.getElementById('toc-drawer');
+      if (forceClose === false) {
+        drawer.classList.add('-translate-x-full');
+      } else {
+        drawer.classList.toggle('-translate-x-full');
+      }
+    }
+
+    // Interactive Exercises Logic
+    function updateLoveScore(val) {
+      document.getElementById('display-love').innerText = val;
+      const alert = document.getElementById('love-alert');
+      if (parseInt(val) < 7) {
+        alert.classList.remove('hidden');
+      } else {
+        alert.classList.add('hidden');
+      }
+      localStorage.setItem('kane_love', val);
+    }
+
+    function calcKaneStandard() {
+      const inputs = document.querySelectorAll('.score-input');
+      let sum = 0;
+      inputs.forEach(i => sum += parseInt(i.value));
+      // Project to 50 scale
+      const total = Math.round((sum / (inputs.length * 5)) * 50);
+      document.getElementById('kane-score-display').innerText = `${total} / 50`;
+      
+      const trigger = document.getElementById('audit-trigger-card');
+      const status = document.getElementById('kane-total-text');
+      if (total < 30) {
+        trigger.classList.remove('hidden');
+        status.innerText = 'Status: Urgent Program Concerns';
+      } else {
+        trigger.classList.add('hidden');
+        status.innerText = 'Status: Solid Development Alignment';
+      }
+    }
+
+    function selectDecision(val) {
+      const card = document.getElementById('gameplan-card');
+      if (val === 'adjust' || val === 'change') {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+      localStorage.setItem('kane_decision', val);
+    }
+
+    function saveInput(key, val) {
+      localStorage.setItem('kane_' + key, val);
+    }
+
+    function restoreSavedInputs() {
+      if (document.getElementById('input_love')) {
+        const val = localStorage.getItem('kane_love') || 8;
+        document.getElementById('input_love').value = val;
+        updateLoveScore(val);
+      }
+      if (document.getElementById('input_words')) {
+        document.getElementById('input_words').value = localStorage.getItem('kane_day0_words') || '';
+      }
+      if (document.getElementById('input_day1_log')) {
+        document.getElementById('input_day1_log').value = localStorage.getItem('kane_day1_log') || '';
+      }
+    }
+
+    // Audio Player Bar
+    function triggerAudio(title, src) {
+      const bar = document.getElementById('vault-player');
+      const audio = document.getElementById('native-audio');
+      document.getElementById('vault-title').innerText = title;
+      audio.src = src;
+      bar.classList.remove('hidden');
+      audio.play();
+    }
+
+    function dismissAudio() {
+      const bar = document.getElementById('vault-player');
+      const audio = document.getElementById('native-audio');
+      audio.pause();
+      bar.classList.add('hidden');
+    }
+
+    // Keyboard Arrow Listeners
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+      if (e.key === 'ArrowRight') nextStep();
+      if (e.key === 'ArrowLeft') prevStep();
+    });
+
+    // Initialize View
+    renderView();
+  </script>
+</body>
+</html>
