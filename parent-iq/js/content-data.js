@@ -916,25 +916,16 @@ const KANE_SYSTEM_DATA = [
     subtitle: "Coach Dennis Kane • The Work over The Hype. Always.",
     contentType: "reading",
     contentHTML: `
-      <div class="space-y-6">
+      <div class="space-y-6 text-center">
         <div class="rounded-2xl overflow-hidden border border-kaneBorder bg-black flex justify-center max-w-lg mx-auto shadow-2xl">
           <img 
-            src="/images/kane-kneeling.jpg" 
-            alt="Coach Dennis Kane kneeling on the sideline" 
-            class="max-h-96 w-full object-cover object-center"
-            onerror="this.parentElement.innerHTML='<div class=\\'p-12 text-center text-xs text-gray-500 font-mono\\'>[Upload kane-kneeling.jpg to /images/ in your repo]</div>'"
+            src="/images/back-page.jpg" 
+            alt="The Basketball Parent IQ System - Back Page" 
+            class="w-full h-auto object-contain"
+            onerror="this.parentElement.innerHTML='<div class=\\'p-16 text-center text-xs text-gray-500 font-mono\\'>[Upload back-page.jpg to /images/ in your repo]</div>'"
           />
         </div>
-
-        <blockquote class="border-l-4 border-kaneOrange pl-4 italic text-white text-base sm:text-lg font-bold">
-          "Players play. Coaches coach. Referees ref. Parents encourage, love, and support."
-        </blockquote>
-
-        <div class="p-6 rounded-2xl bg-kaneCard border border-kaneBorder space-y-3 text-sm text-gray-300 leading-relaxed">
-          <p>Coach Dennis Kane decided at fourteen that he would coach basketball, then did it for 44 years on San Diego sidelines, retiring as the sixth-winningest boys basketball coach in San Diego high school history: <strong>440 wins, 10 league titles, 6 CIF finals, 4 state playoff bids and a CIF championship</strong>.</p>
-          <p>He took over a San Diego High team that had just gone 0 and 20 and had it playing for the CIF Division I title two years later, then built Mission Bay High into a program that won twenty-plus games in back-to-back seasons. He placed 71 players in college basketball, and 12 went on to play professionally.</p>
-          <p class="pt-2 text-xs text-gray-500">© 2026 Coach Dennis Kane. All rights reserved. The Work over The Hype. Always.<br>kanebasketballacademy.com</p>
-        </div>
+        <p class="text-xs text-gray-400">© 2026 Coach Dennis Kane. All rights reserved. The Work over The Hype. Always.</p>
       </div>
     `
   }
