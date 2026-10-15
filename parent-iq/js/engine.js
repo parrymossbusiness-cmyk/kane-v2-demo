@@ -1,7 +1,92 @@
-// Reader Engine & Dynamic State Manager
+// Reusable UI Component Factory for Coach Kane Design System
+const KaneUI = {
+  // Stat Block Strips
+  stats(items) {
+    return `
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
+        ${items.map(st => `
+          <div class="bg-black border border-kaneBorder rounded-2xl p-4 text-center shadow-lg">
+            <span class="text-2xl sm:text-3xl font-black text-kaneOrange tracking-tight">${st.val}</span>
+            <p class="text-[11px] text-gray-400 mt-1.5 leading-snug font-medium">${st.label}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  },
+
+  // Pullquote / Note Cards
+  coachNote(quote, title = "COACH KANE'S NOTE") {
+    return `
+      <div class="my-6 rounded-2xl bg-kaneCard border-l-4 border-l-kaneOrange border-y border-r border-kaneBorder p-5 sm:p-6 shadow-md">
+        <span class="text-[10px] font-black tracking-widest uppercase text-kaneOrange block">${title}</span>
+        <p class="text-sm sm:text-base text-gray-200 italic mt-2 leading-relaxed">"${quote}"</p>
+      </div>
+    `;
+  },
+
+  // Decision Tables
+  decisionTable(rows) {
+    return `
+      <div class="my-6 overflow-hidden rounded-2xl border border-kaneBorder bg-kaneCard shadow-lg">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-kaneBorder bg-kaneDark/80">
+              <th class="p-3.5 sm:p-4 text-kaneOrange font-black uppercase tracking-wider w-1/2">IF</th>
+              <th class="p-3.5 sm:p-4 text-white font-black uppercase tracking-wider w-1/2">THEN</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-kaneBorder">
+            ${rows.map(r => `
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-3.5 sm:p-4 text-gray-300 align-top leading-relaxed font-medium">${r.if}</td>
+                <td class="p-3.5 sm:p-4 text-gray-200 align-top leading-relaxed bg-black/20">${r.then}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  },
+
+  // "Tonight's Action" & Dual-Column Journal
+  tonightBox(dayKey, actionText, audioTrack = null) {
+    return `
+      <div class="my-8 rounded-2xl bg-kaneCard border border-kaneBorder p-5 sm:p-7 shadow-xl space-y-6">
+        <div class="border-b border-kaneBorder pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-kaneOrange">TONIGHT'S ACTION</span>
+            <p class="text-xs sm:text-sm text-white font-bold mt-1">${actionText}</p>
+          </div>
+          ${audioTrack ? `
+            <button onclick="KANE_APP.playVaultTrack('${audioTrack.tag}', '${audioTrack.title}', '${audioTrack.file}')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneDark border border-kaneBorder hover:border-kaneOrange px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
+              <svg class="w-4 h-4 text-kaneOrange" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+              <span>${audioTrack.tag} (60s)</span>
+            </button>
+          ` : ''}
+        </div>
+
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-2">Tonight's Notes</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[11px] text-gray-400 mb-1">What I Did & Noticed</label>
+              <textarea id="notes_did_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-xs text-white focus:outline-none focus:border-kaneOrange" placeholder="Log tonight's conversation..." onchange="KANE_APP.saveField('notes_did_${dayKey}', this.value)"></textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-gray-400 mb-1">What I'll Do Differently Tomorrow</label>
+              <textarea id="notes_diff_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-xs text-white focus:outline-none focus:border-kaneOrange" placeholder="Log adjustments..." onchange="KANE_APP.saveField('notes_diff_${dayKey}', this.value)"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+// Main State & Navigation Engine
 const KANE_APP = {
   activeIdx: 0,
-  audioBaseUrl: "https://pub-your-r2-subdomain.r2.dev/parent-iq-audios/", // Cloudflare R2 bucket
+  audioBaseUrl: "/parent-iq/audio/",
 
   init() {
     this.renderTOC();
@@ -16,7 +101,6 @@ const KANE_APP = {
 
     let currentSection = "";
     KANE_SYSTEM_DATA.forEach((item, idx) => {
-      // Group header
       if (item.part !== currentSection) {
         currentSection = item.part;
         const sectionHeader = document.createElement("p");
@@ -25,7 +109,6 @@ const KANE_APP = {
         tocContainer.appendChild(sectionHeader);
       }
 
-      // Nav Button
       const btn = document.createElement("button");
       btn.onclick = () => {
         this.loadChapter(idx);
@@ -38,7 +121,7 @@ const KANE_APP = {
       }`;
       btn.innerHTML = `
         <span class="truncate">${item.navTitle}</span>
-        <span class="text-[10px] opacity-40">${item.dayNumber !== null ? 'Day ' + item.dayNumber : ''}</span>
+        <span class="text-[10px] opacity-40">${item.dayNumber !== null && item.dayNumber !== undefined ? 'Day ' + item.dayNumber : ''}</span>
       `;
       tocContainer.appendChild(btn);
     });
@@ -59,11 +142,9 @@ const KANE_APP = {
       <div class="pt-2">${chapter.contentHTML}</div>
     `;
 
-    // Special Component Initializers
     if (chapter.id === "day-10") this.renderKaneScorecard();
     if (chapter.id === "conversation-vault") this.renderVaultTracks();
 
-    // Update Bottom Arrows & Indicators
     this.updateFooterNav();
     this.renderTOC();
     this.restoreSavedInputs();
@@ -92,7 +173,6 @@ const KANE_APP = {
     if (this.activeIdx > 0) this.loadChapter(this.activeIdx - 1);
   },
 
-  // State Persistence
   saveField(key, val) {
     localStorage.setItem("kane_" + key, val);
   },
@@ -106,7 +186,6 @@ const KANE_APP = {
     }
   },
 
-  // Day 0
   handleLoveSlider(val) {
     const display = document.getElementById("display-love");
     const warning = document.getElementById("love-warning-banner");
@@ -118,7 +197,6 @@ const KANE_APP = {
     this.saveField("love_of_game", val);
   },
 
-  // Day 4 Audit Trigger
   evalDay4Audit() {
     const checks = document.querySelectorAll("[data-day4-check]:checked").length;
     const upsell = document.getElementById("day4-upsell");
@@ -126,7 +204,6 @@ const KANE_APP = {
     else upsell.classList.add("hidden");
   },
 
-  // Day 8 Budget Engine
   recalcBudget() {
     const fields = document.querySelectorAll("[data-budget-field]");
     let sum = 0;
@@ -152,7 +229,6 @@ const KANE_APP = {
     }
   },
 
-  // Day 10 Scorecard Generator
   renderKaneScorecard() {
     const container = document.getElementById("kane-scorecard-list");
     if (!container) return;
@@ -205,7 +281,6 @@ const KANE_APP = {
     }
   },
 
-  // Day 14 Decision Matrix
   handleDecisionSelection(val) {
     const gameplanCard = document.getElementById("decision-gameplan-box");
     if (val === "adjust" || val === "change") {
@@ -215,7 +290,6 @@ const KANE_APP = {
     }
   },
 
-  // Conversation Vault Audio Directory
   renderVaultTracks() {
     const container = document.getElementById("vault-tracks-container");
     if (!container) return;
@@ -245,7 +319,6 @@ const KANE_APP = {
     `).join("");
   },
 
-  // Audio Playback
   playVaultTrack(tag, title, filename) {
     const player = document.getElementById("global-vault-player");
     const audio = document.getElementById("native-audio-element");
