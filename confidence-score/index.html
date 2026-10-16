@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Basketball Parent IQ Quiz | The Kane Academy</title>
   
-  <!-- Typography & Styling -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -46,7 +45,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#CC602E]/20">
 
-  <!-- Header -->
   <header class="py-6 border-b border-[#E5E0D8] bg-[#FAF8F5]">
     <div class="max-w-3xl mx-auto px-4 flex items-center justify-between">
       <a href="/" class="font-heading font-black tracking-wider text-xs sm:text-sm uppercase text-[#1C1B1A] hover:text-[#CC602E] transition-colors">
@@ -58,7 +56,6 @@
     </div>
   </header>
 
-  <!-- Main Container -->
   <main class="flex-grow flex items-center justify-center py-10 px-4">
     <div class="w-full max-w-xl mx-auto">
 
@@ -74,7 +71,6 @@
           Seven questions. Two minutes. Answer honestly and get your Basketball Parent IQ, plus exactly what it means for your kid right now.
         </p>
 
-        <!-- Notice Box -->
         <div class="bg-[#F1EDE7] border border-[#E5E0D8] rounded-xl p-5 text-left text-sm text-[#1C1B1A] space-y-2">
           <p class="font-medium">
             Thank you for asking for the <strong class="text-[#CC602E]">Pre-Season &amp; Tryout Blueprint</strong>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.
@@ -82,7 +78,7 @@
         </div>
 
         <div class="pt-4 space-y-4">
-          <button onclick="quizEngine.startQuiz()" class="w-full sm:w-auto px-8 py-3.5 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-sm tracking-wide rounded-xl shadow-lg transition-all duration-150 transform hover:-translate-y-0.5">
+          <button type="button" id="start-btn" class="w-full sm:w-auto px-8 py-3.5 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-sm tracking-wide rounded-xl shadow-lg transition-all duration-150 transform hover:-translate-y-0.5">
             Question #1 &rarr;
           </button>
           <p class="text-xs text-[#686560] block font-sans">
@@ -103,17 +99,13 @@
               Question 1 of 7
             </span>
             <div class="w-24 bg-[#F1EDE7] rounded-full h-1.5 overflow-hidden">
-              <div id="progress-bar" class="bg-[#CC602E] h-full w-1/7 transition-all duration-300"></div>
+              <div id="progress-bar" class="bg-[#CC602E] h-full transition-all duration-300" style="width: 14.28%;"></div>
             </div>
           </div>
 
-          <h2 id="question-text" class="text-lg sm:text-xl font-bold text-[#1C1B1A] leading-snug">
-            <!-- Question text injected here -->
-          </h2>
+          <h2 id="question-text" class="text-lg sm:text-xl font-bold text-[#1C1B1A] leading-snug"></h2>
 
-          <div id="answers-container" class="space-y-3 pt-2">
-            <!-- Answer buttons injected here -->
-          </div>
+          <div id="answers-container" class="space-y-3 pt-2"></div>
         </div>
       </section>
 
@@ -128,7 +120,7 @@
           </p>
         </div>
 
-        <form id="lead-form" onsubmit="quizEngine.submitLead(event)" class="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-sm text-left space-y-4 max-w-md mx-auto">
+        <form id="lead-form" class="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-sm text-left space-y-4 max-w-md mx-auto">
           <div>
             <label class="block text-xs font-heading font-bold uppercase tracking-wider text-[#686560] mb-1">First name</label>
             <input type="text" id="first-name" required placeholder="Your first name" class="w-full px-4 py-3 rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] text-sm text-[#1C1B1A] focus:outline-none focus:border-[#CC602E] transition-colors font-sans">
@@ -146,7 +138,6 @@
       <!-- STEP 4: RESULTS -->
       <section id="step-results" class="hidden space-y-8">
         
-        <!-- Score Card -->
         <div class="bg-[#1E293B] text-white rounded-2xl p-8 sm:p-10 shadow-xl text-center space-y-4">
           <span class="text-xs font-heading font-bold uppercase tracking-widest text-[#94A3B8]">
             YOUR BASKETBALL PARENT IQ
@@ -155,203 +146,4 @@
             <span id="final-score" class="text-6xl sm:text-7xl font-extrabold text-white">6</span>
             <span class="text-2xl sm:text-3xl font-bold text-[#94A3B8]">/7</span>
           </div>
-          <h3 id="score-category" class="text-xl sm:text-2xl font-serif text-[#F87171] italic">
-            A Category For Improvement
-          </h3>
-          <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden max-w-xs mx-auto">
-            <div id="result-meter" class="bg-[#CC602E] h-full transition-all duration-500"></div>
-          </div>
-        </div>
-
-        <!-- Description & CTA -->
-        <div class="text-center space-y-6">
-          <p id="score-description" class="text-base sm:text-lg text-[#1C1B1A] leading-relaxed max-w-lg mx-auto">
-            A few of these are already costing your child some of their confidence. The Basketball Parent IQ System walks through exactly how to close these gaps before the next big moment.
-          </p>
-
-          <div class="space-y-4">
-           <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401" id="stripe-checkout-btn" class="block w-full sm:w-auto sm:inline-block px-8 py-4 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-base tracking-wide rounded-xl shadow-lg transition-all duration-150 transform hover:-translate-y-0.5">
-  Get The Basketball Parent IQ System · $47 &rarr;
-</a>
-            
-            <p class="text-sm font-medium text-[#686560]">
-              Your Pre-Season &amp; Tryout Blueprint is on the way to your email inbox.
-            </p>
-          </div>
-        </div>
-
-      </section>
-
-    </div>
-  </main>
-
-  <!-- Credibility Footer -->
-  <footer class="py-8 border-t border-[#E5E0D8] bg-[#FAF8F5] text-center space-y-2">
-    <p class="text-[11px] font-heading uppercase tracking-widest text-[#686560]">
-      The Basketball Parent Coach &middot; The Work Over The Hype. Always.
-    </p>
-    <div class="text-sm font-bold text-[#1C1B1A] leading-snug">
-      <p>440 Wins. CIF Champion.</p>
-      <p>1,000+ Parent Conversations.</p>
-      <p>12 Pros. 71 College Players.</p>
-      <p class="text-[#CC602E]">And A Development Plan For You And Your Kid.</p>
-    </div>
-  </footer>
-
-  <!-- Quiz Engine Script -->
-  <script>
-    const quizEngine = {
-      currentIndex: 0,
-      score: 0,
-      
-      // 7 Clean Questions (Dropped #4, #5, #7 and pruned pool to 7 total)
-      questions: [
-        {
-          text: "When your child has a bad game, what is the first thing said in the car on the drive home?",
-          answers: [
-            { text: "I say 'I loved watching you play' and let them bring up the game if they want.", points: 1 },
-            { text: "I immediately break down two or three mistakes they made while it's fresh.", points: 0 },
-            { text: "Complete silence because tension is too high.", points: 0 }
-          ]
-        },
-        {
-          text: "How do you handle a conversation with their coach regarding playing time?",
-          answers: [
-            { text: "I teach my child how to ask the coach directly what specific skills earn minutes.", points: 1 },
-            { text: "I confront the coach via email, text, or right after the game.", points: 0 },
-            { text: "I talk to other parents in the bleachers to see if they see the same thing.", points: 0 }
-          ]
-        },
-        {
-          text: "What is your primary filter when choosing an AAU / travel team?",
-          answers: [
-            { text: "The head coach's track record of skill development and substitution integrity.", points: 1 },
-            { text: "The circuit logo, sneaker sponsorship, and social media exposure claims.", points: 0 },
-            { text: "Whichever team promises my kid a starting role.", points: 0 }
-          ]
-        },
-        {
-          text: "How many weeks off from competitive basketball does your child get every 12 months?",
-          answers: [
-            { text: "At least 4 to 8 weeks dedicated to multi-sport movement and active rest.", points: 1 },
-            { text: "Zero. If they rest, other players get ahead.", points: 0 },
-            { text: "Only when an overuse injury forces them to sit.", points: 0 }
-          ]
-        },
-        {
-          text: "When your child gets benched or called for a bad foul, where do their eyes immediately go?",
-          answers: [
-            { text: "To their teammates and the coach's whiteboard on the bench.", points: 1 },
-            { text: "Straight up into the bleachers to check my reaction.", points: 0 },
-            { text: "At the referee or throwing their hands up in disgust.", points: 0 }
-          ]
-        },
-        {
-          text: "How much money does your family spend annually on travel ball, trainers, and showcases?",
-          answers: [
-            { text: "A balanced budget funded from disposable income with zero consumer debt.", points: 1 },
-            { text: "Thousands on credit cards because we are banking on a D1 college scholarship.", points: 0 },
-            { text: "We have never actually calculated the total cost.", points: 0 }
-          ]
-        },
-        {
-          text: "Do you have an objective, written developmental checklist outside of team win/loss records?",
-          answers: [
-            { text: "Yes, we track verifiable technical milestones, sleep, and confidence metrics.", points: 1 },
-            { text: "No, we judge improvement primarily by game stats and whether our team wins.", points: 0 }
-          ]
-        }
-      ],
-
-      startQuiz() {
-        document.getElementById('step-welcome').classList.add('hidden');
-        document.getElementById('step-questions').classList.remove('hidden');
-        this.renderQuestion();
-      },
-
-      renderQuestion() {
-        const q = this.questions[this.currentIndex];
-        document.getElementById('question-tracker').innerText = `Question ${this.currentIndex + 1} of 7`;
-        document.getElementById('progress-bar').style.width = `${((this.currentIndex + 1) / 7) * 100}%`;
-        document.getElementById('question-text').innerText = q.text;
-
-        const container = document.getElementById('answers-container');
-        container.innerHTML = '';
-
-        q.answers.forEach(ans => {
-          const btn = document.createElement('button');
-          btn.className = "w-full text-left p-4 rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] hover:border-[#CC602E] hover:bg-[#F1EDE7] text-sm text-[#1C1B1A] transition-all duration-150 leading-relaxed font-serif";
-          btn.innerText = ans.text;
-          btn.onclick = () => this.handleAnswer(ans.points);
-          container.appendChild(btn);
-        });
-      },
-
-      handleAnswer(points) {
-        this.score += points;
-        this.currentIndex++;
-        if (this.currentIndex < this.questions.length) {
-          this.renderQuestion();
-        } else {
-          document.getElementById('step-questions').classList.add('hidden');
-          document.getElementById('step-lead').classList.remove('hidden');
-        }
-      },
-
-      async submitLead(event) {
-        event.preventDefault();
-        const name = document.getElementById('first-name').value;
-        const email = document.getElementById('email-address').value;
-        const submitBtn = document.getElementById('submit-btn');
-
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Calculating Your IQ...';
-
-      // Kit Form 10049395 direct payload integration
-        try {
-          const payload = new FormData();
-          payload.append('first_name', name);
-          payload.append('email_address', email);
-          payload.append('fields[parent_iq_score]', `${this.score}/7`);
-
-          await fetch('https://app.kit.com/forms/10049395/subscriptions', {
-            method: 'POST',
-            body: payload
-          });
-        } catch (err) {
-          console.warn('Kit sync deferred:', err);
-        }
-          console.warn('Kit sync deferred:', err);
-        }
-
-        this.showResults();
-      },
-
-      showResults() {
-        document.getElementById('step-lead').classList.add('hidden');
-        document.getElementById('step-results').classList.remove('hidden');
-
-        document.getElementById('final-score').innerText = this.score;
-        document.getElementById('result-meter').style.width = `${(this.score / 7) * 100}%`;
-
-        const categoryElem = document.getElementById('score-category');
-        const descElem = document.getElementById('score-description');
-
-        if (this.score >= 6) {
-          categoryElem.innerText = "Elite Alignment";
-          categoryElem.className = "text-xl sm:text-2xl font-serif text-emerald-400 italic";
-          descElem.innerText = "You have strong developmental instincts. The Basketball Parent IQ System provides the advanced frameworks you need to protect their confidence through high school and recruiting politics.";
-        } else if (this.score >= 4) {
-          categoryElem.innerText = "A Category For Improvement";
-          categoryElem.className = "text-xl sm:text-2xl font-serif text-[#F87171] italic";
-          descElem.innerText = "A few blind spots are already costing your child some of their confidence. The Basketball Parent IQ System walks through exactly how to close these gaps before the next big moment.";
-        } else {
-          categoryElem.innerText = "High Sideline Risk";
-          categoryElem.className = "text-xl sm:text-2xl font-serif text-rose-500 italic";
-          descElem.innerText = "Your current approach is actively causing friction and performance anxiety. Use The Basketball Parent IQ System immediately to reset your baseline and stop burning developmental capital.";
-        }
-      }
-    };
-  </script>
-</body>
-</html>
+          <h3 id="score-category" class
