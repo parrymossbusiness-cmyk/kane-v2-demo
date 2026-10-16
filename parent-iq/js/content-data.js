@@ -17,7 +17,6 @@ const KANE_SYSTEM_DATA = [
             src="/images/kane-cover.jpg" 
             alt="The Basketball Parent IQ System - Coach Dennis Kane" 
             class="w-full h-auto object-cover"
-            onerror="this.parentElement.innerHTML='<div class=\\'p-16 text-center text-xs text-gray-500 font-mono\\'>[Upload kane-cover.jpg to /images/ in your repo]</div>'"
           />
         </div>
         <div class="space-y-2 pt-2">
@@ -908,6 +907,7 @@ const KANE_SYSTEM_DATA = [
     `
   },
   {
+   {
     id: "back-cover",
     part: "Summary & Rules",
     dayNumber: null,
@@ -922,11 +922,11 @@ const KANE_SYSTEM_DATA = [
             src="/images/back-page.jpg" 
             alt="The Basketball Parent IQ System - Back Page" 
             class="w-full h-auto object-contain"
-            onerror="this.parentElement.innerHTML='<div class=\\'p-16 text-center text-xs text-gray-500 font-mono\\'>[Upload back-page.jpg to /images/ in your repo]</div>'"
           />
         </div>
         <p class="text-xs text-gray-400">© 2026 Coach Dennis Kane. All rights reserved. The Work over The Hype. Always.</p>
       </div>
     `
   }
+];
 ];
