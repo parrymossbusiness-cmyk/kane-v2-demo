@@ -320,14 +320,18 @@ const KANE_APP = {
   },
 
   playVaultTrack(tag, title, filename) {
-    const player = document.getElementById("global-vault-player");
-    const audio = document.getElementById("native-audio-element");
-    document.getElementById("vault-track-tag").innerText = tag;
-    document.getElementById("vault-track-title").innerText = title;
-    audio.src = this.audioBaseUrl + filename;
-    player.classList.remove("hidden");
-    audio.play();
-  },
+      const player = document.getElementById("global-vault-player");
+      const audio = document.getElementById("native-audio-element");
+      document.getElementById("vault-track-tag").innerText = tag;
+      document.getElementById("vault-track-title").innerText = title;
+      audio.src = "/audio/" + filename;
+      audio.load();
+      player.classList.remove("hidden");
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => console.warn("Playback deferred:", err));
+      }
+    },
 
   dismissAudio() {
     const player = document.getElementById("global-vault-player");
