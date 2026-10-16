@@ -913,16 +913,54 @@ const KANE_SYSTEM_DATA = [
     pageHeading: "The Basketball Parent Coach",
     subtitle: "Coach Dennis Kane • The Work over The Hype. Always.",
     contentType: "reading",
-    contentHTML: `
-      <div class="space-y-6 text-center">
-        <div class="rounded-2xl overflow-hidden border border-kaneBorder bg-black flex justify-center max-w-lg mx-auto shadow-2xl">
-          <img 
-            src="/images/back-page.jpg" 
-            alt="The Basketball Parent IQ System - Back Page" 
-            class="w-full h-auto object-contain"
-          />
+    contentHTML: ``
+      <div class="max-w-2xl mx-auto bg-kaneCard border border-kaneBorder rounded-2xl p-6 sm:p-10 shadow-2xl text-left space-y-8">
+        
+        <!-- Credo Banner -->
+        <div class="border-b border-kaneBorder pb-6">
+          <h3 class="text-xl sm:text-2xl font-black text-white leading-snug">
+            Players play. Coaches coach. Referees ref.
+          </h3>
+          <p class="text-xl sm:text-2xl font-black text-kaneOrange mt-1">
+            Parents encourage, love, and support.
+          </p>
         </div>
-        <p class="text-xs text-gray-400">© 2026 Coach Dennis Kane. All rights reserved. The Work over The Hype. Always.</p>
+
+        <!-- Coach Profile Grid -->
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="flex-shrink-0">
+            <img 
+              src="/images/kane-headshot.jpg" 
+              alt="Coach Dennis Kane" 
+              class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-kaneOrange object-cover shadow-lg"
+              onerror="this.onerror=null;this.src='/images/coach-kane.jpg';"
+            />
+          </div>
+          
+          <div class="space-y-4 text-sm sm:text-base text-gray-200 leading-relaxed font-normal">
+            <p>
+              <strong class="text-white font-bold">Coach Dennis Kane</strong> is The Basketball Parent Coach. He decided at fourteen that he would coach basketball, then did it for 44 years on San Diego sidelines, retiring as the sixth-winningest boys basketball coach in San Diego high school history: <strong class="text-white">440 wins, 10 league titles, 8 CIF finals, 4 state playoff bids, and a CIF championship</strong>.
+            </p>
+            <p>
+              He took over a San Diego high team that had just gone 0 and 20 and had it playing for the CIF Division I title two years later, then built Mission Bay High into a program that won twenty-plus games in back-to-back seasons. He placed <strong class="text-white">71 players in college basketball, and 12 went on to play professionally</strong>. He was a classroom teacher for most of those years, and the father of two sons whose sports journeys he lived from the bleachers.
+            </p>
+            <p>
+              After more than <strong class="text-kaneOrange font-bold">1,000 conversations with parents</strong>, he founded The Kane Academy to give every family the honest road he wished they all had. The players he is proudest of are the ones building real lives now: in the Army, in corporate jobs, at companies like Meta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Official Signoff & Legal Disclaimer -->
+        <div class="pt-6 border-t border-kaneBorder text-center space-y-3">
+          <p class="text-xs sm:text-sm font-black uppercase tracking-widest text-kaneOrange">
+            kanebasketballacademy.com
+          </p>
+          <div class="text-[11px] text-gray-500 space-y-1 leading-normal max-w-lg mx-auto">
+            <p>© Coach Dennis Kane. All rights reserved. The Work over The Hype. Always.</p>
+            <p>This system provides developmental and educational guidance. It is not legal, tax, or medical advice. Rules on NIL and collegiate eligibility change frequently; check governing bylaws prior to signing any binding agreement.</p>
+          </div>
+        </div>
+
       </div>
     `
   }
