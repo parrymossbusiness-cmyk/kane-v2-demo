@@ -1,5 +1,4 @@
 // Master Content Database for The Basketball Parent IQ System
-// Complete 91-Page Edition with KaneUI Visual Components
 const KANE_SYSTEM_DATA = [
   // ─── START & ORIENTATION ──────────────────────────────────────────
   {
@@ -907,7 +906,6 @@ const KANE_SYSTEM_DATA = [
     `
   },
   {
-   {
     id: "back-cover",
     part: "Summary & Rules",
     dayNumber: null,
@@ -928,5 +926,4 @@ const KANE_SYSTEM_DATA = [
       </div>
     `
   }
-];
 ];
