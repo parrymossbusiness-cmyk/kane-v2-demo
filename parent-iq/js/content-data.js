@@ -930,11 +930,11 @@ const KANE_SYSTEM_DATA = [
         <div class="flex flex-col sm:flex-row gap-6 items-start">
           <div class="flex-shrink-0">
             <img 
-              src="/images/kane-headshot.jpg" 
-              alt="Coach Dennis Kane" 
-              class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-kaneOrange object-cover shadow-lg"
-              onerror="this.onerror=null;this.src='/images/coach-kane.jpg';"
-            />
+  src="/images/coach.kane.webp" 
+  alt="Coach Dennis Kane" 
+  class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-kaneOrange object-cover shadow-lg"
+  onerror="this.onerror=null;this.src='/images/coach-kane-50.jpg';"
+/>
           </div>
           
           <div class="space-y-4 text-sm sm:text-base text-gray-200 leading-relaxed font-normal">
