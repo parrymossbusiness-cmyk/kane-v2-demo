@@ -307,21 +307,20 @@
         submitBtn.disabled = true;
         submitBtn.innerText = 'Calculating Your IQ...';
 
-        // Kit Form 10049395 direct payload integration
+      // Kit Form 10049395 direct payload integration
         try {
+          const payload = new FormData();
+          payload.append('first_name', name);
+          payload.append('email_address', email);
+          payload.append('fields[parent_iq_score]', `${this.score}/7`);
+
           await fetch('https://app.kit.com/forms/10049395/subscriptions', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              first_name: name,
-              email_address: email,
-              fields: {
-                parent_iq_score: `${this.score}/7`
-              }
-            }),
-            mode: 'no-cors'
+            body: payload
           });
         } catch (err) {
+          console.warn('Kit sync deferred:', err);
+        }
           console.warn('Kit sync deferred:', err);
         }
 
