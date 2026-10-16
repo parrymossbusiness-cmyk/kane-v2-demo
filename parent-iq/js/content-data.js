@@ -913,7 +913,7 @@ const KANE_SYSTEM_DATA = [
     pageHeading: "The Basketball Parent Coach",
     subtitle: "Coach Dennis Kane • The Work over The Hype. Always.",
     contentType: "reading",
-    contentHTML: ``
+    contentHTML: `
       <div class="max-w-2xl mx-auto bg-kaneCard border border-kaneBorder rounded-2xl p-6 sm:p-10 shadow-2xl text-left space-y-8">
         
         <!-- Credo Banner -->
