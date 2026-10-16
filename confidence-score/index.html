@@ -289,7 +289,7 @@
       }
     }
 
-    function handleLeadSubmit(evt) {
+   function handleLeadSubmit(evt) {
       if (evt && evt.preventDefault) evt.preventDefault();
       var fname = document.getElementById('first-name').value;
       var email = document.getElementById('email-address').value;
@@ -300,20 +300,28 @@
         sBtn.innerText = 'Calculating Your IQ...';
       }
 
-      var formData = new FormData();
-      formData.append('first_name', fname);
-      formData.append('email_address', email);
-      formData.append('fields[parent_iq_score]', parentScore + '/7');
+      var scriptURL = 'https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec';
 
-      fetch('https://app.kit.com/forms/10049395/subscriptions', {
+      var payloadData = {
+        name: fname,
+        email: email,
+        score: parentScore + '/7',
+        quizType: 'preseason'
+      };
+
+      fetch(scriptURL, {
         method: 'POST',
-        body: formData,
-        mode: 'no-cors'
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payloadData)
       }).then(function () {
         renderResults();
       }).catch(function () {
         renderResults();
       });
+    }
     }
 
     function renderResults() {
