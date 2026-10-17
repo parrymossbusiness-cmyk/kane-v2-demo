@@ -50,6 +50,7 @@ const KaneUI = {
 
   // "Tonight's Action" & Dual-Column Journal
   tonightBox(dayKey, actionText, audioTrack = null) {
+    const escapedTitle = audioTrack ? audioTrack.title.replace(/'/g, "\\'") : '';
     return `
       <div class="my-8 rounded-2xl bg-kaneCard border border-kaneBorder p-5 sm:p-7 shadow-xl space-y-6">
         <div class="border-b border-kaneBorder pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -58,7 +59,7 @@ const KaneUI = {
             <p class="text-xs sm:text-sm text-white font-bold mt-1">${actionText}</p>
           </div>
           ${audioTrack ? `
-            <button onclick="KANE_APP.playVaultTrack('${audioTrack.tag}', '${audioTrack.title}', '${audioTrack.file}')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneDark border border-kaneBorder hover:border-kaneOrange px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
+            <button onclick="KANE_APP.playVaultTrack('${audioTrack.tag}', '${escapedTitle}', '${audioTrack.file}')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneDark border border-kaneBorder hover:border-kaneOrange px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
               <svg class="w-4 h-4 text-kaneOrange" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
               <span>${audioTrack.tag} (60s)</span>
             </button>
@@ -87,6 +88,18 @@ const KaneUI = {
 const KANE_APP = {
   activeIdx: 0,
   audioBaseUrl: "/parent-iq/audio/",
+  vaultTracks: [
+    { id: "01", title: "Before You Talk to Coach About Minutes", file: "audio-01.mp3" },
+    { id: "02", title: "Before Talking to Spouse About Budget", file: "audio-02.mp3" },
+    { id: "03", title: "Before Confronting Daddy-Ball", file: "audio-03.mp3" },
+    { id: "04", title: "When Kid Won't Go to Practice", file: "audio-04.mp3" },
+    { id: "05", title: "When Pitched on Exposure", file: "audio-05.mp3" },
+    { id: "06", title: "Before Overspending on Tournaments", file: "audio-06.mp3" },
+    { id: "07", title: "When Kid Asks If Good Enough for College", file: "audio-07.mp3" },
+    { id: "08", title: "When Coach Pressures Year-Round Play", file: "audio-08.mp3" },
+    { id: "09", title: "Before Evaluating a New AAU Team", file: "audio-09.mp3" },
+    { id: "10", title: "When You Feel Like You're Failing Your Kid", file: "audio-10.mp3" }
+  ],
 
   init() {
     this.renderTOC();
@@ -293,45 +306,40 @@ const KANE_APP = {
   renderVaultTracks() {
     const container = document.getElementById("vault-tracks-container");
     if (!container) return;
-    const tracks = [
-      { id: "01", title: "Before You Talk to Coach About Minutes", file: "audio-01.mp3" },
-      { id: "02", title: "Before Talking to Spouse About Budget", file: "audio-02.mp3" },
-      { id: "03", title: "Before Confronting Daddy-Ball", file: "audio-03.mp3" },
-      { id: "04", title: "When Kid Won't Go to Practice", file: "audio-04.mp3" },
-      { id: "05", title: "When Pitched on Exposure", file: "audio-05.mp3" },
-      { id: "06", title: "Before Overspending on Tournaments", file: "audio-06.mp3" },
-      { id: "07", title: "When Kid Asks If Good Enough for College", file: "audio-07.mp3" },
-      { id: "08", title: "When Coach Pressures Year-Round Play", file: "audio-08.mp3" },
-      { id: "09", title: "Before Evaluating a New AAU Team", file: "audio-09.mp3" },
-      { id: "10", title: "When You Feel Like You're Failing Your Kid", file: "audio-10.mp3" }
-    ];
 
-    container.innerHTML = tracks.map(t => `
+    container.innerHTML = this.vaultTracks.map((t, idx) => `
       <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
         <div>
           <span class="text-[10px] text-kaneOrange font-black uppercase">Track ${t.id}</span>
           <p class="text-xs font-bold text-white mt-0.5">${t.title}</p>
         </div>
-        <button onclick="KANE_APP.playVaultTrack('Track ${t.id}', '${t.title}', '${t.file}')" class="p-2 rounded-lg bg-kaneOrange text-white hover:bg-orange-600 transition">
+        <button onclick="KANE_APP.playVaultTrackByIndex(${idx})" class="p-2 rounded-lg bg-kaneOrange text-white hover:bg-orange-600 transition">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
         </button>
       </div>
     `).join("");
   },
 
+  playVaultTrackByIndex(idx) {
+    const track = this.vaultTracks[idx];
+    if (track) {
+      this.playVaultTrack(`Track ${track.id}`, track.title, track.file);
+    }
+  },
+
   playVaultTrack(tag, title, filename) {
-      const player = document.getElementById("global-vault-player");
-      const audio = document.getElementById("native-audio-element");
-      document.getElementById("vault-track-tag").innerText = tag;
-      document.getElementById("vault-track-title").innerText = title;
-      audio.src = "/audio/" + filename;
-      audio.load();
-      player.classList.remove("hidden");
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => console.warn("Playback deferred:", err));
-      }
-    },
+    const player = document.getElementById("global-vault-player");
+    const audio = document.getElementById("native-audio-element");
+    document.getElementById("vault-track-tag").innerText = tag;
+    document.getElementById("vault-track-title").innerText = title;
+    audio.src = "/audio/" + filename;
+    audio.load();
+    player.classList.remove("hidden");
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => console.warn("Playback deferred:", err));
+    }
+  },
 
   dismissAudio() {
     const player = document.getElementById("global-vault-player");
