@@ -1,194 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Basketball Parent IQ Quiz | The Kane Academy</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            paper: '#FAF8F5',
-            sand: '#F1EDE7',
-            ink: '#1C1B1A',
-            stone: '#686560',
-            kaneOrange: '#CC602E',
-            kaneDark: '#1E293B'
-          },
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif'],
-            serif: ['Lora', 'serif']
-          }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Basketball Parent IQ Quiz | The Kane Academy</title>
+<meta name="description" content="A two minute check for basketball parents. Answer honestly, get your Basketball Parent IQ, and see exactly where to focus next.">
+<meta property="og:title" content="The Basketball Parent IQ Quiz | The Kane Academy">
+<meta property="og:description" content="A two minute check for basketball parents. Answer honestly, get your Basketball Parent IQ, and see exactly where to focus next.">
+<meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<meta property="og:url" content="https://kanebasketballacademy.com/confidence-score/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Basketball Parent IQ Quiz | The Kane Academy">
+<meta name="twitter:description" content="A two minute check for basketball parents. Answer honestly, get your Basketball Parent IQ, and see exactly where to focus next.">
+<meta name="twitter:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F1E8; --card:#FBF6EF; --border:#F1C1B2;
+    --ink:#1C1714; --ink-dim:#7A6E64; --accent:#E16143;
+    --accent-soft:rgba(225,97,67,0.12); --track:#EFE1D6;
+    --navy:#1F3050; --on-navy:#F7F1E8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5;}
+  .wrap{max-width:620px; margin:0 auto; padding:0 22px 90px;}
+  .eyebrow{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 14px;}
+  h1,h2{font-family:'Fraunces',serif; font-weight:600; margin:0; color:var(--ink);}
+  .screen{display:none;}
+  .screen.active{display:block; animation:fadeUp .5s ease both;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){ .screen.active{animation:none;} *{transition:none !important; animation-duration:.001s !important;} }
+
+  .intro{padding-top:64px;}
+  .intro h1{font-size:32px; line-height:1.15; margin-bottom:16px;}
+  .intro p.lede{font-size:16px; color:var(--ink-dim); max-width:52ch; margin-bottom:30px;}
+  .btn{display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#FFF9F5; border:none; font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:15px 26px; border-radius:999px; cursor:pointer; text-decoration:none;}
+  .btn:hover{background:#CB4F33;}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .meta-line{margin-top:18px; font-size:13px; color:var(--ink-dim);}
+  .gift-note{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; font-size:14.5px; color:var(--ink); max-width:52ch; margin:0 0 28px;}
+  .gift-note b{color:var(--accent);}
+  .meta-line b{color:var(--ink);}
+
+  .checklist{padding-top:54px;}
+  .progress-label{font-size:13px; color:var(--ink-dim); margin-bottom:8px;}
+  .progress-track{height:4px; background:var(--track); border-radius:4px; margin-bottom:30px; overflow:hidden;}
+  .progress-fill{height:100%; width:0%; background:var(--accent); transition:width .3s ease;}
+  h2.q-head{font-size:24px; margin-bottom:6px;}
+  p.q-sub{color:var(--ink-dim); font-size:14px; margin:0 0 26px;}
+
+  .q-card{background:var(--card); border:1px solid var(--border); border-radius:18px; padding:30px 26px; margin-bottom:18px;}
+  .q-number{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 12px;}
+  .q-text{font-family:'Fraunces',serif; font-size:21px; line-height:1.4; color:var(--ink); margin:0;}
+  .q-actions{display:flex; gap:12px; margin-top:24px;}
+  .q-btn{flex:1; padding:14px 16px; border-radius:12px; font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:14.5px; cursor:pointer; border:1px solid var(--border); background:#FFF; color:var(--ink);}
+  .q-btn:hover{border-color:var(--accent);}
+  .q-btn.yes{background:var(--accent); border-color:var(--accent); color:#FFF9F5;}
+  .q-btn.yes:hover{background:#CB4F33;}
+  .q-btn:disabled{opacity:.45; cursor:default;}
+
+  .reaction{
+    display:none; background:var(--navy); border-radius:16px; padding:22px 24px; margin-bottom:22px;
+    animation:fadeUp .4s ease both;
+  }
+  .reaction.show{display:block;}
+  .reaction-label{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:#8FA0BE; font-weight:600; margin:0 0 8px;}
+  .reaction-text{font-size:15.5px; line-height:1.55; color:#F2EEE7; margin:0;}
+  .next-wrap{text-align:center; margin-top:4px;}
+
+  .row{display:flex; align-items:flex-start; gap:14px; padding:16px; margin-bottom:10px; background:var(--card); border:1px solid var(--border); border-radius:14px; cursor:pointer; user-select:none;}
+  .row:hover{border-color:var(--accent);}
+  .row input{appearance:none; -webkit-appearance:none; width:22px; height:22px; min-width:22px; margin-top:1px; border:2px solid #D9B8AB; border-radius:6px; background:#FFF; display:grid; place-content:center; cursor:pointer;}
+  .row input::before{content:""; width:12px; height:12px; border-radius:3px; background:var(--accent); transform:scale(0); transition:transform .12s ease;}
+  .row input:checked::before{transform:scale(1);}
+  .row input:checked{border-color:var(--accent);}
+  .row.checked{background:var(--accent-soft); border-color:var(--accent);}
+  .row label{font-size:15.5px; line-height:1.45; cursor:pointer; color:var(--ink);}
+  .continue-wrap{margin-top:30px; text-align:center;}
+  .helper-note{font-size:13px; color:var(--ink-dim); margin-top:14px;}
+
+  .skip-line{margin:16px 0 0; font-size:14px; color:var(--ink-dim);}
+  .skip-link{background:none; border:none; padding:0; font:inherit; color:var(--accent); font-weight:600; text-decoration:underline; cursor:pointer;}
+  .sent{padding-top:80px; text-align:center;}
+  .sent h2{font-size:28px; margin-bottom:12px;}
+  .sent p{color:var(--ink-dim); font-size:15.5px; max-width:44ch; margin:0 auto 12px;}
+  .gate{padding-top:70px; text-align:center;}
+  .gate h2{font-size:26px; margin-bottom:10px;}
+  .gate p{color:var(--ink-dim); font-size:15px; max-width:44ch; margin:0 auto 30px;}
+  .field{text-align:left; margin-bottom:14px;}
+  .field label{display:block; font-size:12.5px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input{width:100%; padding:13px 14px; font-size:15px; font-family:inherit; background:#FFF; border:1px solid var(--border); border-radius:10px; color:var(--ink);}
+  .field input::placeholder{color:#B7A99C;}
+  .form-error{color:var(--accent); font-size:13px; margin-top:10px; display:none;}
+
+  .result{padding-top:56px; text-align:center;}
+  .score-card{background:var(--navy); border:1px solid var(--navy); border-radius:20px; padding:38px 24px 30px; margin-bottom:26px;}
+  .score-label{font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:#B9C2D4; margin-bottom:10px;}
+  .score-number{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:76px; line-height:1; color:var(--on-navy); letter-spacing:-.02em;}
+  .score-number .out-of{color:#8290A8; font-size:34px;}
+  .band-name{font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#F0A98C; margin:10px 0 22px;}
+  .meter-track{height:10px; background:#33456B; border-radius:999px; overflow:hidden; margin:0 auto; max-width:340px;}
+  .meter-fill{height:100%; width:0%; background:var(--accent); border-radius:999px; transition:width 1s cubic-bezier(.2,.8,.2,1);}
+  .result-message{font-size:16px; line-height:1.6; color:var(--ink); max-width:48ch; margin:0 auto 30px;}
+  .result-note{font-size:13px; color:var(--ink-dim);}
+
+  .notfound{padding-top:80px; text-align:center;}
+  .notfound p{color:var(--ink-dim); font-size:15px; max-width:44ch; margin:0 auto 26px;}
+
+  footer{max-width:620px; margin:60px auto 0; padding:22px 22px 0; border-top:1px solid var(--border); font-size:12.5px; color:var(--ink-dim); text-align:center;}
+  .footer-line{margin:0 0 14px;}
+  .footer-stats{font-family:'Fraunces',serif; font-size:17px; line-height:1.45; color:var(--ink); font-weight:600; margin:0;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section id="screen-loading" class="screen active intro">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1>Loading your check...</h1>
+  </section>
+
+  <section id="screen-notfound" class="screen notfound">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1>This link needs a moment.</h1>
+    <p>The Basketball Parent IQ Quiz for this guide is not live yet. Check back soon, or head back to the guide you were reading.</p>
+  </section>
+
+  <section id="screen-intro" class="screen intro">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h1 id="intro-heading">The Basketball Parent IQ Quiz</h1>
+    <p class="lede">Seven questions. Two minutes. Answer honestly and get your Basketball Parent IQ, plus exactly what it means for your kid right now.</p>
+    <p class="gift-note">Thank you for asking for the <b>Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.</p>
+    <button class="btn" id="start-btn" type="button">Question #1 <span>&rarr;</span></button>
+    <p class="skip-line">Just want the Blueprint? <button class="skip-link" id="skip-link" type="button">Send it now.</button></p>
+    <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from real conversations with basketball parents, not guesswork.</p>
+  </section>
+
+  <section id="screen-checklist" class="screen checklist">
+    <p class="progress-label" id="progress-label">Question 1 of 7</p>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="q-card">
+      <p class="q-number" id="q-number">Question 1</p>
+      <p class="q-text" id="q-text"></p>
+      <div class="q-actions">
+        <button class="q-btn" id="no-btn" type="button">Not really</button>
+        <button class="q-btn yes" id="yes-btn" type="button">Yes, that's me</button>
+      </div>
+    </div>
+
+    <div class="reaction" id="reaction">
+      <p class="reaction-label">Coach Kane</p>
+      <p class="reaction-text" id="reaction-text"></p>
+    </div>
+
+    <div class="next-wrap" id="next-wrap" style="display:none;">
+      <button class="btn" id="next-btn" type="button">Next <span>&rarr;</span></button>
+    </div>
+  </section>
+
+  <section id="screen-gate" class="screen gate">
+    <h2>Your Basketball Parent IQ is ready.</h2>
+    <p>Tell us where to send it. You'll get your IQ score, plus the full Pre-Season &amp; Tryout Blueprint as our gift.</p>
+    <form id="gate-form">
+      <div class="field">
+        <label for="first-name">First name</label>
+        <input type="text" id="first-name" placeholder="Your first name" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@email.com" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit">Show my IQ score <span>&rarr;</span></button>
+      <p class="form-error" id="form-error">Enter a real first name and email to see your score.</p>
+    </form>
+  </section>
+
+  <section id="screen-skip" class="screen gate">
+    <h2>Where should Coach Kane send it?</h2>
+    <p>Enter your name and email, and your Pre-Season &amp; Tryout Blueprint goes straight to your inbox.</p>
+    <form id="skip-form">
+      <div class="field">
+        <label for="skip-first-name">First name</label>
+        <input type="text" id="skip-first-name" placeholder="Your first name" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="skip-email">Email</label>
+        <input type="email" id="skip-email" placeholder="you@email.com" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit">Send My Blueprint <span>&rarr;</span></button>
+      <p class="form-error" id="skip-error">Enter a real first name and email to get your Blueprint.</p>
+    </form>
+  </section>
+
+  <section id="screen-sent" class="screen sent">
+    <p class="eyebrow">The Basketball Parent Coach</p>
+    <h2>Your Blueprint is Ready</h2>
+    <p>We've logged your request. You can access the complete Pre-Season &amp; Tryout Blueprint right now below:</p>
+    <p style="margin-top: 24px;">
+      <a class="btn" href="https://kanebasketballacademy.com/blueprint/?v=2">Open The Blueprint <span>&rarr;</span></a>
+    </p>
+  </section>
+
+  <section id="screen-result" class="screen result">
+    <div class="score-card">
+      <p class="score-label">Your Basketball Parent IQ</p>
+      <div class="score-number"><span id="score-value">0</span><span class="out-of">/7</span></div>
+      <p class="band-name" id="band-name">&nbsp;</p>
+      <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+    </div>
+    <p class="result-message" id="result-message"></p>
+    <a class="btn" id="cta-link" href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401">Get The Basketball Parent IQ System &middot; $47 <span>&rarr;</span></a>
+    <p class="result-note" style="margin-top: 20px;">Your Pre-Season &amp; Tryout Blueprint is on the way to your email inbox.</p>
+  </section>
+
+  <footer>
+    <p class="footer-line">The Basketball Parent Coach &middot; The Work Over The Hype. Always.</p>
+    <p class="footer-stats">440 Wins. CIF Champion.<br>1,000+ Parent Conversations.<br>12 Pros. 71 College Players.<br>And A Development Plan<br>For You And Your Kid.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Active Google Apps Script bridge endpoint
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+
+  var params = new URLSearchParams(window.location.search);
+  var guideKey = params.get('guide') || 'preseason';
+  var guideData = null;
+
+  var currentIndex = 0;
+  var checkedCount = 0;
+  var answers = []; // true/false per question
+
+  var GUIDES = {
+    preseason: {
+      title: "The Pre-Season & Tryout Blueprint",
+      items: [
+        "I've told my child something like \"today's the day, go prove yourself\" before a tryout.",
+        "I've pointed out or sized up other kids in the gym before or during a tryout.",
+        "I've coached from the sideline, or noticed my child glancing at me during a tryout.",
+        "I've asked my child \"how did you do\" right after a tryout or game.",
+        "I've compared my child's tryout to another kid's performance.",
+        "I've blamed a coach's decision instead of asking what my child could improve.",
+        "I've gone quiet, or the mood at home changed, after a disappointing result."
+      ],
+      comments: [
+        "I hear this one in almost every parking lot. It comes from love, and it still lands as pressure. He hears that the next two hours decide who he is.",
+        "This teaches him to measure himself against the room instead of the rep in front of him. Say nothing about the other kids next time. It's harder than it sounds.",
+        "A kid who checks the bleachers after every possession isn't free out there. Sit where he can't find you. It changes how he plays.",
+        "That question asks for a verdict he isn't ready to give. He'll guess, and he'll usually guess low. Ask what he competed hardest at instead.",
+        "It feels like reassurance. What it teaches him is that his standing depends on someone else's bad day. Compare him only to his own tape from last season.",
+        "It feels loyal. It teaches him that outcomes are decided by other people, which is the start of every excuse he'll make for the next ten years.",
+        "Kids read withdrawal faster than criticism. Same voice, same warmth, same night. Especially that night."
+      ],
+      messages: {
+        perfect: "You are doing this right. The Basketball Parent IQ System will help you keep it that way through the rest of the season, not just tryout week.",
+        steady:  "You are already doing most of this right. The Basketball Parent IQ System will help you protect that steady hand through the rest of the season, not just tryout week.",
+        leaking: "A few of these are already costing your child some of his confidence. The Basketball Parent IQ System walks through exactly how to close these gaps before the next big moment.",
+        redflag: "Right now, several of the habits that quietly damage a kid's confidence are already in play. The Basketball Parent IQ System is the fastest way to turn this around before tryout season does real damage."
       }
     }
-  </script>
+  };
 
-  <style>
-    body {
-      background-color: #FAF8F5;
-      color: #1C1B1A;
-      font-family: 'Lora', serif;
-      -webkit-font-smoothing: antialiased;
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function bandFor(score) {
+    if (score >= 6) return 'steady';
+    if (score >= 4) return 'leaking';
+    return 'redflag';
+  }
+  var BAND_NAMES = { steady: 'Steady Hand', leaking: 'Leaking Confidence', redflag: 'Red Flag' };
+
+  function init() {
+    var data = GUIDES[guideKey];
+    if (!data) {
+      showScreen('screen-notfound');
+      return;
     }
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Poppins', sans-serif;
+    guideData = data;
+    showScreen('screen-intro');
+  }
+
+  document.getElementById('start-btn').addEventListener('click', function () {
+    showScreen('screen-checklist');
+    renderQuestion();
+  });
+
+  function renderQuestion() {
+    var total = guideData.items.length;
+    document.getElementById('progress-label').textContent = 'Question ' + (currentIndex + 1) + ' of ' + total;
+    document.getElementById('progress-fill').style.width = (currentIndex / total * 100) + '%';
+    document.getElementById('q-number').textContent = 'Question ' + (currentIndex + 1);
+    document.getElementById('q-text').textContent = guideData.items[currentIndex];
+
+    document.getElementById('reaction').classList.remove('show');
+    document.getElementById('next-wrap').style.display = 'none';
+    document.getElementById('yes-btn').disabled = false;
+    document.getElementById('no-btn').disabled = false;
+  }
+
+  function answer(isYes) {
+    answers[currentIndex] = isYes;
+    document.getElementById('yes-btn').disabled = true;
+    document.getElementById('no-btn').disabled = true;
+
+    if (isYes) {
+      checkedCount++;
+      document.getElementById('reaction-text').textContent = guideData.comments[currentIndex];
+      document.getElementById('reaction').classList.add('show');
+      document.getElementById('next-wrap').style.display = 'block';
+    } else {
+      advance();
     }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-[#CC602E]/20">
+  }
 
-  <header class="py-6 border-b border-[#E5E0D8] bg-[#FAF8F5]">
-    <div class="max-w-3xl mx-auto px-4 flex items-center justify-between">
-      <a href="/" class="font-heading font-black tracking-wider text-xs sm:text-sm uppercase text-[#1C1B1A] hover:text-[#CC602E] transition-colors">
-        The Kane Academy
-      </a>
-      <span class="text-[11px] font-heading font-bold uppercase tracking-widest text-[#CC602E] bg-[#F1EDE7] px-3 py-1 rounded-full">
-        Parent IQ Portal
-      </span>
-    </div>
-  </header>
+  function advance() {
+    currentIndex++;
+    if (currentIndex >= guideData.items.length) {
+      document.getElementById('progress-fill').style.width = '100%';
+      showScreen('screen-gate');
+    } else {
+      renderQuestion();
+    }
+  }
 
-  <main class="flex-grow flex items-center justify-center py-10 px-4">
-    <div class="w-full max-w-xl mx-auto">
+  document.getElementById('skip-link').addEventListener('click', function () { showScreen('screen-skip'); });
 
-      <!-- STEP 1: WELCOME SCREEN -->
-      <section id="step-welcome" class="text-center space-y-6">
-        <span class="text-xs font-heading font-bold tracking-widest uppercase text-[#CC602E] block">
-          The Basketball Parent Coach
-        </span>
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-[#1C1B1A] leading-tight">
-          The Basketball Parent IQ Quiz
-        </h1>
-        <p class="text-base sm:text-lg text-[#686560] leading-relaxed max-w-lg mx-auto">
-          Seven questions. Two minutes. Answer honestly and get your Basketball Parent IQ, plus exactly what it means for your kid right now.
-        </p>
+  document.getElementById('skip-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstName = document.getElementById('skip-first-name').value.trim();
+    var email = document.getElementById('skip-email').value.trim();
+    var errorEl = document.getElementById('skip-error');
 
-        <div class="bg-[#F1EDE7] border border-[#E5E0D8] rounded-xl p-5 text-left text-sm text-[#1C1B1A] space-y-2">
-          <p class="font-medium">
-            Thank you for asking for the <strong class="text-[#CC602E]">Pre-Season &amp; Tryout Blueprint</strong>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.
-          </p>
-        </div>
+    if (!firstName || !email || email.indexOf('@') === -1) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    showScreen('screen-sent');
 
-        <div class="pt-4 space-y-4">
-          <button type="button" id="start-btn" onclick="startAssessment()" class="w-full sm:w-auto px-8 py-3.5 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-sm tracking-wide rounded-xl shadow-lg transition-all duration-150 transform hover:-translate-y-0.5 cursor-pointer">
-            Question #1 &rarr;
-          </button>
-          <p class="text-xs text-[#686560] block font-sans">
-            We'll send you the blueprint after the quiz.
-          </p>
-        </div>
+    if (SHEET_URL.indexOf('PASTE') === -1) {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: firstName,
+          email: email,
+          guide: guideKey,
+          score: '',
+          band: '',
+          checkedNumbers: '',
+          checkedText: '',
+          path: 'skipped'
+        })
+      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
+    }
+  });
 
-        <p class="text-xs text-[#686560] pt-2">
-          By <strong>Coach Dennis Kane</strong>. Built from real conversations with basketball parents, not guesswork.
-        </p>
-      </section>
+  document.getElementById('yes-btn').addEventListener('click', function () { answer(true); });
+  document.getElementById('no-btn').addEventListener('click', function () { answer(false); });
+  document.getElementById('next-btn').addEventListener('click', advance);
 
-      <!-- STEP 2: QUESTIONS FLOW -->
-      <section id="step-questions" class="hidden">
-        <div class="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
-          <div class="flex items-center justify-between border-b border-[#E5E0D8] pb-4">
-            <span id="question-tracker" class="text-xs font-heading font-bold uppercase tracking-wider text-[#CC602E]">
-              Question 1 of 7
-            </span>
-            <div class="w-24 bg-[#F1EDE7] rounded-full h-1.5 overflow-hidden">
-              <div id="progress-bar" class="bg-[#CC602E] h-full transition-all duration-300" style="width: 14.28%;"></div>
-            </div>
-          </div>
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstName = document.getElementById('first-name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var errorEl = document.getElementById('form-error');
 
-          <h2 id="question-text" class="text-lg sm:text-xl font-bold text-[#1C1B1A] leading-snug"></h2>
+    if (!firstName || !email || email.indexOf('@') === -1) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
 
-          <div id="answers-container" class="space-y-3 pt-2"></div>
-        </div>
-      </section>
+    var score = 7 - checkedCount;
+    var band = bandFor(score);
 
-      <!-- STEP 3: LEAD CAPTURE -->
-      <section id="step-lead" class="hidden text-center space-y-6">
-        <div class="space-y-2">
-          <h2 class="text-3xl font-extrabold text-[#1C1B1A] leading-tight">
-            Your Basketball Parent IQ is ready.
-          </h2>
-          <p class="text-base text-[#686560] max-w-md mx-auto">
-            Tell us where to send it. You'll get your IQ score, plus the full Pre-Season &amp; Tryout Blueprint as our gift.
-          </p>
-        </div>
+    revealResult(score, band);
 
-        <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-sm text-left space-y-4 max-w-md mx-auto">
-          <div>
-            <label class="block text-xs font-heading font-bold uppercase tracking-wider text-[#686560] mb-1">First name</label>
-            <input type="text" id="first-name" required placeholder="Your first name" class="w-full px-4 py-3 rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] text-sm text-[#1C1B1A] focus:outline-none focus:border-[#CC602E] transition-colors font-sans">
-          </div>
-          <div>
-            <label class="block text-xs font-heading font-bold uppercase tracking-wider text-[#686560] mb-1">Email</label>
-            <input type="email" id="email-address" required placeholder="you@email.com" class="w-full px-4 py-3 rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] text-sm text-[#1C1B1A] focus:outline-none focus:border-[#CC602E] transition-colors font-sans">
-          </div>
-          <button type="submit" id="submit-btn" class="w-full py-3.5 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-sm tracking-wide rounded-xl shadow-md transition-all duration-150 cursor-pointer">
-            Show my IQ score &rarr;
-          </button>
-        </form>
-      </section>
+    var checkedNumbers = [];
+    var checkedText = [];
+    guideData.items.forEach(function (text, i) {
+      if (answers[i]) { checkedNumbers.push(i + 1); checkedText.push(text); }
+    });
 
-      <!-- STEP 4: RESULTS -->
-      <section id="step-results" class="hidden space-y-8">
-        
-        <div class="bg-[#1E293B] text-white rounded-2xl p-8 sm:p-10 shadow-xl text-center space-y-4">
-          <span class="text-xs font-heading font-bold uppercase tracking-widest text-[#94A3B8]">
-            YOUR BASKETBALL PARENT IQ
-          </span>
-          <div class="flex items-baseline justify-center gap-1 font-heading">
-            <span id="final-score" class="text-6xl sm:text-7xl font-extrabold text-white">6</span>
-            <span class="text-2xl sm:text-3xl font-bold text-[#94A3B8]">/7</span>
-          </div>
-          <h3 id="score-category" class="text-xl sm:text-2xl font-serif text-[#F87171] italic">
-            A Category For Improvement
-          </h3>
-          <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden max-w-xs mx-auto">
-            <div id="result-meter" class="bg-[#CC602E] h-full transition-all duration-500"></div>
-          </div>
-        </div>
+    if (SHEET_URL.indexOf('PASTE') === -1) {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: firstName,
+          email: email,
+          guide: guideKey,
+          score: score,
+          band: BAND_NAMES[band],
+          checkedNumbers: checkedNumbers.join(', '),
+          checkedText: checkedText.join(' | '),
+          path: 'quiz'
+        })
+      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
+    }
+  });
 
-        <div class="text-center space-y-6">
-          <p id="score-description" class="text-base sm:text-lg text-[#1C1B1A] leading-relaxed max-w-lg mx-auto">
-            A few blind spots are already costing your child some of their confidence. The Basketball Parent IQ System walks through exactly how to close these gaps before the next big moment.
-          </p>
+  function revealResult(score, band) {
+    document.getElementById('band-name').textContent = score === 7 ? 'Steady Hand' : 'A Category For Improvement';
+    document.getElementById('result-message').textContent = score === 7 ? guideData.messages.perfect : guideData.messages[band];
+    showScreen('screen-result');
 
-          <div class="space-y-4">
-            <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401" id="stripe-checkout-btn" class="block w-full sm:w-auto sm:inline-block px-8 py-4 bg-[#CC602E] hover:bg-[#B55325] text-white font-heading font-bold text-base tracking-wide rounded-xl shadow-lg transition-all duration-150 transform hover:-translate-y-0.5">
-              Get The Basketball Parent IQ System · $47 &rarr;
-            </a>
-            
-            <p class="text-sm font-medium text-[#686560]">
-              Your Pre-Season &amp; Tryout Blueprint is on the way to your email inbox.
-            </p>
-          </div>
-        </div>
+    var el = document.getElementById('score-value');
+    var meter = document.getElementById('meter-fill');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      </section>
+    if (reduceMotion) {
+      el.textContent = score;
+      meter.style.width = (score / 7 * 100) + '%';
+      return;
+    }
 
-    </div>
-  </main>
+    var current = 0;
+    var steps = score === 0 ? 1 : score;
+    var stepTime = Math.max(600 / steps, 60);
+    var timer = setInterval(function () {
+      current++;
+      el.textContent = Math.min(current, score);
+      if (current >= score) clearInterval(timer);
+    }, stepTime);
 
-  <footer class="py-8 border-t border-[#E5E0D8] bg-[#FAF8F5] text-center space-y-2">
-    <p class="text-[11px] font-heading uppercase tracking-widest text-[#686560]">
-      The Basketball Parent Coach &middot; The Work Over The Hype. Always.
-    </p>
-    <div class="text-sm font-bold text-[#1C1B1A] leading-snug">
-      <p>440 Wins. CIF Champion.</p>
-      <p>1,000+ Parent Conversations.</p>
-      <p>12 Pros. 71 College Players.</p>
-      <p class="text-[#CC602E]">And A Development Plan For You And Your Kid.</p>
-    </div>
-  </footer>
+    setTimeout(function () { meter.style.width = (score / 7 * 100) + '%'; }, 50);
+  }
 
-  <script>
-    var currentIdx = 0;
-    var parentScore = 0;
+  init();
+})();
+</script>
 
-    var quizQuestions =
+</body>
+</html>
