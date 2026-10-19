@@ -5,9 +5,9 @@ const KaneUI = {
     return `
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
         ${items.map(st => `
-          <div class="bg-black border border-kaneBorder rounded-2xl p-4 text-center shadow-lg">
-            <span class="text-2xl sm:text-3xl font-black text-kaneOrange tracking-tight">${st.val}</span>
-            <p class="text-[11px] text-gray-400 mt-1.5 leading-snug font-medium">${st.label}</p>
+          <div class="bg-kaneCard border border-kaneBorder rounded-2xl p-4 text-center">
+            <span class="font-display text-2xl sm:text-3xl font-bold text-kaneOrange tracking-tight">${st.val}</span>
+            <p class="text-xs text-gray-400 mt-1.5 leading-snug">${st.label}</p>
           </div>
         `).join('')}
       </div>
@@ -17,9 +17,9 @@ const KaneUI = {
   // Pullquote / Note Cards
   coachNote(quote, title = "COACH KANE'S NOTE") {
     return `
-      <div class="my-6 rounded-2xl bg-kaneCard border-l-4 border-l-kaneOrange border-y border-r border-kaneBorder p-5 sm:p-6 shadow-md">
-        <span class="text-[10px] font-black tracking-widest uppercase text-kaneOrange block">${title}</span>
-        <p class="text-sm sm:text-base text-gray-200 italic mt-2 leading-relaxed">"${quote}"</p>
+      <div class="my-8 rounded-2xl bg-kaneCard border border-kaneBorder p-5 sm:p-7">
+        <span class="font-display text-[11px] font-bold tracking-[0.18em] uppercase text-kaneOrange block">${title}</span>
+        <p class="text-sm sm:text-base text-gray-200 italic mt-3 leading-relaxed">"${quote}"</p>
       </div>
     `;
   },
@@ -28,9 +28,9 @@ const KaneUI = {
   decisionTable(rows) {
     return `
       <div class="my-6 overflow-hidden rounded-2xl border border-kaneBorder bg-kaneCard shadow-lg">
-        <table class="w-full text-left text-xs border-collapse">
+        <table class="w-full text-left text-sm border-collapse">
           <thead>
-            <tr class="border-b border-kaneBorder bg-kaneDark/80">
+            <tr class="border-b border-kaneBorder bg-kaneDark/60">
               <th class="p-3.5 sm:p-4 text-kaneOrange font-black uppercase tracking-wider w-1/2">IF</th>
               <th class="p-3.5 sm:p-4 text-white font-black uppercase tracking-wider w-1/2">THEN</th>
             </tr>
@@ -52,30 +52,30 @@ const KaneUI = {
   tonightBox(dayKey, actionText, audioTrack = null) {
     const escapedTitle = audioTrack ? audioTrack.title.replace(/'/g, "\\'") : '';
     return `
-      <div class="my-8 rounded-2xl bg-kaneCard border border-kaneBorder p-5 sm:p-7 shadow-xl space-y-6">
-        <div class="border-b border-kaneBorder pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="my-10 rounded-2xl bg-kaneCard border border-kaneBorder overflow-hidden">
+        <div class="bg-gradient-to-br from-kaneOrange to-orange-600 p-5 sm:p-7 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <span class="text-[10px] font-black uppercase tracking-widest text-kaneOrange">TONIGHT'S ACTION</span>
-            <p class="text-xs sm:text-sm text-white font-bold mt-1">${actionText}</p>
+            <span class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">TONIGHT'S ACTION</span>
+            <p class="font-display text-base sm:text-lg text-white font-bold mt-1.5 leading-snug">${actionText}</p>
           </div>
           ${audioTrack ? `
-            <button onclick="KANE_APP.playVaultTrack('${audioTrack.tag}', '${escapedTitle}', '${audioTrack.file}')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneDark border border-kaneBorder hover:border-kaneOrange px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
+            <button onclick="KANE_APP.playVaultTrack('${audioTrack.tag}', '${escapedTitle}', '${audioTrack.file}')" class="flex-shrink-0 flex items-center space-x-2 bg-kaneDark/90 hover:bg-kaneDark px-3.5 py-2 rounded-lg text-xs font-semibold text-gray-100 transition">
               <svg class="w-4 h-4 text-kaneOrange" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
               <span>${audioTrack.tag} (60s)</span>
             </button>
           ` : ''}
         </div>
 
-        <div>
-          <span class="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-2">Tonight's Notes</span>
+        <div class="p-5 sm:p-7">
+          <span class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 block mb-3">Tonight's Notes</span>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-[11px] text-gray-400 mb-1">What I Did & Noticed</label>
-              <textarea id="notes_did_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-xs text-white focus:outline-none focus:border-kaneOrange" placeholder="Log tonight's conversation..." onchange="KANE_APP.saveField('notes_did_${dayKey}', this.value)"></textarea>
+              <label class="block text-xs text-gray-400 mb-1.5">What I Did & Noticed</label>
+              <textarea id="notes_did_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-sm text-white focus:outline-none focus:border-kaneOrange" placeholder="Log tonight's conversation..." onchange="KANE_APP.saveField('notes_did_${dayKey}', this.value)"></textarea>
             </div>
             <div>
-              <label class="block text-[11px] text-gray-400 mb-1">What I'll Do Differently Tomorrow</label>
-              <textarea id="notes_diff_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-xs text-white focus:outline-none focus:border-kaneOrange" placeholder="Log adjustments..." onchange="KANE_APP.saveField('notes_diff_${dayKey}', this.value)"></textarea>
+              <label class="block text-xs text-gray-400 mb-1.5">What I'll Do Differently Tomorrow</label>
+              <textarea id="notes_diff_${dayKey}" rows="3" class="w-full bg-kaneDark border border-kaneBorder rounded-xl p-3 text-sm text-white focus:outline-none focus:border-kaneOrange" placeholder="Log adjustments..." onchange="KANE_APP.saveField('notes_diff_${dayKey}', this.value)"></textarea>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ const KANE_APP = {
       if (item.part !== currentSection) {
         currentSection = item.part;
         const sectionHeader = document.createElement("p");
-        sectionHeader.className = "text-[10px] font-black uppercase tracking-widest text-gray-500 pt-3 pb-1 px-3";
+        sectionHeader.className = "font-display text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500 pt-4 pb-1.5 px-3";
         sectionHeader.innerText = currentSection;
         tocContainer.appendChild(sectionHeader);
       }
@@ -127,14 +127,17 @@ const KANE_APP = {
         this.loadChapter(idx);
         this.toggleDrawer(false);
       };
-      btn.className = `w-full text-left px-3 py-2 rounded-xl transition flex items-center justify-between text-xs ${
-        idx === this.activeIdx
-          ? "bg-kaneOrange/15 text-kaneOrange font-bold border border-kaneOrange/30"
-          : "text-gray-400 hover:text-white hover:bg-kaneCard"
+      const isActive = idx === this.activeIdx;
+      const hasDay = item.dayNumber !== null && item.dayNumber !== undefined;
+      btn.className = `w-full text-left px-3 py-2 rounded-lg transition flex items-center gap-3 text-xs ${
+        isActive
+          ? "bg-kaneCard text-white font-semibold"
+          : "text-gray-400 hover:text-white hover:bg-kaneCard/60"
       }`;
       btn.innerHTML = `
-        <span class="truncate">${item.navTitle}</span>
-        <span class="text-[10px] opacity-40">${item.dayNumber !== null && item.dayNumber !== undefined ? 'Day ' + item.dayNumber : ''}</span>
+        <span class="flex-shrink-0 w-2 h-2 rounded-full ${isActive ? 'bg-kaneOrange' : 'border border-gray-600'}"></span>
+        ${hasDay ? `<span class="font-display flex-shrink-0 w-11 text-[11px] font-bold text-kaneOrange">Day ${item.dayNumber}</span>` : ''}
+        <span class="truncate">${hasDay ? item.navTitle.replace(/^Day\s*\d+\s*:\s*/i, '') : item.navTitle}</span>
       `;
       tocContainer.appendChild(btn);
     });
@@ -145,12 +148,16 @@ const KANE_APP = {
     const chapter = KANE_SYSTEM_DATA[idx];
     const stage = document.getElementById("content-stage");
     if (!stage) return;
+    const hasDay = chapter.dayNumber !== null && chapter.dayNumber !== undefined;
 
     stage.innerHTML = `
-      <div class="border-b border-kaneBorder pb-6">
-        <span class="text-xs font-black uppercase tracking-widest text-kaneOrange">${chapter.part}</span>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 leading-tight">${chapter.pageHeading}</h1>
-        <p class="text-sm text-gray-400 mt-2">${chapter.subtitle}</p>
+      <div class="relative border-b border-kaneBorder pb-8">
+        ${hasDay ? `<span aria-hidden="true" class="kane-outline-num absolute right-0 -top-1 text-[5.5rem] sm:text-[9rem]">${String(chapter.dayNumber).padStart(2, '0')}</span>` : ''}
+        <div class="relative">
+          <span class="font-display text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-kaneOrange">${chapter.part}${hasDay ? ' · Day ' + chapter.dayNumber : ''}</span>
+          <h1 class="text-3xl sm:text-[2.6rem] font-bold text-white mt-3 leading-[1.1]">${chapter.pageHeading}</h1>
+          <p class="text-base sm:text-lg text-gray-400 mt-4 leading-relaxed">${chapter.subtitle}</p>
+        </div>
       </div>
       <div class="pt-2">${chapter.contentHTML}</div>
     `;
@@ -259,9 +266,9 @@ const KANE_APP = {
     ];
 
     container.innerHTML = questions.map((q, i) => `
-      <div class="p-3.5 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between text-xs">
-        <span class="text-gray-300 pr-2">${i + 1}. ${q}</span>
-        <select class="kane-score-select bg-kaneDark border border-kaneBorder text-white rounded-lg p-1.5 focus:border-kaneOrange" onchange="KANE_APP.calcKaneScore()">
+      <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+        <span class="text-gray-200 pr-2">${i + 1}. ${q}</span>
+        <select class="kane-score-select flex-shrink-0 bg-kaneDark border border-kaneBorder text-white rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:border-kaneOrange" onchange="KANE_APP.calcKaneScore()">
           <option value="5">5 - Always</option>
           <option value="4">4 - Mostly</option>
           <option value="3" selected>3 - Sometimes</option>
@@ -308,12 +315,12 @@ const KANE_APP = {
     if (!container) return;
 
     container.innerHTML = this.vaultTracks.map((t, idx) => `
-      <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between">
+      <div class="p-4 rounded-xl bg-kaneCard border border-kaneBorder flex items-center justify-between gap-3">
         <div>
-          <span class="text-[10px] text-kaneOrange font-black uppercase">Track ${t.id}</span>
-          <p class="text-xs font-bold text-white mt-0.5">${t.title}</p>
+          <span class="font-display text-[10px] text-kaneOrange font-bold uppercase tracking-[0.15em]">Track ${t.id}</span>
+          <p class="text-sm font-semibold text-white mt-0.5">${t.title}</p>
         </div>
-        <button onclick="KANE_APP.playVaultTrackByIndex(${idx})" class="p-2 rounded-lg bg-kaneOrange text-white hover:bg-orange-600 transition">
+        <button onclick="KANE_APP.playVaultTrackByIndex(${idx})" aria-label="Play track ${t.id}" class="flex-shrink-0 p-2.5 rounded-lg bg-kaneOrange text-white hover:bg-orange-600 transition">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
         </button>
       </div>

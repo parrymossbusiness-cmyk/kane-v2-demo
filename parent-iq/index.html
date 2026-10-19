@@ -3,32 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151413">
   <title>The Basketball Parent IQ System | The Kane Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Night Session palette. Same color names as before, so the book content keeps working.
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            kaneOrange: '#F95B12',
-            kaneDark: '#111113',
-            kaneSidebar: '#17171A',
-            kaneCard: '#1E1E22',
-            kaneBorder: '#2C2C32'
+            kaneOrange: '#D9560B',   // Kane orange: buttons, bars, borders
+            kaneGlow: '#F08A4B',     // Glow: small orange text on dark
+            kaneDark: '#151413',     // Night: page background
+            kaneSidebar: '#1A1917',
+            kaneCard: '#242220',     // Court: cards and notes
+            kaneBorder: '#36332F',
+            black: '#100F0E',
+            white: '#FAF8F5',        // Chalk: headlines
+            gray: {
+              100: '#FAF8F5', 200: '#E9E5DF', 300: '#D3CDC5', 400: '#A8A29B',
+              500: '#857F78', 600: '#5F5A54', 700: '#46423D', 800: '#2E2B28', 900: '#1F1D1B'
+            },
+            orange: { 600: '#BF4A08', 950: '#2A170C' },
+            red: { 950: '#2B1210' }
+          },
+          textColor: {
+            kaneOrange: '#F08A4B'    // small orange text reads better in Glow
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Inter', 'sans-serif']
+          },
+          fontSize: {
+            // Softer, larger type for long reading on dark screens
+            xs: ['0.8125rem', { lineHeight: '1.25rem' }],
+            sm: ['0.9375rem', { lineHeight: '1.6rem' }],
+            base: ['1.0625rem', { lineHeight: '1.8rem' }]
           }
         }
       }
     }
   </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.01em; }
+    .font-black { font-weight: 700; }
+    ::selection { background: rgba(217, 86, 11, 0.35); }
+    .kane-outline-num {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 0.8;
+      color: transparent; -webkit-text-stroke: 1.5px rgba(217, 86, 11, 0.32);
+      pointer-events: none; user-select: none;
+    }
+    @media (max-width: 639px) { .kane-outline-num { -webkit-text-stroke-color: rgba(217, 86, 11, 0.2); } }
+    input[type="range"] { accent-color: #D9560B; }
+    textarea::placeholder, input::placeholder { color: #6E6862; }
+    #toc-nav::-webkit-scrollbar { width: 6px; }
+    #toc-nav::-webkit-scrollbar-thumb { background: #36332F; border-radius: 6px; }
+  </style>
 </head>
 <body class="bg-kaneDark text-gray-100 flex flex-col min-h-screen font-sans">
 
   <!-- Mobile Top Header -->
   <header class="lg:hidden sticky top-0 z-40 bg-kaneSidebar/95 backdrop-blur border-b border-kaneBorder px-4 py-3 flex items-center justify-between">
-    <button onclick="KANE_APP.toggleDrawer()" class="p-1.5 rounded-lg border border-kaneBorder text-gray-300">
+    <button onclick="KANE_APP.toggleDrawer()" aria-label="Open table of contents" class="p-1.5 rounded-lg border border-kaneBorder text-gray-300">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
-    <span class="text-xs font-black uppercase tracking-wider text-kaneOrange">Kane Academy</span>
+    <span class="flex items-center gap-2">
+      <img src="/images/logo-kane-academy-white.png" alt="" class="w-6 h-6">
+      <span class="font-display text-xs font-bold uppercase tracking-wider text-kaneOrange">Kane Academy</span>
+    </span>
     <span class="text-xs text-gray-400">Parent IQ Portal</span>
   </header>
 
@@ -37,20 +83,23 @@
     <!-- Persistent TOC Sidebar -->
     <aside id="toc-sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-kaneSidebar border-r border-kaneBorder transform -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] lg:sticky lg:top-0 transition-transform duration-200 flex flex-col">
       <div class="p-5 border-b border-kaneBorder flex justify-between items-center">
-        <div>
-          <span class="text-[10px] uppercase font-black text-kaneOrange tracking-widest">14-Day System</span>
-          <h2 class="text-sm font-extrabold text-white">Table of Contents</h2>
+        <div class="flex items-center gap-3">
+          <img src="/images/logo-kane-academy-white.png" alt="Kane Academy" class="w-9 h-9">
+          <div>
+            <span class="text-[10px] uppercase font-black text-kaneOrange tracking-widest">14-Day System</span>
+            <h2 class="text-sm font-bold text-white">Table of Contents</h2>
+          </div>
         </div>
-        <button onclick="KANE_APP.toggleDrawer(false)" class="lg:hidden text-gray-400 hover:text-white">&times;</button>
+        <button onclick="KANE_APP.toggleDrawer(false)" aria-label="Close table of contents" class="lg:hidden text-2xl leading-none text-gray-400 hover:text-white">&times;</button>
       </div>
-      <nav id="toc-nav" class="flex-1 overflow-y-auto p-3 space-y-1"></nav>
-      <div class="p-4 border-t border-kaneBorder bg-kaneSidebar/60">
-        <a href="sms:+13103453033?&body=Hi%20Coach%20Kane," class="block w-full py-2.5 text-center bg-kaneCard hover:border-kaneOrange border border-kaneBorder rounded-xl text-xs font-bold text-gray-300">Text Dennis: (310) 345-3033</a>
+      <nav id="toc-nav" class="flex-1 overflow-y-auto p-3 space-y-0.5"></nav>
+      <div class="p-4 border-t border-kaneBorder">
+        <a href="sms:+13103453033?&body=Hi%20Coach%20Kane," class="block w-full py-2.5 text-center bg-kaneCard hover:border-kaneOrange border border-kaneBorder rounded-xl text-xs font-semibold text-gray-200 transition">Text Dennis: (310) 345-3033</a>
       </div>
     </aside>
 
     <!-- Content Stage -->
-    <main class="flex-1 min-w-0 px-4 sm:px-10 py-8 lg:py-10 pb-36 max-w-3xl">
+    <main class="flex-1 min-w-0 px-5 sm:px-12 py-8 lg:py-14 pb-36 max-w-3xl">
       <div id="content-stage" class="space-y-8"></div>
     </main>
   </div>
@@ -58,14 +107,14 @@
   <!-- Persistent Bottom Bar -->
   <footer class="fixed bottom-0 inset-x-0 z-40 bg-kaneSidebar/95 backdrop-blur border-t border-kaneBorder py-3 px-4">
     <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
-      <button id="prev-btn" onclick="KANE_APP.prev()" class="px-4 py-2 rounded-xl bg-kaneCard border border-kaneBorder text-xs font-bold text-gray-300 hover:text-white disabled:opacity-30">Previous</button>
+      <button id="prev-btn" onclick="KANE_APP.prev()" class="px-4 py-2.5 rounded-lg text-xs font-semibold text-gray-300 hover:text-white disabled:opacity-30">&larr; Previous</button>
       <div class="text-center">
-        <p id="progress-indicator" class="text-xs font-bold text-white tracking-wide">1 of 24</p>
-        <div class="w-32 sm:w-48 bg-gray-800 rounded-full h-1 mt-1 overflow-hidden">
-          <div id="progress-meter" class="bg-kaneOrange h-1 rounded-full transition-all duration-200" style="width: 5%"></div>
+        <p id="progress-indicator" class="text-xs font-semibold text-gray-200 tracking-wide">1 of 32</p>
+        <div class="w-32 sm:w-48 bg-gray-800 rounded-full h-1 mt-1.5 overflow-hidden">
+          <div id="progress-meter" class="bg-kaneOrange h-1 rounded-full transition-all duration-200" style="width: 3%"></div>
         </div>
       </div>
-      <button id="next-btn" onclick="KANE_APP.next()" class="px-5 py-2 rounded-xl bg-kaneOrange hover:bg-orange-600 text-xs font-bold text-white disabled:opacity-30">Next</button>
+      <button id="next-btn" onclick="KANE_APP.next()" class="px-5 py-2.5 rounded-lg bg-kaneOrange hover:bg-orange-600 text-xs font-bold text-white disabled:opacity-30 transition">Next &rarr;</button>
     </div>
   </footer>
 
@@ -76,11 +125,11 @@
       <p id="vault-track-title" class="text-xs font-bold text-white truncate">Audio Track</p>
     </div>
     <audio id="native-audio-element" controls class="h-8 max-w-[180px]"></audio>
-    <button onclick="KANE_APP.dismissAudio()" class="text-gray-400 hover:text-white font-bold">&times;</button>
+    <button onclick="KANE_APP.dismissAudio()" aria-label="Close player" class="text-gray-400 hover:text-white font-bold">&times;</button>
   </div>
 
 <!-- Scripts -->
-<script src="/parent-iq/js/engine.js?v=7"></script>
-<script src="/parent-iq/js/content-data.js?v=7"></script>
+<script src="/parent-iq/js/engine.js?v=8"></script>
+<script src="/parent-iq/js/content-data.js?v=8"></script>
 </body>
 </html>
