@@ -251,6 +251,92 @@
       text-transform: uppercase;
     }
 
+    .testimonial {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .vt-media {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: #1C1B1A;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 8px 26px rgba(28, 27, 26, 0.16);
+    }
+
+    .vt-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vt-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--orange);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .vt-play svg { width: 24px; height: 24px; margin-left: 4px; }
+
+    .vt-length {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(28, 27, 26, 0.8);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .vt-media.is-playing .vt-play,
+    .vt-media.is-playing .vt-length { display: none; }
+
+    .testimonial-quote {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.3rem;
+      line-height: 1.35;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .testimonial-name span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .testimonial { grid-template-columns: 1fr; gap: 18px; }
+      .vt-media { max-width: 260px; width: 100%; margin: 0 auto; }
+      .testimonial-text { text-align: center; }
+    }
+
     .bottom-cta {
       text-align: center;
       padding-top: 10px;
@@ -268,9 +354,7 @@
 
   <!-- Clean distraction-free header -->
   <header class="top-bar">
-    <a href="/" aria-label="The Kane Academy Home">
-      <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy Logo">
-    </a>
+    <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy Logo">
   </header>
 
   <main class="container">
@@ -324,9 +408,21 @@
     </section>
 
     <div class="quote-box">
-      <p>&ldquo;Talent decides what your child can do. What surrounds him decides what he is willing to try. That is the part you control.&rdquo;</p>
+      <p>&ldquo;Talent decides what your child can do. What surrounds them decides what they are willing to try. That is the part you control.&rdquo;</p>
       <div class="quote-author">Coach Dennis Kane &mdash; 440 Wins | CIF Champion | 12 Pros | 71 College Players</div>
     </div>
+
+    <section class="testimonial">
+      <div class="vt-media">
+        <video preload="none" playsinline poster="/videos/oliver-roberts.jpg" aria-label="Oliver Roberts talks about Coach Kane"><source src="/videos/oliver-roberts.mp4" type="video/mp4"></video>
+        <button class="vt-play" type="button" aria-label="Play video from Oliver Roberts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+        <span class="vt-length">1:06</span>
+      </div>
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;I&rsquo;m much more than a screener. I shoot the ball well. And I give a lot of that props to him.&rdquo;</p>
+        <p class="testimonial-name">Oliver Roberts<span>Plays Division II basketball at the University of Mount Olive</span></p>
+      </div>
+    </section>
 
     <div class="bottom-cta">
       <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401" class="cta-btn">
@@ -340,5 +436,6 @@
     </footer>
   </main>
 
+  <script src="/js/video-testimonials.js" defer></script>
 </body>
 </html>
