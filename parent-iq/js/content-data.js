@@ -87,7 +87,7 @@ const KANE_SYSTEM_DATA = [
 
         <div class="p-6 rounded-2xl bg-orange-950/30 border border-kaneOrange/50 space-y-2">
           <h4 class="text-sm font-bold text-white">If You Can't Wait 14 Days:</h4>
-          <p class="text-xs text-gray-300">If there is a decision you have to make this week (a team, a coach, a tryout, a check you're about to write), book the Future Success Audit. One 50-minute call, three priorities, and a written report same day.</p>
+          <p class="text-xs text-gray-300">If there is a decision you have to make this week (a team, a coach, a tryout, a check you're about to write), book the Future Success Audit. One 50-minute call, three priorities, and a written report within 48 hours.</p>
           <a href="https://kanebasketballacademy.com/services/audits" class="inline-block mt-2 px-5 py-2.5 bg-kaneOrange text-white text-xs font-bold rounded-xl hover:bg-orange-600 transition">Book Future Success Audit ($300) &rarr;</a>
         </div>
       </div>
@@ -289,7 +289,7 @@ const KANE_SYSTEM_DATA = [
         <div id="day4-upsell" class="hidden p-6 rounded-2xl bg-orange-950/40 border border-kaneOrange space-y-3">
           <span class="text-[10px] font-black uppercase text-kaneOrange tracking-wider">Coach Kane Standard Alert</span>
           <h4 class="text-lg font-bold text-white">3 or more checked: You're guessing about something that matters.</h4>
-          <p class="text-xs text-gray-300 leading-relaxed">A guess is expensive. It sends families to a new team that has the exact same problem or into a confrontation with a coach that cannot be taken back. Book the Future Success Audit: 50-minute call, 3 priorities, written report the same day.</p>
+          <p class="text-xs text-gray-300 leading-relaxed">A guess is expensive. It sends families to a new team that has the exact same problem or into a confrontation with a coach that cannot be taken back. Book the Future Success Audit: 50-minute call, 3 priorities, written report within 48 hours.</p>
           <a href="https://kanebasketballacademy.com/services/audits" class="inline-block py-2.5 px-6 bg-kaneOrange hover:bg-orange-600 text-white font-bold text-xs rounded-xl transition shadow-lg">Book Future Success Audit ($300) &rarr;</a>
         </div>
 
@@ -852,7 +852,7 @@ const KANE_SYSTEM_DATA = [
           <div>
             <span class="text-xs font-bold text-gray-400 uppercase">When You Have a Decision to Make</span>
             <h4 class="text-xl font-bold text-white mt-1">The Future Success Audit</h4>
-            <p class="text-xs text-gray-400 mt-1">50-minute call, three clear priorities, written report the same day.</p>
+            <p class="text-xs text-gray-400 mt-1">50-minute call, three clear priorities, written report within 48 hours.</p>
             <a href="https://kanebasketballacademy.com/services/audits" class="inline-block mt-3 px-4 py-2 bg-kaneDark border border-kaneBorder hover:border-kaneOrange text-xs font-bold text-white rounded-xl transition">Book Audit ($300) &rarr;</a>
           </div>
           <span class="text-2xl font-black text-kaneOrange">$300</span>
