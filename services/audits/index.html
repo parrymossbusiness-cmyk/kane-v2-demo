@@ -19,8 +19,9 @@
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/styles.css">
-<link rel="stylesheet" href="/css/video-testimonials.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -90,162 +91,455 @@
   ]
 }
 </script>
+
+  <style>
+    :root {
+      --bg: #F7F1E8;
+      --card-bg: #FFFFFF;
+      --navy: #1F3050;
+      --navy-light: #2A3F66;
+      --text: #2B2621;
+      --muted: #6E675E;
+      --border: #E5DCCE;
+      --orange: #C85A32;
+      --orange-hover: #B24E29;
+      --green: #2E6B4F;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      text-align: center;
+      background: #FFFFFF;
+    }
+
+    .top-bar img {
+      height: 38px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      filter: invert(14%) sepia(21%) saturate(2400%) hue-rotate(182deg) brightness(94%) contrast(90%);
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 44px 20px 80px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2.35rem;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #EAE2D5;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: var(--orange);
+      color: #FFFFFF;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 18px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.05s ease;
+      box-shadow: 0 4px 14px rgba(200, 90, 50, 0.25);
+    }
+
+    .cta-btn:hover {
+      background-color: var(--orange-hover);
+    }
+
+    .cta-btn:active {
+      transform: translateY(1px);
+    }
+
+    .guarantee-sub {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.45rem;
+      color: var(--navy);
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .item-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #E8F0EA;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .item-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .item-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .quote-box {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 36px;
+    }
+
+    .quote-box p {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .quote-author {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #C8D3E6;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .testimonial {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .vt-media {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: #1C1B1A;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 8px 26px rgba(28, 27, 26, 0.16);
+    }
+
+    .vt-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vt-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--orange);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .vt-play svg { width: 24px; height: 24px; margin-left: 4px; }
+
+    .vt-length {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(28, 27, 26, 0.8);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .vt-media.is-playing .vt-play,
+    .vt-media.is-playing .vt-length { display: none; }
+
+    .testimonial-quote {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.3rem;
+      line-height: 1.35;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .testimonial-name span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .testimonial { grid-template-columns: 1fr; gap: 18px; }
+      .vt-media { max-width: 260px; width: 100%; margin: 0 auto; }
+      .testimonial-text { text-align: center; }
+    }
+
+    .bottom-cta {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 48px;
+    }
+
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 22px; counter-reset: step; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #FFFFFF;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .credit-note {
+      margin-top: 24px; padding: 14px 16px; background: #F3EDE3; border-radius: 8px;
+      font-size: 0.95rem; color: var(--text);
+    }
+    .faq details { border-top: 1px solid var(--border); padding: 16px 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary {
+      cursor: pointer; list-style: none; font-weight: 700; color: var(--navy); font-size: 1.02rem;
+      display: flex; justify-content: space-between; gap: 12px;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--orange); font-size: 1.3rem; line-height: 1; }
+    .faq details[open] summary::after { content: "\2212"; }
+    .faq details p { margin-top: 10px; color: var(--muted); font-size: 0.97rem; line-height: 1.55; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 18px; text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="/" class="logo-link" aria-label="The Kane Academy home">
-      <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy crest logo" class="logo">
+  <!-- Clean distraction-free header -->
+  <header class="top-bar">
+    <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy Logo">
+  </header>
+
+  <main class="container">
+    <span class="badge">Future Success Audit</span>
+    <h1>Get a real read on your kid's situation.</h1>
+    <p class="lead">
+      The Future Success Audit is a single call with Coach Dennis Kane that gives you a direct, honest read on where your child actually stands, whether they play AAU, middle school, or high school ball, not what it looks like from the sideline.
+    </p>
+
+    <div class="price-pill">
+      <span>One 50-Minute Call</span> &bull; <span>$300</span>
+    </div>
+
+    <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="cta-btn">
+      Book Your Audit, $300
     </a>
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li class="has-dropdown">
-          <button class="dropdown-toggle" aria-expanded="false">Services
-            <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="/services/playbooks/">The Kane Parental System</a></li>
-            <li><a href="/services/audits/">Future Success Audit</a></li>
-          </ul>
-        </li>
-        <li><a href="/1-on-1-calls/">1:1 Calls</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/testimonials/">Testimonials</a></li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-      <!-- Text Coach Kane CTA: SMS link -->
-      <a href="sms:+13103453033" class="btn btn-secondary-invert header-cta-text">Text Coach Kane</a>
-      <a href="/services/audits/" class="btn btn-primary header-cta">Book Your Audit</a>
-      <a href="/services/audits/" class="btn btn-primary mobile-header-cta-sm">Book Your Audit</a>
-      <!-- Text Coach Kane CTA: SMS link -->
-      <a href="sms:+13103453033" class="btn btn-secondary-invert mobile-header-cta-sm">Text Coach Kane</a>
-      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-    </div>
-  </div>
-</header>
+    <p class="guarantee-sub">Three clear priorities &bull; Written report the same day</p>
 
-<main>
-  <!-- TODO: hero-audit.webp needs to be generated from the new Google AI Studio prompt and dropped into /images/ before this hero shows a background image -->
-  <section class="hero hero-simple" style="background-image: url('/images/hero-audit.webp');">
-    <div class="container hero-inner">
-      <p class="breadcrumb-nav" style="color:#D8D2CA;"><a href="/" style="color:#D8D2CA;">Home</a><span aria-hidden="true">/</span><a href="/services/" style="color:#D8D2CA;">Services</a><span aria-hidden="true">/</span>Future Success Audit</p>
-      <span class="eyebrow">$300 &middot; The diagnostic</span>
-      <h1>Future Success Audit</h1>
-      <p class="lede">The Future Success Audit is a single call with Coach Dennis Kane that gives you a direct, honest read on where your child actually stands, whether they play AAU, middle school, or high school ball, not what it looks like from the sideline.</p>
-      <div class="btn-row">
-        <!-- Stripe Payment Link placeholder — replace with live link before launch -->
-        <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="btn btn-primary btn-lg">Book Your Audit &mdash; $300</a>
+    <section class="testimonial">
+      <div class="vt-media">
+        <video preload="none" playsinline poster="/videos/ernest-alexander.jpg" aria-label="Ernest Alexander talks about Coach Kane"><source src="/videos/ernest-alexander.mp4" type="video/mp4"></video>
+        <button class="vt-play" type="button" aria-label="Play video from Ernest Alexander"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+        <span class="vt-length">0:36</span>
       </div>
-    </div>
-  </section>
-
-  <section class="section-light">
-    <div class="container vt-feature">
-        <div class="vt-media">
-          <video preload="none" poster="/videos/ernest-alexander.jpg" aria-label="Ernest Alexander talks about Coach Kane"><source src="/videos/ernest-alexander.mp4" type="video/mp4"></video>
-          <button class="vt-play" type="button" aria-label="Play video from Ernest Alexander"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
-          <span class="vt-length">0:36</span>
-        </div>
-      <div>
-        <span class="eyebrow">Why families trust his read</span>
-        <p class="vt-feature-quote">“He said what he did, and he did what he said.”</p>
-        <p class="vt-feature-name">Ernest Alexander<span>Played for Coach Kane, San Diego High, class of 1994</span></p>
-        <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="btn btn-primary btn-lg">Book Your Audit, $300</a>
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;He said what he did, and he did what he said.&rdquo;</p>
+        <p class="testimonial-name">Ernest Alexander<span>Played for Coach Kane, San Diego High, class of 1994</span></p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-card-bg">
-    <div class="container">
+    <section class="card">
       <h2>What happens, step by step</h2>
-      <ul class="breakdown-list">
-        <li class="breakdown-item">
-          <h3>Before your call</h3>
-          <p>A short intake you complete so Coach Kane walks in already knowing your kid's situation, position, team context, and what's worrying you most.</p>
+      <ul class="steps">
+        <li>
+          <div class="step-num">1</div>
+          <div class="item-content">
+            <h3>Before your call</h3>
+            <p>A short intake you complete so Coach Kane walks in already knowing your kid's situation, position, team context, and what's worrying you most.</p>
+          </div>
         </li>
-        <li class="breakdown-item">
-          <h3>On the call, about 50 minutes</h3>
-          <p>Coach Kane gives you a real, direct read on your kid's situation, what's actually going on, and what the real problem is versus what it looks like from the sideline. You'll leave with three clear priorities.</p>
+        <li>
+          <div class="step-num">2</div>
+          <div class="item-content">
+            <h3>On the call, about 50 minutes</h3>
+            <p>Coach Kane gives you a real, direct read on your kid's situation, what's actually going on, and what the real problem is versus what it looks like from the sideline. You'll leave with three clear priorities.</p>
+          </div>
         </li>
-        <li class="breakdown-item">
-          <h3>Same day</h3>
-          <p>A written Audit Report lands in your inbox: the read, the three priorities, and what a full development plan would cover if you went further.</p>
+        <li>
+          <div class="step-num">3</div>
+          <div class="item-content">
+            <h3>Same day</h3>
+            <p>A written Audit Report lands in your inbox: the read, the three priorities, and what a full development plan would cover if you went further.</p>
+          </div>
         </li>
       </ul>
-      <p class="form-note" style="max-width:680px; margin-top:2rem;">The $300 Audit fee credits in full toward the <a href="/1-on-1-calls/">Kane Development System</a> if you enroll within 14 days of your audit.</p>
-    </div>
-  </section>
+      <p class="credit-note">The $300 Audit fee credits in full toward the Kane Development System if you enroll within 14 days of your audit.</p>
+    </section>
 
-  <section class="section-light">
-    <div class="container">
-      <span class="eyebrow">FAQ</span>
+    <div class="quote-box">
+      <p>&ldquo;Development is something over time. Games are just a snapshot of what they know and what they've learned.&rdquo;</p>
+      <div class="quote-author">Coach Dennis Kane &bull; 440 Wins | CIF Champion | 12 Pros | 71 College Players</div>
+    </div>
+
+    <p class="section-label">Why families trust his read</p>
+    <section class="testimonial">
+      <div class="vt-media">
+        <video preload="none" playsinline poster="/videos/kamal-assaf.jpg" aria-label="Kamal Assaf talks about Coach Kane"><source src="/videos/kamal-assaf.mp4" type="video/mp4"></video>
+        <button class="vt-play" type="button" aria-label="Play video from Kamal Assaf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+        <span class="vt-length">0:33</span>
+      </div>
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;He's demanding, but not demeaning.&rdquo;</p>
+        <p class="testimonial-name">Kamal Assaf<span>Coach, La Jolla High School, 2004 to 2012</span></p>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="vt-media">
+        <video preload="none" playsinline poster="/videos/julian-phelps.jpg" aria-label="Julian Phelps talks about Coach Kane"><source src="/videos/julian-phelps.mp4" type="video/mp4"></video>
+        <button class="vt-play" type="button" aria-label="Play video from Julian Phelps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+        <span class="vt-length">0:36</span>
+      </div>
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;He cares about you as a person more than he does about the basketball.&rdquo;</p>
+        <p class="testimonial-name">Julian Phelps<span>Played for Coach Kane, Mission Bay High, class of 2013</span></p>
+      </div>
+    </section>
+
+    <section class="card faq">
       <h2>Audit questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">What if we don't upgrade to the Kane Development System afterward?</button>
-          <div class="faq-answer"><p>Nothing is owed and nothing changes. The Audit stands on its own: you keep the call, the three priorities, and the written report whether or not you ever enroll in the Kane Development System. The $300 credit toward the full program is only available if you enroll within 14 days of your audit.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">What if my kid is very young, like 10 or 11?</button>
-          <div class="faq-answer"><p>The Audit still works. Coach Kane adjusts the conversation for a younger player's stage, focusing more on habits, coachability, and love of the game than recruiting or team politics. Earlier is often the easiest time to get this right.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Do I need to prepare anything before the call?</button>
-          <div class="faq-answer"><p>Yes, a short intake you complete beforehand so Coach Kane walks into the call already knowing your kid's situation. It takes about ten minutes and makes the 50-minute call far more useful.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Is my child on the call too?</button>
-          <div class="faq-answer"><p>The Audit call is built for the parent. It's a private, direct conversation about what's really going on and what to do about it, without your child in the room.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <details>
+        <summary>What if we don't upgrade to the Kane Development System afterward?</summary>
+        <p>Nothing is owed and nothing changes. The Audit stands on its own: you keep the call, the three priorities, and the written report whether or not you ever enroll in the Kane Development System. The $300 credit toward the full program is only available if you enroll within 14 days of your audit.</p>
+      </details>
+      <details>
+        <summary>What if my kid is very young, like 10 or 11?</summary>
+        <p>The Audit still works. Coach Kane adjusts the conversation for a younger player's stage, focusing more on habits, coachability, and love of the game than recruiting or team politics. Earlier is often the easiest time to get this right.</p>
+      </details>
+      <details>
+        <summary>Do I need to prepare anything before the call?</summary>
+        <p>Yes, a short intake you complete beforehand so Coach Kane walks into the call already knowing your kid's situation. It takes about ten minutes and makes the 50-minute call far more useful.</p>
+      </details>
+      <details>
+        <summary>Is my child on the call too?</summary>
+        <p>The Audit call is built for the parent. It's a private, direct conversation about what's really going on and what to do about it, without your child in the room.</p>
+      </details>
+    </section>
 
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Get a real read on your kid's situation</h2>
-      <div class="btn-row">
-        <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="btn btn-primary btn-lg">Book Your Audit &mdash; $300</a>
-      </div>
+    <div class="bottom-cta">
+      <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="cta-btn">
+        Book Your Audit, $300
+      </a>
+      <p class="guarantee-sub">Secure Checkout via Stripe &bull; Written report the same day</p>
     </div>
-  </section>
-</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy crest logo" class="footer-logo">
-        <p class="footer-tagline">Championship coaching for the game, and for the life after it. Coach Dennis Kane's guidance for parents of youth, middle school, high school, AAU and travel basketball players.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Products</h4>
-        <ul>
-          <li><a href="/services/playbooks/">The Kane Parental System &mdash; $47</a></li>
-          <li><a href="/services/audits/">Future Success Audit &mdash; $300</a></li>
-          <li><a href="/1-on-1-calls/">Kane Development System &mdash; $2,500</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Site</h4>
-        <ul>
-          <li><a href="/about/">About Coach Kane</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/testimonials/">Testimonials</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 The Kane Academy. All rights reserved.</span>
-      <a href="/sitemap/">Sitemap</a>
-    </div>
-  </div>
-</footer>
-<script src="/js/main.js" defer></script>
-<script src="/js/video-testimonials.js" defer></script>
+    <footer>
+      <p>&copy; 2026 The Kane Academy. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script src="/js/video-testimonials.js" defer></script>
 </body>
 </html>
