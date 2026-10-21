@@ -617,7 +617,7 @@ const KANE_SYSTEM_DATA = [
           </div>
           <h4 class="text-lg font-bold text-white">Your decision is Adjust or Change. Here is where Coach Kane takes the wheel.</h4>
           <p class="text-xs text-gray-300 leading-relaxed">You get a written 90-day development plan built from your intake and your child's game film: three priorities with checkpoints, a weekly rhythm, your role, and check-in calls at Day 30 and Day 90.</p>
-          <a href="https://kanebasketballacademy.com/game-plan" class="block w-full py-3 bg-kaneOrange hover:bg-orange-600 text-center font-bold text-xs text-white rounded-xl transition shadow-lg">Get The Game Plan ($997) &rarr;</a>
+          <a href="https://kanebasketballacademy.com/game-plan/" class="block w-full py-3 bg-kaneOrange hover:bg-orange-600 text-center font-bold text-xs text-white rounded-xl transition shadow-lg">Get The Game Plan ($997) &rarr;</a>
         </div>
       </div>
     `
@@ -863,7 +863,7 @@ const KANE_SYSTEM_DATA = [
             <span class="text-xs font-black uppercase text-kaneOrange tracking-widest">When You Need a Plan</span>
             <h4 class="text-xl font-bold text-white mt-1">The Game Plan</h4>
             <p class="text-xs text-gray-400 mt-1">Written 90-day plan from Coach Kane based on your intake & film, plus calls at Day 30 and 90.</p>
-            <a href="https://kanebasketballacademy.com/game-plan" class="inline-block mt-3 px-4 py-2 bg-kaneOrange hover:bg-orange-600 text-xs font-bold text-white rounded-xl transition">Get The Game Plan ($997) &rarr;</a>
+            <a href="https://kanebasketballacademy.com/game-plan/" class="inline-block mt-3 px-4 py-2 bg-kaneOrange hover:bg-orange-600 text-xs font-bold text-white rounded-xl transition">Get The Game Plan ($997) &rarr;</a>
           </div>
           <span class="text-2xl font-black text-white">$997</span>
         </div>
