@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Middle School, High School & AAU Roadmap | Coach Dennis Kane</title>
+  <meta name="description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay. From Coach Dennis Kane.">
+  <link rel="canonical" href="https://kanebasketballacademy.com/roadmap/">
+  <meta property="og:title" content="The Middle School, High School & AAU Roadmap | Coach Kane">
+  <meta property="og:description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay.">
+  <meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+  <meta property="og:url" content="https://kanebasketballacademy.com/roadmap/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f97316',
+              'orange-dark': '#ea580c',
+              dark: '#0a0a0c',
+              card: '#141418',
+              surface: '#1c1c22',
+              border: '#27272a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0a0a0c; color: #f4f4f5; }
+    .accent-glow { box-shadow: 0 0 50px -10px rgba(249, 115, 22, 0.15); }
+    .badge-pill { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen selection:bg-brand-orange selection:text-white">
+
+  <!-- Minimal Header -->
+  <header class="border-b border-brand-border bg-brand-dark/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center">
+      <div class="flex items-center space-x-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
+        <span class="font-bold text-xs uppercase tracking-widest text-zinc-400">Kane Basketball Academy</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+
+    <!-- Hero -->
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-950/40 border border-orange-700/40 text-brand-orange text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>Free Parent Roadmap</span>
+      </div>
+      <h1 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-[1.1] mb-4">
+        The Middle School, High School & AAU Roadmap
+      </h1>
+      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
+        Built from 1,000+ parent conversations, 440 wins, 71 college players and 12 pros. Answer 3 quick questions. You get a 12 month plan for your player and 10 questions to ask any AAU club before you pay.
+      </p>
+    </div>
+
+    <!-- Intake -->
+    <section id="intakeSection" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 mb-12 accent-glow">
+      <div class="border-b border-brand-border/60 pb-4 mb-6">
+        <h2 class="text-lg font-bold text-white flex items-center justify-between gap-3">
+          <span>Step 1: Tell Us About Your Player</span>
+          <span class="text-xs text-brand-orange font-normal font-mono whitespace-nowrap">Takes 60 seconds</span>
+        </h2>
+      </div>
+
+      <form id="roadmapForm" class="space-y-6">
+
+        <!-- Question 1: Grade -->
+        <div>
+          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">1. What grade is your player going into?</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="grade" value="3-5" required class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">3rd to 5th</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="grade" value="6-8" class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">Middle School</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="grade" value="9-10" class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">9th or 10th</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="grade" value="11-12" class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">11th or 12th</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 2: Focus -->
+        <div>
+          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">2. What is your #1 goal for the next 6 to 12 months?</p>
+          <div class="space-y-2">
+            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
+              <input type="radio" name="focus" value="aau" required class="accent-orange-500 mr-3">
+              <span class="text-sm text-zinc-300">Picking the right AAU club and not wasting money</span>
+            </label>
+            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
+              <input type="radio" name="focus" value="varsity" class="accent-orange-500 mr-3">
+              <span class="text-sm text-zinc-300">Earning varsity minutes or moving up from JV</span>
+            </label>
+            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
+              <input type="radio" name="focus" value="burnout" class="accent-orange-500 mr-3">
+              <span class="text-sm text-zinc-300">Preventing burnout and injuries</span>
+            </label>
+            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
+              <input type="radio" name="focus" value="recruiting" class="accent-orange-500 mr-3">
+              <span class="text-sm text-zinc-300">Real college recruiting, not showcase hype</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 3: Game Load -->
+        <div>
+          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">3. About how many tournament games does your player play in a year?</p>
+          <div class="grid grid-cols-3 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="load" value="under25" required class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">Under 25</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="load" value="25to50" class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">25 to 50</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="load" value="50plus" class="peer sr-only">
+              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">50+ (all year)</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Email Gate -->
+        <div class="pt-4 border-t border-brand-border/60">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <div>
+              <label for="parentName" class="block text-xs uppercase font-bold text-zinc-400 mb-1.5">Your First Name</label>
+              <input type="text" id="parentName" required autocomplete="given-name" placeholder="First name" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:outline-none text-white text-sm">
+            </div>
+            <div>
+              <label for="parentEmail" class="block text-xs uppercase font-bold text-zinc-400 mb-1.5">Your Email</label>
+              <input type="email" id="parentEmail" required autocomplete="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:outline-none text-white text-sm">
+            </div>
+          </div>
+
+          <p id="formError" class="hidden text-xs text-red-400 mb-3">Please answer all 3 questions and enter your first name and a real email.</p>
+
+          <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-base transition duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-orange-950/50">
+            <span>Show My Roadmap</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+          <p class="text-[11px] text-zinc-500 text-center mt-2.5">
+            We will also email you a link to your roadmap. No spam. Reply to any email and we will remove you.
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results (hidden until the form is sent) -->
+    <div id="roadmapResults" class="hidden space-y-12 scroll-mt-20">
+
+      <!-- Personal header -->
+      <div class="p-6 rounded-2xl bg-orange-950/20 border border-brand-orange/40">
+        <div class="flex items-center space-x-2 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span>Your roadmap, <span id="displayName">Parent</span></span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Your Player's 12 Month Plan</h2>
+        <p class="text-zinc-300 text-sm">
+          Grade: <strong id="displayGrade" class="text-white"></strong><br>
+          Goal: <strong id="displayFocus" class="text-white"></strong>
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
+          <div class="p-4 rounded-xl bg-brand-dark/80 border border-brand-border">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1">Start Here</div>
+            <p id="focusNote" class="text-sm text-zinc-300"></p>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-dark/80 border border-brand-border">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1">Your Game Count</div>
+            <p id="loadNote" class="text-sm text-zinc-300"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 1: CLUB AUDIT -->
+      <section id="part1" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
+        <div class="mb-6">
+          <div class="badge-pill font-bold text-brand-orange mb-1">Part 1: Check Your Club</div>
+          <h3 class="text-2xl font-bold text-white">The 10 Questions to Ask Any AAU Club Director</h3>
+          <p class="text-zinc-400 text-sm mt-1">
+            Tap <strong>PASS</strong> or <strong>RED FLAG</strong> for each one. Use it on your current club or one you are thinking about joining.
+          </p>
+        </div>
+
+        <!-- Risk Meter -->
+        <div class="p-4 rounded-xl bg-brand-surface border border-brand-border mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div class="text-xs uppercase font-bold text-zinc-400">Club Risk Rating</div>
+            <div id="riskLabel" class="text-lg font-extrabold text-green-400">Low Risk (0 red flags)</div>
+          </div>
+          <div class="flex items-center space-x-1.5" id="flagMeter" aria-hidden="true">
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+            <span class="w-3 h-6 rounded bg-zinc-700"></span>
+          </div>
+        </div>
+
+        <div class="space-y-4" id="questionsContainer"></div>
+      </section>
+
+      <!-- PART 2: 12 MONTH PLAN -->
+      <section id="part2" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
+        <div class="mb-6">
+          <div class="badge-pill font-bold text-brand-orange mb-1">Part 2: The Year Plan</div>
+          <h3 class="text-2xl font-bold text-white">The 12 Month Plan: More Sports, Less Burnout</h3>
+          <p class="text-zinc-400 text-sm mt-1">
+            Why kids who play more than one sport do better over time than kids who play tournaments all year.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold font-mono text-brand-orange uppercase">Fall (Sep to Nov)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Prep and Skills</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1.5">Build Skills Before the Season</h4>
+            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+              <li>Skill work 3 times a week (footwork, weak hand).</li>
+              <li>Side to side movement and speed training 2 times a week.</li>
+              <li><strong class="text-red-400">Zero</strong> 5 game showcase tournaments.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold font-mono text-blue-400 uppercase">Winter (Dec to Feb)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Team Season</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1.5">Focus on the School Team</h4>
+            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+              <li>Full focus on team role, defense and earning the coach's trust.</li>
+              <li>Keep the car ride home calm. No sideline critiques.</li>
+              <li>Bring energy and good body language on the bench.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold font-mono text-emerald-400 uppercase">Spring (Mar to May)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Careful AAU</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1.5">Pick Your Tournaments Carefully</h4>
+            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+              <li>No more than 2 weekend tournaments a month.</li>
+              <li>At least 1 practice for every game. 2 is better.</li>
+              <li>Walk away from programs that play 6 games in 48 hours.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold font-mono text-amber-400 uppercase">Summer (Jun to Aug)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-red-950/60 text-red-300 border border-red-800/40">Required Rest</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1.5">4 Weeks Off and Other Sports</h4>
+            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+              <li><strong class="text-brand-orange">4 weeks in a row:</strong> put the basketball down.</li>
+              <li>Play another sport: track, swimming, soccer or football.</li>
+              <li>Let the body heal and the hunger for the game come back.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 3: GRADE BY GRADE -->
+      <section id="part3" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
+        <div class="mb-6">
+          <div class="badge-pill font-bold text-brand-orange mb-1">Part 3: Grade by Grade</div>
+          <h3 class="text-2xl font-bold text-white">What Matters at Each Grade</h3>
+        </div>
+
+        <div class="space-y-4">
+          <div id="stage-3-5" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
+            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
+            <h5 class="text-sm font-bold text-white">3rd to 5th Grade: Fun and Many Sports</h5>
+            <p class="text-xs text-zinc-300 mt-1">
+              No college scout is watching a 10 year old. Playing one sport too early leads to overuse injuries, and some kids quit by age 13. Spend about 80% of the time on other sports and being a good athlete.
+            </p>
+          </div>
+
+          <div id="stage-6-8" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
+            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
+            <h5 class="text-sm font-bold text-white">6th to 8th Grade: Master the Basics</h5>
+            <p class="text-xs text-zinc-300 mt-1">
+              Do not pay for national exposure camps. Focus on shooting form, finishing with the weak hand and passing out of double teams.
+            </p>
+          </div>
+
+          <div id="stage-9-10" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
+            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
+            <h5 class="text-sm font-bold text-white">9th and 10th Grade: Earn Your Spot</h5>
+            <p class="text-xs text-zinc-300 mt-1">
+              Your high school team comes first. Varsity minutes come from defense, rebounding and taking care of the ball, not 30 foot step back shots.
+            </p>
+          </div>
+
+          <div id="stage-11-12" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
+            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
+            <h5 class="text-sm font-bold text-white">11th and 12th Grade: Real Recruiting and a Clear Role</h5>
+            <p class="text-xs text-zinc-300 mt-1">
+              Recruiting happens through real game film and real relationships with coaches. Play where you get 15 or more real minutes, not 3 minutes on a big name team's bench.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- $300 AUDIT (main offer) -->
+      <section class="bg-gradient-to-b from-brand-card to-orange-950/20 border-2 border-brand-orange/60 rounded-2xl p-6 sm:p-8 text-center sm:text-left relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange text-white text-[11px] font-extrabold uppercase tracking-wider mb-3">
+          <span>1 on 1 with Coach Kane</span>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mb-2">
+          Want Coach Kane to Review Your Player's Season?
+        </h3>
+
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6">
+          Before you spend $3,000 to $6,000 on tournament fees, hotels and trainers, get an honest second opinion. Coach Kane reviews your player's game film, your high school or AAU situation and the plan for the year.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-left">
+          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
+            <div class="text-xs font-bold text-brand-orange">1. Film and Role Review</div>
+            <div class="text-[11px] text-zinc-400 mt-0.5">An honest look at game film and how coaches see your player.</div>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
+            <div class="text-xs font-bold text-brand-orange">2. AAU and Team Review</div>
+            <div class="text-[11px] text-zinc-400 mt-0.5">Compare your club options so you don't waste money or get stuck in daddy ball.</div>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
+            <div class="text-xs font-bold text-brand-orange">3. 12 Month Plan</div>
+            <div class="text-[11px] text-zinc-400 mt-0.5">A written plan for training, rest and recruiting.</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-brand-border/60">
+          <div>
+            <div class="text-2xl font-black text-white">$300 <span class="text-xs text-zinc-400 font-normal">for a full 1 on 1 session</span></div>
+            <div class="text-[11px] text-zinc-400 mt-1">Written report within 48 hours, or a full refund.</div>
+            <div class="text-[11px] text-zinc-400">Coach Kane takes 4 families a week.</div>
+          </div>
+          <a href="/services/audits/" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-sm sm:text-base transition duration-200 text-center shadow-lg shadow-orange-950/50">
+            Book My 1 on 1 Audit →
+          </a>
+        </div>
+        <p class="text-[11px] text-zinc-500 mt-4">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
+      </section>
+
+      <!-- $47 PARENT IQ SYSTEM (second offer) -->
+      <section class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-1.5 text-center sm:text-left">
+          <span class="text-xs font-bold text-brand-orange uppercase tracking-wider">Self Paced Online Program</span>
+          <h4 class="text-lg font-bold text-white">The Basketball Parent IQ System</h4>
+          <p class="text-xs text-zinc-400 max-w-md">
+            Learn what to say on the car ride home, how to talk to the coach and how to act on the sideline. It costs less than one private workout.
+          </p>
+        </div>
+        <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+          <span class="text-xl font-bold text-white">$47</span>
+          <a href="/services/playbooks/" class="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-semibold text-xs transition">
+            See the System →
+          </a>
+        </div>
+      </section>
+
+      <footer class="text-center py-6 border-t border-brand-border/40 text-xs text-zinc-500">
+        © 2026 Kane Basketball Academy. CIF Champion · 440 high school wins · 71 college players · 12 pros
+      </footer>
+    </div>
+  </main>
+
+  <script>
+  (function () {
+    // Same Google Sheet web app the Confidence Score page uses.
+    var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+
+    var GRADE_LABELS = {
+      '3-5': '3rd to 5th grade',
+      '6-8': 'Middle school',
+      '9-10': '9th or 10th grade',
+      '11-12': '11th or 12th grade'
+    };
+
+    var FOCUS_LABELS = {
+      aau: 'Picking the right AAU club',
+      varsity: 'Earning varsity minutes',
+      burnout: 'Preventing burnout and injuries',
+      recruiting: 'Real college recruiting'
+    };
+
+    var FOCUS_NOTES = {
+      aau: 'Go to Part 1. Run the 10 questions on any club before you pay. Three or more red flags means look somewhere else.',
+      varsity: 'Go to Part 3. Varsity minutes come from defense, rebounding and taking care of the ball. Then follow the winter plan in Part 2.',
+      burnout: 'Go to Part 2. The 4 week summer break and the limit of 2 weekend tournaments a month protect your player\'s body.',
+      recruiting: 'Go to Part 3. Real recruiting comes from game film and real coach relationships. Pick a team where your player gets 15 or more real minutes.'
+    };
+
+    var LOAD_LABELS = {
+      under25: 'Under 25 games',
+      '25to50': '25 to 50 games',
+      '50plus': '50+ games, all year'
+    };
+
+    var LOAD_NOTES = {
+      under25: 'Under 25 games a year leaves time to practice. Keep at least 1 practice for every game.',
+      '25to50': '25 to 50 games a year needs watching. Stick to 2 weekend tournaments a month and at least 1 practice for every game.',
+      '50plus': '50+ games all year is too many. Plan the 4 week summer break in Part 2 and cut back to 2 weekend tournaments a month.'
+    };
+
+    var auditQuestions = [
+      {
+        q: '1. Practice to Game Ratio',
+        desc: 'Does the program promise at least 2 full practices for every tournament weekend?',
+        redFlagReason: 'Programs that play 5 games in a weekend with 0 or 1 practice do not develop players. They only show the flaws players already have.'
+      },
+      {
+        q: '2. Minutes for the End of the Bench',
+        desc: 'Does the coach have a plan and real minutes for players 8 through 12?',
+        redFlagReason: 'If only 6 kids play and the rest sit, you are paying thousands of dollars for your kid to wear a jersey on the bench.'
+      },
+      {
+        q: '3. Open Practices',
+        desc: 'Can parents sit quietly and watch two full practices before signing up?',
+        redFlagReason: 'Coaches who keep parents out before they sign up are often hiding messy practices with very few reps.'
+      },
+      {
+        q: '4. The Coach\'s Kid ("Daddy Ball")',
+        desc: 'Does the head coach or an assistant have a child who plays the same position as yours?',
+        redFlagReason: 'When games get close, the coach\'s kid almost always plays. Complaining will not change it.'
+      },
+      {
+        q: '5. Roster Size',
+        desc: 'Is the tournament roster kept to 9 or 10 players?',
+        redFlagReason: 'With 12 to 14 players on the roster, players 9 through 14 get fewer than 4 minutes of real game time.'
+      },
+      {
+        q: '6. Honest Talk About Exposure Under Age 14',
+        desc: 'Does the coach focus on footwork and the basics instead of promising college scouts at age 12?',
+        redFlagReason: 'No college coach offers scholarships to 7th graders in hotel gyms. Selling exposure to kids under 14 takes advantage of parents.'
+      },
+      {
+        q: '7. Travel and Cost',
+        desc: 'Is the schedule close to home and easy on your budget, instead of flying across the country for pool play?',
+        redFlagReason: 'Out of state travel for middle schoolers uses up money that should go to strength and skill training.'
+      },
+      {
+        q: '8. How Coaches Correct Mistakes',
+        desc: 'Do the coaches teach and explain mistakes, instead of just yelling and benching kids?',
+        redFlagReason: 'Yelling without teaching makes players timid. They hesitate on the floor because they are afraid to make mistakes.'
+      },
+      {
+        q: '9. Summer Rest',
+        desc: 'Does the program give players a 4 week break in summer, or push tournaments all year?',
+        redFlagReason: '12 months of tournaments with no break leads to sore knees, back strain and burnout by freshman year.'
+      },
+      {
+        q: '10. Other Sports',
+        desc: 'Does the coach let your kid run track, play football or play other sports?',
+        redFlagReason: 'Coaches who demand basketball only at age 11 or 12 care more about their club\'s record than your child\'s long term growth.'
+      }
+    ];
+
+    var flaggedStatus = new Array(auditQuestions.length).fill(false);
+
+    function renderQuestions() {
+      var container = document.getElementById('questionsContainer');
+      container.innerHTML = auditQuestions.map(function (item, idx) {
+        return '' +
+          '<div class="p-4 rounded-xl bg-brand-surface border border-brand-border transition" id="qCard-' + idx + '">' +
+            '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">' +
+              '<h5 class="text-sm font-bold text-white">' + item.q + '</h5>' +
+              '<div class="flex items-center space-x-2">' +
+                '<button type="button" data-idx="' + idx + '" data-flag="0" id="btnPass-' + idx + '" class="px-3 py-1 rounded text-xs font-semibold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition">PASS</button>' +
+                '<button type="button" data-idx="' + idx + '" data-flag="1" id="btnFlag-' + idx + '" class="px-3 py-1 rounded text-xs font-semibold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition">RED FLAG</button>' +
+              '</div>' +
+            '</div>' +
+            '<p class="text-xs text-zinc-400">' + item.desc + '</p>' +
+            '<div id="flagWarning-' + idx + '" class="hidden mt-3 p-2.5 rounded bg-red-950/40 border border-red-800/40 text-[11px] text-red-300">' +
+              '<strong>Why it matters:</strong> ' + item.redFlagReason +
+            '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    document.getElementById('questionsContainer').addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-idx]');
+      if (!btn) return;
+      setAnswer(Number(btn.getAttribute('data-idx')), btn.getAttribute('data-flag') === '1');
+    });
+
+    function setAnswer(idx, isFlag) {
+      flaggedStatus[idx] = isFlag;
+
+      var card = document.getElementById('qCard-' + idx);
+      var btnPass = document.getElementById('btnPass-' + idx);
+      var btnFlag = document.getElementById('btnFlag-' + idx);
+      var warning = document.getElementById('flagWarning-' + idx);
+
+      if (isFlag) {
+        btnFlag.className = 'px-3 py-1 rounded text-xs font-bold bg-red-600 text-white transition';
+        btnPass.className = 'px-3 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-400 transition';
+        warning.classList.remove('hidden');
+        card.classList.add('border-red-900/60');
+      } else {
+        btnPass.className = 'px-3 py-1 rounded text-xs font-bold bg-emerald-600 text-white transition';
+        btnFlag.className = 'px-3 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-400 transition';
+        warning.classList.add('hidden');
+        card.classList.remove('border-red-900/60');
+      }
+
+      updateRiskMeter();
+    }
+
+    function updateRiskMeter() {
+      var flags = flaggedStatus.filter(Boolean).length;
+      var label = document.getElementById('riskLabel');
+      var meterBars = document.getElementById('flagMeter').children;
+      var word = flags === 1 ? 'red flag' : 'red flags';
+
+      for (var i = 0; i < meterBars.length; i++) {
+        meterBars[i].className = i < flags ? 'w-3 h-6 rounded bg-red-500' : 'w-3 h-6 rounded bg-zinc-700';
+      }
+
+      if (flags === 0) {
+        label.className = 'text-lg font-extrabold text-green-400';
+        label.textContent = 'Low Risk (0 red flags)';
+      } else if (flags <= 2) {
+        label.className = 'text-lg font-extrabold text-yellow-400';
+        label.textContent = 'Some Concern (' + flags + ' ' + word + ')';
+      } else {
+        label.className = 'text-lg font-extrabold text-red-500';
+        label.textContent = 'High Risk (' + flags + ' ' + word + ')';
+      }
+    }
+
+    function checkedValue(name) {
+      var el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : '';
+    }
+
+    document.getElementById('roadmapForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById('parentName').value.trim();
+      var email = document.getElementById('parentEmail').value.trim();
+      var grade = checkedValue('grade');
+      var focus = checkedValue('focus');
+      var load = checkedValue('load');
+      var errorEl = document.getElementById('formError');
+
+      if (!name || !email || email.indexOf('@') === -1 || email.indexOf('.') === -1 || !grade || !focus || !load) {
+        errorEl.classList.remove('hidden');
+        return;
+      }
+      errorEl.classList.add('hidden');
+      document.getElementById('submitBtn').disabled = true;
+
+      // Save the lead to Kane's Google Sheet. The extra answers go in the
+      // band / checkedNumbers / checkedText columns so they show in the sheet.
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: name,
+          email: email,
+          guide: 'map',
+          score: '',
+          band: GRADE_LABELS[grade],
+          checkedNumbers: LOAD_LABELS[load],
+          checkedText: FOCUS_LABELS[focus],
+          path: 'map-roadmap',
+          grade: GRADE_LABELS[grade],
+          focus: FOCUS_LABELS[focus],
+          gameLoad: LOAD_LABELS[load]
+        })
+      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
+
+      // Fill in the personal parts of the roadmap
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('displayGrade').textContent = GRADE_LABELS[grade];
+      document.getElementById('displayFocus').textContent = FOCUS_LABELS[focus];
+      document.getElementById('focusNote').textContent = FOCUS_NOTES[focus];
+      document.getElementById('loadNote').textContent = LOAD_NOTES[load];
+
+      var stage = document.getElementById('stage-' + grade);
+      if (stage) {
+        stage.classList.remove('border-brand-border');
+        stage.classList.add('border-brand-orange', 'bg-orange-950/20');
+        stage.querySelector('.stage-tag').classList.remove('hidden');
+      }
+
+      document.getElementById('intakeSection').classList.add('hidden');
+      document.getElementById('roadmapResults').classList.remove('hidden');
+      renderQuestions();
+
+      document.getElementById('roadmapResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+  </script>
+</body>
+</html>
