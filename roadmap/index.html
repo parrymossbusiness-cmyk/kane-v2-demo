@@ -1,297 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Middle School, High School & AAU Roadmap | Coach Dennis Kane</title>
-  <meta name="description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay. From Coach Dennis Kane.">
-  <link rel="canonical" href="https://kanebasketballacademy.com/roadmap/">
-  <meta property="og:title" content="The Middle School, High School & AAU Roadmap | Coach Kane">
-  <meta property="og:description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay.">
-  <meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
-  <meta property="og:url" content="https://kanebasketballacademy.com/roadmap/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              orange: '#f97316',
-              'orange-dark': '#ea580c',
-              dark: '#0a0a0c',
-              card: '#141418',
-              surface: '#1c1c22',
-              border: '#27272a'
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['"Space Grotesk"', 'Inter', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { background-color: #0a0a0c; color: #f4f4f5; }
-    .accent-glow { box-shadow: 0 0 50px -10px rgba(249, 115, 22, 0.15); }
-    .badge-pill { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Middle School, High School & AAU Roadmap | Coach Dennis Kane</title>
+<meta name="description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay. From Coach Dennis Kane.">
+<link rel="canonical" href="https://kanebasketballacademy.com/roadmap/">
+<meta property="og:title" content="The Middle School, High School & AAU Roadmap | Coach Kane">
+<meta property="og:description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay.">
+<meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<meta property="og:url" content="https://kanebasketballacademy.com/roadmap/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Middle School, High School & AAU Roadmap | Coach Kane">
+<meta name="twitter:description" content="A free 12 month plan for your basketball player, plus 10 questions to ask any AAU club before you pay.">
+<meta name="twitter:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#151413">
+<style>
+  /* Night Session: Kane orange, Glow, Night, Court, Chalk, Ash */
+  :root{
+    --bg:#151413; --card:#242220; --card-2:#1C1B19; --border:#36332F;
+    --ink:#FAF8F5; --ink-body:#D3CDC5; --ink-dim:#A8A29B;
+    --accent:#D9560B; --accent-hover:#BF4A08; --glow:#F08A4B;
+    --accent-soft:rgba(217,86,11,0.16); --track:#2E2B28;
+    --font-head:'Space Grotesk','Inter',sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink-body); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:660px; margin:0 auto; padding:0 20px;}
+  .eyebrow{font-family:var(--font-head); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--glow); font-weight:700; margin:0 0 12px;}
+  h1,h2,h3{font-family:var(--font-head); font-weight:700; margin:0; color:var(--ink); letter-spacing:-.01em;}
+  p{margin:0 0 14px;}
+  strong{color:var(--ink);}
+  [hidden]{display:none !important;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} html{scroll-behavior:auto;} }
+
+  /* Buttons */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--accent); color:#fff; border:none; font-family:var(--font-body); font-weight:600; font-size:16px; padding:16px 24px; border-radius:10px; cursor:pointer; text-decoration:none; transition:background .15s ease;}
+  .btn:hover{background:var(--accent-hover);}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .btn-dark{background:#151413; color:var(--ink);}
+  .btn-dark:hover{background:#000;}
+  .btn-ghost{background:transparent; border:1px solid var(--border); color:var(--ink);}
+  .btn-ghost:hover{background:var(--card); border-color:var(--accent);}
+  button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--glow); outline-offset:3px;}
+
+  /* Top bar */
+  .topbar{border-bottom:1px solid var(--border); background:var(--bg);}
+  .topbar .wrap{display:flex; align-items:center; gap:12px; padding-top:14px; padding-bottom:14px;}
+  .topbar img{width:30px; height:30px;}
+  .topbar .name{font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--ink); line-height:1.2;}
+  .topbar .name span{display:block; font-family:var(--font-body); font-weight:400; font-size:12px; color:var(--ink-dim);}
+
+  /* Cover */
+  .cover{position:relative; overflow:hidden; background:var(--card-2); border-bottom:1px solid var(--border);}
+  .cover::after{
+    content:"12"; position:absolute; top:-6px; right:-10px;
+    font-family:var(--font-head); font-weight:700; font-size:150px; line-height:.8; letter-spacing:-.04em;
+    color:transparent; -webkit-text-stroke:1.5px rgba(217,86,11,.30); pointer-events:none;
+  }
+  .cover .wrap{position:relative; z-index:1; padding-top:56px; padding-bottom:44px;}
+  .cover h1{font-size:38px; line-height:1.05; margin-bottom:16px; max-width:15ch;}
+  .cover .sub{font-size:17px; color:var(--ink-dim); margin:0 0 22px; max-width:46ch;}
+  .cover .by{font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--ink); margin:0 0 4px;}
+  .cover .creds{font-size:12.5px; color:var(--ink-dim); margin:0; line-height:1.7;}
+
+  /* Intake steps */
+  .intake{padding:40px 0 70px;}
+  .step{display:none;}
+  .step.active{display:block; animation:fadeUp .4s ease both;}
+  .progress-label{font-family:var(--font-head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); font-weight:700; margin-bottom:10px;}
+  .progress-track{height:4px; background:var(--track); border-radius:4px; margin-bottom:28px; overflow:hidden;}
+  .progress-fill{height:100%; width:0; background:var(--accent); transition:width .3s ease;}
+  .q-text{font-size:24px; line-height:1.3; margin-bottom:22px;}
+  .options{display:flex; flex-direction:column; gap:10px;}
+  .opt{width:100%; text-align:left; padding:16px 18px; border-radius:12px; font-family:var(--font-body); font-weight:600; font-size:16px; cursor:pointer; border:1px solid var(--border); background:var(--card); color:var(--ink); transition:border-color .15s ease, background .15s ease;}
+  .opt:hover{border-color:var(--accent);}
+  .opt.selected{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .back{background:none; border:none; padding:0; margin-top:22px; font:inherit; font-size:14.5px; color:var(--ink-dim); cursor:pointer;}
+  .back:hover{color:var(--ink);}
+  .gate-sub{color:var(--ink-dim); font-size:16px; margin:-10px 0 24px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input{width:100%; padding:14px 15px; font-size:16px; font-family:inherit; background:var(--card); border:1px solid var(--border); border-radius:10px; color:var(--ink);}
+  .field input:focus{outline:none; border-color:var(--accent);}
+  .field input::placeholder{color:#6E6862;}
+  .form-error{color:var(--glow); font-size:14px; margin:4px 0 12px;}
+  .fine{font-size:13px; color:var(--ink-dim); margin:14px 0 0; text-align:center;}
+
+  /* Results */
+  .results{animation:fadeUp .5s ease both;}
+  .result-head{padding:48px 0 8px;}
+  .result-head h2{font-size:32px; line-height:1.1; margin-bottom:16px;}
+  .pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
+  .pill{display:inline-block; font-family:var(--font-head); font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--glow); background:var(--accent-soft); border-radius:999px; padding:7px 14px;}
+  .note{background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:12px; padding:16px 18px; margin-bottom:12px;}
+  .note .eyebrow{font-size:11px; margin-bottom:6px;}
+  .note p{margin:0; color:var(--ink); font-size:16px;}
+  .note p.eyebrow,.why p.eyebrow{color:var(--glow); margin-bottom:6px;}
+  .toc{background:var(--card-2); border:1px solid var(--border); border-radius:14px; padding:6px 18px; margin:24px 0 0;}
+  .toc a{display:flex; gap:16px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--ink); font-size:15.5px;}
+  .toc a:last-child{border-bottom:none;}
+  .toc a span{font-family:var(--font-head); font-weight:700; font-size:13px; color:var(--glow); min-width:48px;}
+
+  section.part{position:relative; padding-top:72px; scroll-margin-top:10px;}
+  .part-num{position:absolute; top:44px; right:0; font-family:var(--font-head); font-weight:700; font-size:120px; line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px rgba(217,86,11,.32); pointer-events:none;}
+  .part-head{position:relative; margin-bottom:24px;}
+  .part-head h2{font-size:28px; line-height:1.15; margin-bottom:10px; max-width:18ch;}
+  .part-head p{color:var(--ink-dim); margin:0; max-width:48ch;}
+  .part-head p.eyebrow{color:var(--glow); margin-bottom:12px;}
+
+  /* Part 1: club check */
+  .check{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; margin-bottom:12px; transition:border-color .15s ease;}
+  .check.flagged{border-color:rgba(217,86,11,.6);}
+  .check .eyebrow{font-size:11px; margin-bottom:6px;}
+  .check h3{font-size:19px; line-height:1.3; margin-bottom:6px;}
+  .check p.desc{font-size:15.5px; color:var(--ink-body); margin:0 0 16px;}
+  .pf{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .pf button{padding:12px; border-radius:10px; font-family:var(--font-body); font-weight:600; font-size:15px; cursor:pointer; border:1px solid var(--border); background:var(--card-2); color:var(--ink-dim); transition:all .15s ease;}
+  .pf button:hover{border-color:var(--ink-dim); color:var(--ink);}
+  .pf button.on-pass{border-color:var(--ink); color:var(--ink); background:var(--card-2);}
+  .pf button.on-flag{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .why{margin-top:14px; background:var(--card-2); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:12px 14px; animation:fadeUp .3s ease both;}
+  .why .eyebrow{font-size:10.5px; margin-bottom:4px;}
+  .why p{margin:0; font-size:15px; color:var(--ink);}
+  .scorebar{position:sticky; bottom:0; z-index:5; margin-top:16px; background:#1C1B19; box-shadow:0 -12px 24px rgba(21,20,19,.9); border:1px solid var(--border); border-radius:14px 14px 0 0; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .scorebar .num{font-family:var(--font-head); font-weight:700; font-size:34px; line-height:1; color:var(--ink);}
+  .scorebar .num small{font-size:16px; color:var(--ink-dim); font-weight:500;}
+  .scorebar .lab{font-size:12px; color:var(--ink-dim); margin-top:4px;}
+  .scorebar .pill.calm{color:var(--ink-dim); background:var(--track);}
+
+  /* Part 2: year plan */
+  .season{position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 20px; margin-bottom:12px;}
+  .season .n{position:absolute; top:12px; right:14px; font-family:var(--font-head); font-weight:700; font-size:64px; line-height:.8; color:transparent; -webkit-text-stroke:1.2px rgba(217,86,11,.35);}
+  .season .eyebrow{font-size:11px; margin-bottom:8px; padding-right:72px;}
+  .season h3{font-size:20px; line-height:1.25; margin-bottom:12px; padding-right:72px;}
+  .tag{display:inline-block; font-size:11px; font-weight:600; color:var(--ink-dim); background:var(--track); border-radius:999px; padding:3px 10px; margin-bottom:12px;}
+  .tag.hot{color:var(--glow); background:var(--accent-soft);}
+  ul.dots{list-style:none; margin:0; padding:0;}
+  ul.dots li{position:relative; padding-left:18px; margin-bottom:8px; font-size:15.5px;}
+  ul.dots li::before{content:""; position:absolute; left:0; top:10px; width:6px; height:6px; border-radius:50%; background:var(--accent);}
+
+  /* Part 3: grade by grade */
+  .grades{border-top:1px solid var(--border);}
+  .grade{padding:20px 4px; border-bottom:1px solid var(--border);}
+  .grade .g{font-family:var(--font-head); font-weight:700; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); margin-bottom:6px;}
+  .grade h3{font-size:18px; line-height:1.3; margin-bottom:6px;}
+  .grade p{margin:0; font-size:15.5px;}
+  .grade .you{display:none; font-family:var(--font-head); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:#fff; background:var(--accent); border-radius:999px; padding:3px 10px; margin-left:10px; vertical-align:1px;}
+  .grade.mine{background:var(--accent-soft); border-left:3px solid var(--accent); padding-left:16px; padding-right:16px; border-radius:0 12px 12px 0;}
+  .grade.mine .you{display:inline-block;}
+
+  /* Offers */
+  .offer{margin-top:72px; border-radius:18px; overflow:hidden; background:linear-gradient(150deg,#D9560B 0%,#B8460A 100%); color:#fff;}
+  .offer img{width:100%; height:190px; object-fit:cover; object-position:40% 45%; filter:saturate(.85);}
+  .offer .in{padding:26px 22px 24px;}
+  .offer .eyebrow{color:#FFE2CF;}
+  .offer h2{color:#fff; font-size:27px; line-height:1.15; margin-bottom:12px;}
+  .offer p{color:#FFF1E8; font-size:16px;}
+  .offer ul{list-style:none; margin:4px 0 20px; padding:0;}
+  .offer li{display:flex; gap:12px; padding:10px 0; border-top:1px solid rgba(255,255,255,.2); font-size:15.5px; color:#fff;}
+  .offer li b{font-family:var(--font-head); min-width:16px;}
+  .price{font-family:var(--font-head); font-weight:700; font-size:40px; line-height:1; margin:6px 0 4px;}
+  .price small{font-size:15px; font-weight:500; color:#FFE2CF;}
+  .offer .terms{font-size:13.5px; color:#FFE2CF; margin:0 0 18px;}
+  .offer .credit{font-size:12.5px; color:#FFE2CF; margin:14px 0 0; text-align:center;}
+
+  .second{margin-top:14px; display:grid; grid-template-columns:96px 1fr; gap:18px; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px;}
+  .second img{width:96px; height:auto; border-radius:6px; box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .second .eyebrow{font-size:11px; margin-bottom:6px;}
+  .second h3{font-size:19px; line-height:1.25; margin-bottom:8px;}
+  .second p{font-size:15px; margin-bottom:14px;}
+  .second p.p47{font-family:var(--font-head); font-weight:700; font-size:22px; color:var(--ink); margin:-2px 0 8px;}
+  .second .btn{padding:12px 16px; font-size:15px;}
+
+  footer{margin-top:72px; padding:28px 0 40px; border-top:1px solid var(--border); text-align:center;}
+  footer .line{font-family:var(--font-head); font-weight:700; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); margin:0 0 10px;}
+  footer p{font-size:12.5px; color:var(--ink-dim); margin:0 0 6px;}
+
+  @media (min-width:720px){
+    .cover h1{font-size:52px;}
+    .seasons{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .seasons .season{margin:0;}
+    .notes{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .notes .note{margin:0;}
+  }
+</style>
 </head>
-<body class="font-sans antialiased min-h-screen selection:bg-brand-orange selection:text-white">
+<body>
 
-  <!-- Minimal Header -->
-  <header class="border-b border-brand-border bg-brand-dark/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center">
-      <div class="flex items-center space-x-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
-        <span class="font-bold text-xs uppercase tracking-widest text-zinc-400">Kane Basketball Academy</span>
-      </div>
+<header class="topbar">
+  <div class="wrap">
+    <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy" width="30" height="30">
+    <div class="name">The Kane Academy<span>The MAP Roadmap for Parents</span></div>
+  </div>
+</header>
+
+<main>
+  <!-- Cover -->
+  <section class="cover" id="cover">
+    <div class="wrap">
+      <p class="eyebrow">Free Roadmap for Parents</p>
+      <h1>The Middle School, High School & AAU Roadmap</h1>
+      <p class="sub">Answer 3 quick questions. You get a 12 month plan for your player and 10 questions to ask any AAU club before you pay.</p>
+      <p class="by">By Coach Dennis Kane</p>
+      <p class="creds">1,000+ Parent Conversations · 440 Wins · CIF Champion · 71 College Players · 12 Pros</p>
     </div>
-  </header>
+  </section>
 
-  <main class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+  <!-- Intake -->
+  <section class="intake" id="intake">
+    <div class="wrap">
 
-    <!-- Hero -->
-    <div class="mb-10 text-center sm:text-left">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-950/40 border border-orange-700/40 text-brand-orange text-xs font-semibold uppercase tracking-wider mb-4">
-        <span>Free Parent Roadmap</span>
+      <div class="step active" data-step="0">
+        <div class="progress-label">Question 1 of 3</div>
+        <div class="progress-track"><div class="progress-fill" style="width:33%"></div></div>
+        <h2 class="q-text">What grade is your player going into?</h2>
+        <div class="options" data-name="grade">
+          <button type="button" class="opt" data-value="3-5">3rd to 5th grade</button>
+          <button type="button" class="opt" data-value="6-8">Middle school (6th to 8th)</button>
+          <button type="button" class="opt" data-value="9-10">9th or 10th grade</button>
+          <button type="button" class="opt" data-value="11-12">11th or 12th grade</button>
+        </div>
       </div>
-      <h1 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-[1.1] mb-4">
-        The Middle School, High School & AAU Roadmap
-      </h1>
-      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
-        Built from 1,000+ parent conversations, 440 wins, 71 college players and 12 pros. Answer 3 quick questions. You get a 12 month plan for your player and 10 questions to ask any AAU club before you pay.
-      </p>
+
+      <div class="step" data-step="1">
+        <div class="progress-label">Question 2 of 3</div>
+        <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
+        <h2 class="q-text">What is your #1 goal for the next 6 to 12 months?</h2>
+        <div class="options" data-name="focus">
+          <button type="button" class="opt" data-value="aau">Picking the right AAU club and not wasting money</button>
+          <button type="button" class="opt" data-value="varsity">Earning varsity minutes or moving up from JV</button>
+          <button type="button" class="opt" data-value="burnout">Preventing burnout and injuries</button>
+          <button type="button" class="opt" data-value="recruiting">Real college recruiting, not showcase hype</button>
+        </div>
+        <button type="button" class="back" data-back>← Back</button>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="progress-label">Question 3 of 3</div>
+        <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+        <h2 class="q-text">About how many tournament games does your player play in a year?</h2>
+        <div class="options" data-name="load">
+          <button type="button" class="opt" data-value="under25">Under 25 games</button>
+          <button type="button" class="opt" data-value="25to50">25 to 50 games</button>
+          <button type="button" class="opt" data-value="50plus">50 or more, all year</button>
+        </div>
+        <button type="button" class="back" data-back>← Back</button>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="progress-label">Last step</div>
+        <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+        <h2 class="q-text">Where should we send your roadmap?</h2>
+        <p class="gate-sub">Your plan opens on this page right away. We will also email you a link so you can come back to it.</p>
+        <form id="gate" novalidate>
+          <div class="field">
+            <label for="firstName">Your first name</label>
+            <input type="text" id="firstName" autocomplete="given-name" placeholder="First name">
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@email.com">
+          </div>
+          <p class="form-error" id="formError" hidden>Please enter your first name and a real email.</p>
+          <button type="submit" class="btn" id="submitBtn">Show My Roadmap →</button>
+        </form>
+        <p class="fine">No spam. Reply to any email and we will remove you.</p>
+        <button type="button" class="back" data-back>← Back</button>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Intake -->
-    <section id="intakeSection" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 mb-12 accent-glow">
-      <div class="border-b border-brand-border/60 pb-4 mb-6">
-        <h2 class="text-lg font-bold text-white flex items-center justify-between gap-3">
-          <span>Step 1: Tell Us About Your Player</span>
-          <span class="text-xs text-brand-orange font-normal font-mono whitespace-nowrap">Takes 60 seconds</span>
-        </h2>
+  <!-- Results -->
+  <div class="results" id="results" hidden>
+    <div class="wrap">
+
+      <div class="result-head">
+        <p class="eyebrow">Your Roadmap</p>
+        <h2 id="hello">Here is your plan.</h2>
+        <div class="pills">
+          <span class="pill" id="pillGrade"></span>
+          <span class="pill" id="pillFocus"></span>
+        </div>
+        <div class="notes">
+          <div class="note"><p class="eyebrow">Start here</p><p id="focusNote"></p></div>
+          <div class="note"><p class="eyebrow">Your game count</p><p id="loadNote"></p></div>
+        </div>
+        <nav class="toc" aria-label="Roadmap parts">
+          <a href="#part1"><span>Part 1</span>Check your club</a>
+          <a href="#part2"><span>Part 2</span>The 12 month plan</a>
+          <a href="#part3"><span>Part 3</span>What matters at each grade</a>
+        </nav>
       </div>
 
-      <form id="roadmapForm" class="space-y-6">
-
-        <!-- Question 1: Grade -->
-        <div>
-          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">1. What grade is your player going into?</p>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <label class="cursor-pointer">
-              <input type="radio" name="grade" value="3-5" required class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">3rd to 5th</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="grade" value="6-8" class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">Middle School</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="grade" value="9-10" class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">9th or 10th</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="grade" value="11-12" class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">11th or 12th</div>
-            </label>
-          </div>
+      <!-- Part 1 -->
+      <section class="part" id="part1">
+        <div class="part-num" aria-hidden="true">10</div>
+        <div class="part-head">
+          <p class="eyebrow">Part 1 · Check Your Club</p>
+          <h2>10 questions to ask any AAU club director.</h2>
+          <p>Tap Pass or Red flag for each one. Use it on your current club or one you are thinking about joining.</p>
         </div>
-
-        <!-- Question 2: Focus -->
-        <div>
-          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">2. What is your #1 goal for the next 6 to 12 months?</p>
-          <div class="space-y-2">
-            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
-              <input type="radio" name="focus" value="aau" required class="accent-orange-500 mr-3">
-              <span class="text-sm text-zinc-300">Picking the right AAU club and not wasting money</span>
-            </label>
-            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
-              <input type="radio" name="focus" value="varsity" class="accent-orange-500 mr-3">
-              <span class="text-sm text-zinc-300">Earning varsity minutes or moving up from JV</span>
-            </label>
-            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
-              <input type="radio" name="focus" value="burnout" class="accent-orange-500 mr-3">
-              <span class="text-sm text-zinc-300">Preventing burnout and injuries</span>
-            </label>
-            <label class="flex items-center p-3 rounded-xl bg-brand-surface border border-brand-border cursor-pointer hover:border-zinc-500 transition">
-              <input type="radio" name="focus" value="recruiting" class="accent-orange-500 mr-3">
-              <span class="text-sm text-zinc-300">Real college recruiting, not showcase hype</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Question 3: Game Load -->
-        <div>
-          <p class="block text-sm font-semibold text-zinc-200 mb-2.5">3. About how many tournament games does your player play in a year?</p>
-          <div class="grid grid-cols-3 gap-2.5">
-            <label class="cursor-pointer">
-              <input type="radio" name="load" value="under25" required class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">Under 25</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="load" value="25to50" class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">25 to 50</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="load" value="50plus" class="peer sr-only">
-              <div class="p-3 text-center rounded-xl bg-brand-surface border border-brand-border peer-checked:border-brand-orange peer-checked:bg-orange-950/30 text-xs sm:text-sm font-medium text-zinc-300 peer-checked:text-white transition">50+ (all year)</div>
-            </label>
-          </div>
-        </div>
-
-        <!-- Email Gate -->
-        <div class="pt-4 border-t border-brand-border/60">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-            <div>
-              <label for="parentName" class="block text-xs uppercase font-bold text-zinc-400 mb-1.5">Your First Name</label>
-              <input type="text" id="parentName" required autocomplete="given-name" placeholder="First name" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:outline-none text-white text-sm">
-            </div>
-            <div>
-              <label for="parentEmail" class="block text-xs uppercase font-bold text-zinc-400 mb-1.5">Your Email</label>
-              <input type="email" id="parentEmail" required autocomplete="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:outline-none text-white text-sm">
-            </div>
-          </div>
-
-          <p id="formError" class="hidden text-xs text-red-400 mb-3">Please answer all 3 questions and enter your first name and a real email.</p>
-
-          <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-base transition duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-orange-950/50">
-            <span>Show My Roadmap</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
-          <p class="text-[11px] text-zinc-500 text-center mt-2.5">
-            We will also email you a link to your roadmap. No spam. Reply to any email and we will remove you.
-          </p>
-        </div>
-      </form>
-    </section>
-
-    <!-- Results (hidden until the form is sent) -->
-    <div id="roadmapResults" class="hidden space-y-12 scroll-mt-20">
-
-      <!-- Personal header -->
-      <div class="p-6 rounded-2xl bg-orange-950/20 border border-brand-orange/40">
-        <div class="flex items-center space-x-2 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          <span>Your roadmap, <span id="displayName">Parent</span></span>
-        </div>
-        <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Your Player's 12 Month Plan</h2>
-        <p class="text-zinc-300 text-sm">
-          Grade: <strong id="displayGrade" class="text-white"></strong><br>
-          Goal: <strong id="displayFocus" class="text-white"></strong>
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-          <div class="p-4 rounded-xl bg-brand-dark/80 border border-brand-border">
-            <div class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1">Start Here</div>
-            <p id="focusNote" class="text-sm text-zinc-300"></p>
-          </div>
-          <div class="p-4 rounded-xl bg-brand-dark/80 border border-brand-border">
-            <div class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1">Your Game Count</div>
-            <p id="loadNote" class="text-sm text-zinc-300"></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- PART 1: CLUB AUDIT -->
-      <section id="part1" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
-        <div class="mb-6">
-          <div class="badge-pill font-bold text-brand-orange mb-1">Part 1: Check Your Club</div>
-          <h3 class="text-2xl font-bold text-white">The 10 Questions to Ask Any AAU Club Director</h3>
-          <p class="text-zinc-400 text-sm mt-1">
-            Tap <strong>PASS</strong> or <strong>RED FLAG</strong> for each one. Use it on your current club or one you are thinking about joining.
-          </p>
-        </div>
-
-        <!-- Risk Meter -->
-        <div class="p-4 rounded-xl bg-brand-surface border border-brand-border mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div id="checks"></div>
+        <div class="scorebar" aria-live="polite">
           <div>
-            <div class="text-xs uppercase font-bold text-zinc-400">Club Risk Rating</div>
-            <div id="riskLabel" class="text-lg font-extrabold text-green-400">Low Risk (0 red flags)</div>
+            <div class="num"><span id="flagCount">0</span><small> / 10</small></div>
+            <div class="lab">Red flags</div>
           </div>
-          <div class="flex items-center space-x-1.5" id="flagMeter" aria-hidden="true">
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-            <span class="w-3 h-6 rounded bg-zinc-700"></span>
-          </div>
+          <span class="pill calm" id="riskPill">No red flags yet</span>
         </div>
-
-        <div class="space-y-4" id="questionsContainer"></div>
       </section>
 
-      <!-- PART 2: 12 MONTH PLAN -->
-      <section id="part2" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
-        <div class="mb-6">
-          <div class="badge-pill font-bold text-brand-orange mb-1">Part 2: The Year Plan</div>
-          <h3 class="text-2xl font-bold text-white">The 12 Month Plan: More Sports, Less Burnout</h3>
-          <p class="text-zinc-400 text-sm mt-1">
-            Why kids who play more than one sport do better over time than kids who play tournaments all year.
-          </p>
+      <!-- Part 2 -->
+      <section class="part" id="part2">
+        <div class="part-head">
+          <p class="eyebrow">Part 2 · The Year Plan</p>
+          <h2>More sports. Less burnout.</h2>
+          <p>Kids who play more than one sport do better over time than kids who play tournaments all year.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold font-mono text-brand-orange uppercase">Fall (Sep to Nov)</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Prep and Skills</span>
-            </div>
-            <h4 class="font-bold text-white text-base mb-1.5">Build Skills Before the Season</h4>
-            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
-              <li>Skill work 3 times a week (footwork, weak hand).</li>
+        <div class="seasons">
+          <div class="season">
+            <div class="n" aria-hidden="true">01</div>
+            <p class="eyebrow">Fall · Sep to Nov</p>
+            <h3>Build skills before the season</h3>
+            <span class="tag">Prep and skills</span>
+            <ul class="dots">
+              <li>Skill work 3 times a week: footwork and weak hand.</li>
               <li>Side to side movement and speed training 2 times a week.</li>
-              <li><strong class="text-red-400">Zero</strong> 5 game showcase tournaments.</li>
+              <li>Zero 5 game showcase tournaments.</li>
             </ul>
           </div>
-
-          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold font-mono text-blue-400 uppercase">Winter (Dec to Feb)</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Team Season</span>
-            </div>
-            <h4 class="font-bold text-white text-base mb-1.5">Focus on the School Team</h4>
-            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+          <div class="season">
+            <div class="n" aria-hidden="true">02</div>
+            <p class="eyebrow">Winter · Dec to Feb</p>
+            <h3>Focus on the school team</h3>
+            <span class="tag">Team season</span>
+            <ul class="dots">
               <li>Full focus on team role, defense and earning the coach's trust.</li>
               <li>Keep the car ride home calm. No sideline critiques.</li>
               <li>Bring energy and good body language on the bench.</li>
             </ul>
           </div>
-
-          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold font-mono text-emerald-400 uppercase">Spring (Mar to May)</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300">Careful AAU</span>
-            </div>
-            <h4 class="font-bold text-white text-base mb-1.5">Pick Your Tournaments Carefully</h4>
-            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+          <div class="season">
+            <div class="n" aria-hidden="true">03</div>
+            <p class="eyebrow">Spring · Mar to May</p>
+            <h3>Pick your tournaments carefully</h3>
+            <span class="tag">Careful AAU</span>
+            <ul class="dots">
               <li>No more than 2 weekend tournaments a month.</li>
               <li>At least 1 practice for every game. 2 is better.</li>
               <li>Walk away from programs that play 6 games in 48 hours.</li>
             </ul>
           </div>
-
-          <div class="p-5 rounded-xl bg-brand-surface border border-brand-border">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold font-mono text-amber-400 uppercase">Summer (Jun to Aug)</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-red-950/60 text-red-300 border border-red-800/40">Required Rest</span>
-            </div>
-            <h4 class="font-bold text-white text-base mb-1.5">4 Weeks Off and Other Sports</h4>
-            <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
-              <li><strong class="text-brand-orange">4 weeks in a row:</strong> put the basketball down.</li>
+          <div class="season">
+            <div class="n" aria-hidden="true">04</div>
+            <p class="eyebrow">Summer · Jun to Aug</p>
+            <h3>4 weeks off and other sports</h3>
+            <span class="tag hot">Required rest</span>
+            <ul class="dots">
+              <li>4 weeks in a row: put the basketball down.</li>
               <li>Play another sport: track, swimming, soccer or football.</li>
               <li>Let the body heal and the hunger for the game come back.</li>
             </ul>
@@ -299,343 +375,246 @@
         </div>
       </section>
 
-      <!-- PART 3: GRADE BY GRADE -->
-      <section id="part3" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
-        <div class="mb-6">
-          <div class="badge-pill font-bold text-brand-orange mb-1">Part 3: Grade by Grade</div>
-          <h3 class="text-2xl font-bold text-white">What Matters at Each Grade</h3>
+      <!-- Part 3 -->
+      <section class="part" id="part3">
+        <div class="part-head">
+          <p class="eyebrow">Part 3 · Grade by Grade</p>
+          <h2>What matters at each grade.</h2>
         </div>
-
-        <div class="space-y-4">
-          <div id="stage-3-5" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
-            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
-            <h5 class="text-sm font-bold text-white">3rd to 5th Grade: Fun and Many Sports</h5>
-            <p class="text-xs text-zinc-300 mt-1">
-              No college scout is watching a 10 year old. Playing one sport too early leads to overuse injuries, and some kids quit by age 13. Spend about 80% of the time on other sports and being a good athlete.
-            </p>
+        <div class="grades">
+          <div class="grade" id="stage-3-5">
+            <div class="g">3rd to 5th grade<span class="you">Your player</span></div>
+            <div>
+              <h3>Fun and many sports</h3>
+              <p>No college scout is watching a 10 year old. Playing one sport too early leads to overuse injuries, and some kids quit by age 13. Spend about 80% of the time on other sports and being a good athlete.</p>
+            </div>
           </div>
-
-          <div id="stage-6-8" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
-            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
-            <h5 class="text-sm font-bold text-white">6th to 8th Grade: Master the Basics</h5>
-            <p class="text-xs text-zinc-300 mt-1">
-              Do not pay for national exposure camps. Focus on shooting form, finishing with the weak hand and passing out of double teams.
-            </p>
+          <div class="grade" id="stage-6-8">
+            <div class="g">6th to 8th grade<span class="you">Your player</span></div>
+            <div>
+              <h3>Master the basics</h3>
+              <p>Do not pay for national exposure camps. Focus on shooting form, finishing with the weak hand and passing out of double teams.</p>
+            </div>
           </div>
-
-          <div id="stage-9-10" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
-            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
-            <h5 class="text-sm font-bold text-white">9th and 10th Grade: Earn Your Spot</h5>
-            <p class="text-xs text-zinc-300 mt-1">
-              Your high school team comes first. Varsity minutes come from defense, rebounding and taking care of the ball, not 30 foot step back shots.
-            </p>
+          <div class="grade" id="stage-9-10">
+            <div class="g">9th and 10th grade<span class="you">Your player</span></div>
+            <div>
+              <h3>Earn your spot</h3>
+              <p>Your high school team comes first. Varsity minutes come from defense, rebounding and taking care of the ball, not 30 foot step back shots.</p>
+            </div>
           </div>
-
-          <div id="stage-11-12" class="p-4 rounded-xl bg-brand-surface border-l-4 border-l-brand-orange border border-brand-border">
-            <div class="stage-tag hidden text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-1">Your player's stage</div>
-            <h5 class="text-sm font-bold text-white">11th and 12th Grade: Real Recruiting and a Clear Role</h5>
-            <p class="text-xs text-zinc-300 mt-1">
-              Recruiting happens through real game film and real relationships with coaches. Play where you get 15 or more real minutes, not 3 minutes on a big name team's bench.
-            </p>
+          <div class="grade" id="stage-11-12">
+            <div class="g">11th and 12th grade<span class="you">Your player</span></div>
+            <div>
+              <h3>Real recruiting and a clear role</h3>
+              <p>Recruiting happens through real game film and real relationships with coaches. Play where you get 15 or more real minutes, not 3 minutes on a big name team's bench.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- $300 AUDIT (main offer) -->
-      <section class="bg-gradient-to-b from-brand-card to-orange-950/20 border-2 border-brand-orange/60 rounded-2xl p-6 sm:p-8 text-center sm:text-left relative overflow-hidden">
-        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange text-white text-[11px] font-extrabold uppercase tracking-wider mb-3">
-          <span>1 on 1 with Coach Kane</span>
-        </div>
-
-        <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mb-2">
-          Want Coach Kane to Review Your Player's Season?
-        </h3>
-
-        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6">
-          Before you spend $3,000 to $6,000 on tournament fees, hotels and trainers, get an honest second opinion. Coach Kane reviews your player's game film, your high school or AAU situation and the plan for the year.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-left">
-          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
-            <div class="text-xs font-bold text-brand-orange">1. Film and Role Review</div>
-            <div class="text-[11px] text-zinc-400 mt-0.5">An honest look at game film and how coaches see your player.</div>
-          </div>
-          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
-            <div class="text-xs font-bold text-brand-orange">2. AAU and Team Review</div>
-            <div class="text-[11px] text-zinc-400 mt-0.5">Compare your club options so you don't waste money or get stuck in daddy ball.</div>
-          </div>
-          <div class="p-3 rounded-lg bg-brand-dark/80 border border-brand-border">
-            <div class="text-xs font-bold text-brand-orange">3. 12 Month Plan</div>
-            <div class="text-[11px] text-zinc-400 mt-0.5">A written plan for training, rest and recruiting.</div>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-brand-border/60">
-          <div>
-            <div class="text-2xl font-black text-white">$300 <span class="text-xs text-zinc-400 font-normal">for a full 1 on 1 session</span></div>
-            <div class="text-[11px] text-zinc-400 mt-1">Written report within 48 hours, or a full refund.</div>
-            <div class="text-[11px] text-zinc-400">Coach Kane takes 4 families a week.</div>
-          </div>
-          <a href="/services/audits/" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-sm sm:text-base transition duration-200 text-center shadow-lg shadow-orange-950/50">
-            Book My 1 on 1 Audit →
-          </a>
-        </div>
-        <p class="text-[11px] text-zinc-500 mt-4">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
-      </section>
-
-      <!-- $47 PARENT IQ SYSTEM (second offer) -->
-      <section class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="space-y-1.5 text-center sm:text-left">
-          <span class="text-xs font-bold text-brand-orange uppercase tracking-wider">Self Paced Online Program</span>
-          <h4 class="text-lg font-bold text-white">The Basketball Parent IQ System</h4>
-          <p class="text-xs text-zinc-400 max-w-md">
-            Learn what to say on the car ride home, how to talk to the coach and how to act on the sideline. It costs less than one private workout.
-          </p>
-        </div>
-        <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
-          <span class="text-xl font-bold text-white">$47</span>
-          <a href="/services/playbooks/" class="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-semibold text-xs transition">
-            See the System →
-          </a>
+      <!-- $300 audit -->
+      <section class="offer">
+        <img src="assets/coach-sideline.webp" alt="Coach Kane kneeling on the sideline next to his bench during a game" width="960" height="480" loading="lazy">
+        <div class="in">
+          <p class="eyebrow">Your Next Step</p>
+          <h2>Want Coach Kane to review your player's season?</h2>
+          <p>Before you spend $3,000 to $6,000 on tournament fees, hotels and trainers, get an honest second opinion from Coach Kane.</p>
+          <ul>
+            <li><b>1</b><span>An honest look at your player's game film and role.</span></li>
+            <li><b>2</b><span>A review of your club options, so you don't waste money or get stuck in daddy ball.</span></li>
+            <li><b>3</b><span>A written plan for training, rest and recruiting.</span></li>
+          </ul>
+          <div class="price">$300 <small>Future Success Audit</small></div>
+          <p class="terms">Written report within 48 hours, or a full refund. Coach Kane takes 4 families a week.</p>
+          <a class="btn btn-dark" href="/services/audits/">Book a Future Success Audit →</a>
+          <p class="credit">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
         </div>
       </section>
 
-      <footer class="text-center py-6 border-t border-brand-border/40 text-xs text-zinc-500">
-        © 2026 Kane Basketball Academy. CIF Champion · 440 high school wins · 71 college players · 12 pros
+      <!-- $47 system -->
+      <section class="second">
+        <img src="assets/parent-iq-cover.webp" alt="Cover of The Basketball Parent IQ System" width="96" height="125" loading="lazy">
+        <div>
+          <p class="eyebrow">Rather start on your own?</p>
+          <h3>The Basketball Parent IQ System</h3>
+          <p class="p47">$47</p>
+          <p>Fourteen days. Twenty minutes a night. What to say, what to spend and what to decide, on the day you need it.</p>
+          <a class="btn btn-ghost" href="/services/playbooks/">See the System →</a>
+        </div>
+      </section>
+
+      <footer>
+        <p class="line">The Kane Academy · The Work Over the Hype</p>
+        <p>© 2026 The Kane Academy</p>
+        <p>We use your email to send your roadmap and basketball parenting emails. Reply to any email and we will remove you.</p>
       </footer>
     </div>
-  </main>
+  </div>
+</main>
 
-  <script>
-  (function () {
-    // Same Google Sheet web app the Confidence Score page uses.
-    var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+<script>
+(function () {
+  // Same Google Sheet web app the Confidence Score page uses.
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
 
-    var GRADE_LABELS = {
-      '3-5': '3rd to 5th grade',
-      '6-8': 'Middle school',
-      '9-10': '9th or 10th grade',
-      '11-12': '11th or 12th grade'
-    };
+  var GRADE_LABELS = { '3-5': '3rd to 5th grade', '6-8': 'Middle school', '9-10': '9th or 10th grade', '11-12': '11th or 12th grade' };
+  var FOCUS_LABELS = { aau: 'Picking the right AAU club', varsity: 'Earning varsity minutes', burnout: 'Preventing burnout', recruiting: 'College recruiting' };
+  var LOAD_LABELS = { under25: 'Under 25 games', '25to50': '25 to 50 games', '50plus': '50+ games, all year' };
 
-    var FOCUS_LABELS = {
-      aau: 'Picking the right AAU club',
-      varsity: 'Earning varsity minutes',
-      burnout: 'Preventing burnout and injuries',
-      recruiting: 'Real college recruiting'
-    };
+  var FOCUS_NOTES = {
+    aau: 'Go to Part 1. Run the 10 questions on any club before you pay. Three or more red flags means look somewhere else.',
+    varsity: 'Go to Part 3. Varsity minutes come from defense, rebounding and taking care of the ball. Then follow the winter plan in Part 2.',
+    burnout: 'Go to Part 2. The 4 week summer break and the limit of 2 weekend tournaments a month protect your player\'s body.',
+    recruiting: 'Go to Part 3. Real recruiting comes from game film and real coach relationships. Pick a team where your player gets 15 or more real minutes.'
+  };
+  var LOAD_NOTES = {
+    under25: 'Under 25 games a year leaves time to practice. Keep at least 1 practice for every game.',
+    '25to50': '25 to 50 games a year needs watching. Stick to 2 weekend tournaments a month and at least 1 practice for every game.',
+    '50plus': '50+ games all year is too many. Plan the 4 week summer break in Part 2 and cut back to 2 weekend tournaments a month.'
+  };
 
-    var FOCUS_NOTES = {
-      aau: 'Go to Part 1. Run the 10 questions on any club before you pay. Three or more red flags means look somewhere else.',
-      varsity: 'Go to Part 3. Varsity minutes come from defense, rebounding and taking care of the ball. Then follow the winter plan in Part 2.',
-      burnout: 'Go to Part 2. The 4 week summer break and the limit of 2 weekend tournaments a month protect your player\'s body.',
-      recruiting: 'Go to Part 3. Real recruiting comes from game film and real coach relationships. Pick a team where your player gets 15 or more real minutes.'
-    };
+  var CHECKS = [
+    { t: 'Practice to game ratio', d: 'Does the program promise at least 2 full practices for every tournament weekend?', w: 'Programs that play 5 games in a weekend with 0 or 1 practice do not develop players. They only show the flaws players already have.' },
+    { t: 'Minutes for the end of the bench', d: 'Does the coach have a plan and real minutes for players 8 through 12?', w: 'If only 6 kids play and the rest sit, you are paying thousands of dollars for your kid to wear a jersey on the bench.' },
+    { t: 'Open practices', d: 'Can parents sit quietly and watch two full practices before signing up?', w: 'Coaches who keep parents out before they sign up are often hiding messy practices with very few reps.' },
+    { t: 'The coach\'s kid ("daddy ball")', d: 'Does the head coach or an assistant have a child who plays the same position as yours?', w: 'When games get close, the coach\'s kid almost always plays. Complaining will not change it.' },
+    { t: 'Roster size', d: 'Is the tournament roster kept to 9 or 10 players?', w: 'With 12 to 14 players on the roster, players 9 through 14 get fewer than 4 minutes of real game time.' },
+    { t: 'Honest talk about exposure under age 14', d: 'Does the coach focus on footwork and the basics instead of promising college scouts at age 12?', w: 'No college coach offers scholarships to 7th graders in hotel gyms. Selling exposure to kids under 14 takes advantage of parents.' },
+    { t: 'Travel and cost', d: 'Is the schedule close to home and easy on your budget, instead of flying across the country for pool play?', w: 'Out of state travel for middle schoolers uses up money that should go to strength and skill training.' },
+    { t: 'How coaches correct mistakes', d: 'Do the coaches teach and explain mistakes, instead of just yelling and benching kids?', w: 'Yelling without teaching makes players timid. They hesitate on the floor because they are afraid to make mistakes.' },
+    { t: 'Summer rest', d: 'Does the program give players a 4 week break in summer, or push tournaments all year?', w: '12 months of tournaments with no break leads to sore knees, back strain and burnout by freshman year.' },
+    { t: 'Other sports', d: 'Does the coach let your kid run track, play football or play other sports?', w: 'Coaches who demand basketball only at age 11 or 12 care more about their club\'s record than your child\'s long term growth.' }
+  ];
 
-    var LOAD_LABELS = {
-      under25: 'Under 25 games',
-      '25to50': '25 to 50 games',
-      '50plus': '50+ games, all year'
-    };
+  var answers = {};
+  var steps = document.querySelectorAll('.step');
+  var current = 0;
 
-    var LOAD_NOTES = {
-      under25: 'Under 25 games a year leaves time to practice. Keep at least 1 practice for every game.',
-      '25to50': '25 to 50 games a year needs watching. Stick to 2 weekend tournaments a month and at least 1 practice for every game.',
-      '50plus': '50+ games all year is too many. Plan the 4 week summer break in Part 2 and cut back to 2 weekend tournaments a month.'
-    };
+  function showStep(i) {
+    steps[current].classList.remove('active');
+    current = i;
+    steps[current].classList.add('active');
+    var input = steps[current].querySelector('input');
+    if (input && window.innerWidth > 720) input.focus();
+  }
 
-    var auditQuestions = [
-      {
-        q: '1. Practice to Game Ratio',
-        desc: 'Does the program promise at least 2 full practices for every tournament weekend?',
-        redFlagReason: 'Programs that play 5 games in a weekend with 0 or 1 practice do not develop players. They only show the flaws players already have.'
-      },
-      {
-        q: '2. Minutes for the End of the Bench',
-        desc: 'Does the coach have a plan and real minutes for players 8 through 12?',
-        redFlagReason: 'If only 6 kids play and the rest sit, you are paying thousands of dollars for your kid to wear a jersey on the bench.'
-      },
-      {
-        q: '3. Open Practices',
-        desc: 'Can parents sit quietly and watch two full practices before signing up?',
-        redFlagReason: 'Coaches who keep parents out before they sign up are often hiding messy practices with very few reps.'
-      },
-      {
-        q: '4. The Coach\'s Kid ("Daddy Ball")',
-        desc: 'Does the head coach or an assistant have a child who plays the same position as yours?',
-        redFlagReason: 'When games get close, the coach\'s kid almost always plays. Complaining will not change it.'
-      },
-      {
-        q: '5. Roster Size',
-        desc: 'Is the tournament roster kept to 9 or 10 players?',
-        redFlagReason: 'With 12 to 14 players on the roster, players 9 through 14 get fewer than 4 minutes of real game time.'
-      },
-      {
-        q: '6. Honest Talk About Exposure Under Age 14',
-        desc: 'Does the coach focus on footwork and the basics instead of promising college scouts at age 12?',
-        redFlagReason: 'No college coach offers scholarships to 7th graders in hotel gyms. Selling exposure to kids under 14 takes advantage of parents.'
-      },
-      {
-        q: '7. Travel and Cost',
-        desc: 'Is the schedule close to home and easy on your budget, instead of flying across the country for pool play?',
-        redFlagReason: 'Out of state travel for middle schoolers uses up money that should go to strength and skill training.'
-      },
-      {
-        q: '8. How Coaches Correct Mistakes',
-        desc: 'Do the coaches teach and explain mistakes, instead of just yelling and benching kids?',
-        redFlagReason: 'Yelling without teaching makes players timid. They hesitate on the floor because they are afraid to make mistakes.'
-      },
-      {
-        q: '9. Summer Rest',
-        desc: 'Does the program give players a 4 week break in summer, or push tournaments all year?',
-        redFlagReason: '12 months of tournaments with no break leads to sore knees, back strain and burnout by freshman year.'
-      },
-      {
-        q: '10. Other Sports',
-        desc: 'Does the coach let your kid run track, play football or play other sports?',
-        redFlagReason: 'Coaches who demand basketball only at age 11 or 12 care more about their club\'s record than your child\'s long term growth.'
-      }
-    ];
-
-    var flaggedStatus = new Array(auditQuestions.length).fill(false);
-
-    function renderQuestions() {
-      var container = document.getElementById('questionsContainer');
-      container.innerHTML = auditQuestions.map(function (item, idx) {
-        return '' +
-          '<div class="p-4 rounded-xl bg-brand-surface border border-brand-border transition" id="qCard-' + idx + '">' +
-            '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">' +
-              '<h5 class="text-sm font-bold text-white">' + item.q + '</h5>' +
-              '<div class="flex items-center space-x-2">' +
-                '<button type="button" data-idx="' + idx + '" data-flag="0" id="btnPass-' + idx + '" class="px-3 py-1 rounded text-xs font-semibold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition">PASS</button>' +
-                '<button type="button" data-idx="' + idx + '" data-flag="1" id="btnFlag-' + idx + '" class="px-3 py-1 rounded text-xs font-semibold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition">RED FLAG</button>' +
-              '</div>' +
-            '</div>' +
-            '<p class="text-xs text-zinc-400">' + item.desc + '</p>' +
-            '<div id="flagWarning-' + idx + '" class="hidden mt-3 p-2.5 rounded bg-red-950/40 border border-red-800/40 text-[11px] text-red-300">' +
-              '<strong>Why it matters:</strong> ' + item.redFlagReason +
-            '</div>' +
-          '</div>';
-      }).join('');
-    }
-
-    document.getElementById('questionsContainer').addEventListener('click', function (e) {
-      var btn = e.target.closest('button[data-idx]');
+  // Tap an answer: highlight it, then move to the next question
+  document.querySelectorAll('.options').forEach(function (group) {
+    group.addEventListener('click', function (e) {
+      var btn = e.target.closest('.opt');
       if (!btn) return;
-      setAnswer(Number(btn.getAttribute('data-idx')), btn.getAttribute('data-flag') === '1');
+      group.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      answers[group.getAttribute('data-name')] = btn.getAttribute('data-value');
+      setTimeout(function () { showStep(current + 1); }, 260);
     });
+  });
 
-    function setAnswer(idx, isFlag) {
-      flaggedStatus[idx] = isFlag;
+  document.querySelectorAll('[data-back]').forEach(function (b) {
+    b.addEventListener('click', function () { if (current > 0) showStep(current - 1); });
+  });
 
-      var card = document.getElementById('qCard-' + idx);
-      var btnPass = document.getElementById('btnPass-' + idx);
-      var btnFlag = document.getElementById('btnFlag-' + idx);
-      var warning = document.getElementById('flagWarning-' + idx);
+  // Club check
+  function renderChecks() {
+    var html = CHECKS.map(function (c, i) {
+      return '<div class="check" id="check-' + i + '">' +
+        '<p class="eyebrow">Question ' + (i + 1) + '</p>' +
+        '<h3>' + c.t + '</h3>' +
+        '<p class="desc">' + c.d + '</p>' +
+        '<div class="pf">' +
+          '<button type="button" data-i="' + i + '" data-v="pass">Pass</button>' +
+          '<button type="button" data-i="' + i + '" data-v="flag">Red flag</button>' +
+        '</div>' +
+        '<div class="why" hidden><p class="eyebrow">Why it matters</p><p>' + c.w + '</p></div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('checks').innerHTML = html;
+  }
 
-      if (isFlag) {
-        btnFlag.className = 'px-3 py-1 rounded text-xs font-bold bg-red-600 text-white transition';
-        btnPass.className = 'px-3 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-400 transition';
-        warning.classList.remove('hidden');
-        card.classList.add('border-red-900/60');
-      } else {
-        btnPass.className = 'px-3 py-1 rounded text-xs font-bold bg-emerald-600 text-white transition';
-        btnFlag.className = 'px-3 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-400 transition';
-        warning.classList.add('hidden');
-        card.classList.remove('border-red-900/60');
-      }
+  var flags = {};
+  document.getElementById('checks').addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-i]');
+    if (!btn) return;
+    var i = btn.getAttribute('data-i');
+    var isFlag = btn.getAttribute('data-v') === 'flag';
+    var card = document.getElementById('check-' + i);
+    var btns = card.querySelectorAll('.pf button');
+    btns[0].className = isFlag ? '' : 'on-pass';
+    btns[1].className = isFlag ? 'on-flag' : '';
+    card.classList.toggle('flagged', isFlag);
+    card.querySelector('.why').hidden = !isFlag;
+    flags[i] = isFlag;
+    updateScore();
+  });
 
-      updateRiskMeter();
+  function updateScore() {
+    var n = Object.keys(flags).filter(function (k) { return flags[k]; }).length;
+    var answered = Object.keys(flags).length;
+    document.getElementById('flagCount').textContent = n;
+    var pill = document.getElementById('riskPill');
+    if (n === 0) {
+      pill.className = 'pill calm';
+      pill.textContent = answered ? 'Low risk' : 'No red flags yet';
+    } else if (n <= 2) {
+      pill.className = 'pill';
+      pill.textContent = 'Some concern';
+    } else {
+      pill.className = 'pill';
+      pill.textContent = 'High risk club';
     }
+  }
 
-    function updateRiskMeter() {
-      var flags = flaggedStatus.filter(Boolean).length;
-      var label = document.getElementById('riskLabel');
-      var meterBars = document.getElementById('flagMeter').children;
-      var word = flags === 1 ? 'red flag' : 'red flags';
-
-      for (var i = 0; i < meterBars.length; i++) {
-        meterBars[i].className = i < flags ? 'w-3 h-6 rounded bg-red-500' : 'w-3 h-6 rounded bg-zinc-700';
-      }
-
-      if (flags === 0) {
-        label.className = 'text-lg font-extrabold text-green-400';
-        label.textContent = 'Low Risk (0 red flags)';
-      } else if (flags <= 2) {
-        label.className = 'text-lg font-extrabold text-yellow-400';
-        label.textContent = 'Some Concern (' + flags + ' ' + word + ')';
-      } else {
-        label.className = 'text-lg font-extrabold text-red-500';
-        label.textContent = 'High Risk (' + flags + ' ' + word + ')';
-      }
+  // Email step
+  document.getElementById('gate').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var err = document.getElementById('formError');
+    if (!name || !email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+      err.hidden = false;
+      return;
     }
+    if (!answers.grade || !answers.focus || !answers.load) { showStep(0); return; }
+    err.hidden = true;
+    document.getElementById('submitBtn').disabled = true;
 
-    function checkedValue(name) {
-      var el = document.querySelector('input[name="' + name + '"]:checked');
-      return el ? el.value : '';
-    }
+    // Save the lead to Kane's Google Sheet. The extra answers go in the
+    // band / checkedNumbers / checkedText columns so they show in the sheet.
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        firstName: name,
+        email: email,
+        guide: 'map',
+        score: '',
+        band: GRADE_LABELS[answers.grade],
+        checkedNumbers: LOAD_LABELS[answers.load],
+        checkedText: FOCUS_LABELS[answers.focus],
+        path: 'map-roadmap',
+        grade: GRADE_LABELS[answers.grade],
+        focus: FOCUS_LABELS[answers.focus],
+        gameLoad: LOAD_LABELS[answers.load]
+      })
+    }).catch(function (x) { console.error('Could not save to the sheet:', x); });
 
-    document.getElementById('roadmapForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    document.getElementById('hello').textContent = name + ', here is your plan.';
+    document.getElementById('pillGrade').textContent = GRADE_LABELS[answers.grade];
+    document.getElementById('pillFocus').textContent = FOCUS_LABELS[answers.focus];
+    document.getElementById('focusNote').textContent = FOCUS_NOTES[answers.focus];
+    document.getElementById('loadNote').textContent = LOAD_NOTES[answers.load];
+    var stage = document.getElementById('stage-' + answers.grade);
+    if (stage) stage.classList.add('mine');
 
-      var name = document.getElementById('parentName').value.trim();
-      var email = document.getElementById('parentEmail').value.trim();
-      var grade = checkedValue('grade');
-      var focus = checkedValue('focus');
-      var load = checkedValue('load');
-      var errorEl = document.getElementById('formError');
-
-      if (!name || !email || email.indexOf('@') === -1 || email.indexOf('.') === -1 || !grade || !focus || !load) {
-        errorEl.classList.remove('hidden');
-        return;
-      }
-      errorEl.classList.add('hidden');
-      document.getElementById('submitBtn').disabled = true;
-
-      // Save the lead to Kane's Google Sheet. The extra answers go in the
-      // band / checkedNumbers / checkedText columns so they show in the sheet.
-      fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          firstName: name,
-          email: email,
-          guide: 'map',
-          score: '',
-          band: GRADE_LABELS[grade],
-          checkedNumbers: LOAD_LABELS[load],
-          checkedText: FOCUS_LABELS[focus],
-          path: 'map-roadmap',
-          grade: GRADE_LABELS[grade],
-          focus: FOCUS_LABELS[focus],
-          gameLoad: LOAD_LABELS[load]
-        })
-      }).catch(function (err) { console.error('Could not save to the sheet:', err); });
-
-      // Fill in the personal parts of the roadmap
-      document.getElementById('displayName').textContent = name;
-      document.getElementById('displayGrade').textContent = GRADE_LABELS[grade];
-      document.getElementById('displayFocus').textContent = FOCUS_LABELS[focus];
-      document.getElementById('focusNote').textContent = FOCUS_NOTES[focus];
-      document.getElementById('loadNote').textContent = LOAD_NOTES[load];
-
-      var stage = document.getElementById('stage-' + grade);
-      if (stage) {
-        stage.classList.remove('border-brand-border');
-        stage.classList.add('border-brand-orange', 'bg-orange-950/20');
-        stage.querySelector('.stage-tag').classList.remove('hidden');
-      }
-
-      document.getElementById('intakeSection').classList.add('hidden');
-      document.getElementById('roadmapResults').classList.remove('hidden');
-      renderQuestions();
-
-      document.getElementById('roadmapResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  })();
-  </script>
+    renderChecks();
+    document.getElementById('cover').hidden = true;
+    document.getElementById('intake').hidden = true;
+    document.getElementById('results').hidden = false;
+    window.scrollTo(0, 0);
+  });
+})();
+</script>
 </body>
 </html>
