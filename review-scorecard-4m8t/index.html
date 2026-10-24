@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Basketball Parent Scorecard | Coach Dennis Kane</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="15 questions. 2 minutes. Find out if your kid's basketball is helping them or hurting them. From Coach Dennis Kane.">
+<meta property="og:title" content="The Basketball Parent Scorecard | Coach Kane">
+<meta property="og:description" content="15 questions. 2 minutes. Find out if your kid's basketball is helping them or hurting them.">
+<meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#151413">
+<style>
+  /* Night Session: Kane orange, Glow, Night, Court, Chalk, Ash */
+  :root{
+    --bg:#151413; --card:#242220; --card-2:#1C1B19; --border:#36332F;
+    --ink:#FAF8F5; --ink-body:#D3CDC5; --ink-dim:#A8A29B;
+    --accent:#D9560B; --accent-hover:#BF4A08; --glow:#F08A4B;
+    --accent-soft:rgba(217,86,11,0.16); --track:#2E2B28;
+    --font-head:'Space Grotesk','Inter',sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:620px; margin:0 auto; padding:0 20px 60px;}
+  .eyebrow{font-family:var(--font-head); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--glow); font-weight:700; margin:0 0 12px;}
+  h1,h2,h3{font-family:var(--font-head); font-weight:700; margin:0; color:var(--ink); letter-spacing:-.01em;}
+  p{margin:0 0 14px;}
+  [hidden]{display:none !important;}
+  .screen{display:none;}
+  .screen.active{display:block; animation:fadeUp .45s ease both;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--accent); color:#fff; border:none; font-family:var(--font-body); font-weight:600; font-size:16px; padding:16px 24px; border-radius:10px; cursor:pointer; text-decoration:none; transition:background .15s ease;}
+  .btn:hover{background:var(--accent-hover);}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .btn-dark{background:#151413; color:var(--ink);}
+  .btn-dark:hover{background:#000;}
+  .btn-ghost{background:transparent; border:1px solid var(--border); color:var(--ink);}
+  .btn-ghost:hover{background:var(--card-2); border-color:var(--accent);}
+  button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--glow); outline-offset:3px;}
+
+  /* Top bar */
+  .topbar{border-bottom:1px solid var(--border);}
+  .topbar .in{max-width:620px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:12px;}
+  .topbar img{width:30px; height:30px;}
+  .topbar .name{font-family:var(--font-head); font-weight:700; font-size:14px; line-height:1.2;}
+  .topbar .name span{display:block; font-family:var(--font-body); font-weight:400; font-size:12px; color:var(--ink-dim);}
+
+  /* Intro */
+  .intro{position:relative; padding-top:56px;}
+  .intro::before{content:"15"; position:absolute; top:30px; right:-14px; font-family:var(--font-head); font-weight:700; font-size:128px; line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px rgba(217,86,11,.32); pointer-events:none;}
+  .intro > *{position:relative;}
+  .intro h1{font-size:38px; line-height:1.08; margin-bottom:16px; max-width:12ch;}
+  .intro .lede{font-size:18px; color:var(--ink-body); margin-bottom:22px; max-width:40ch;}
+  .parts{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 26px;}
+  .parts div{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 4px; text-align:center;}
+  .parts b{display:block; font-family:var(--font-head); font-size:14px; color:var(--ink); white-space:nowrap;}
+  .parts span{font-size:12px; color:var(--ink-dim);}
+  .meta-line{margin-top:18px; font-size:14px; color:var(--ink-dim);}
+  .meta-line b{color:var(--ink);}
+
+  /* Questions */
+  .checklist{padding-top:40px;}
+  .progress-label{font-family:var(--font-head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); font-weight:700; margin-bottom:10px; display:flex; justify-content:space-between; gap:10px;}
+  .progress-label span:last-child{color:var(--ink-dim);}
+  .progress-track{height:4px; background:var(--track); border-radius:4px; margin-bottom:30px; overflow:hidden;}
+  .progress-fill{height:100%; width:0; background:var(--accent); transition:width .3s ease;}
+  .q-text{font-family:var(--font-head); font-weight:700; font-size:23px; line-height:1.3; margin:0 0 24px;}
+  .q-actions{display:flex; flex-direction:column; gap:12px;}
+  .q-btn{width:100%; text-align:left; padding:16px 18px; border-radius:12px; font-family:var(--font-body); font-weight:600; font-size:16px; cursor:pointer; border:1px solid var(--border); background:var(--card); color:var(--ink); transition:border-color .15s ease, background .15s ease;}
+  .q-btn:hover{border-color:var(--accent);}
+  .q-btn:disabled{opacity:.45; cursor:default;}
+  .q-btn.chosen:disabled{opacity:1; background:var(--accent); border-color:var(--accent); color:#fff;}
+  .note{display:none; gap:14px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; margin:22px 0;}
+  .note.show{display:flex; animation:fadeUp .4s ease both;}
+  .note img{width:44px; height:44px; min-width:44px; border-radius:50%; object-fit:cover;}
+  .note .eyebrow{font-size:11px; margin-bottom:6px;}
+  .note p.text{font-size:16px; line-height:1.6; font-style:italic; color:#E9E5DF; margin:0;}
+  .back{background:none; border:none; padding:0; margin-top:22px; font:inherit; font-size:14.5px; color:var(--ink-dim); cursor:pointer;}
+  .back:hover{color:var(--ink);}
+
+  /* Gate */
+  .gate{padding-top:64px;}
+  .gate h2{font-size:28px; line-height:1.15; margin-bottom:12px;}
+  .gate p.sub{color:var(--ink-dim); font-size:16px; margin-bottom:26px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input{width:100%; padding:14px 15px; font-size:16px; font-family:inherit; background:var(--card); border:1px solid var(--border); border-radius:10px; color:var(--ink);}
+  .field input:focus{outline:none; border-color:var(--accent);}
+  .field input::placeholder{color:#6E6862;}
+  .form-error{color:var(--glow); font-size:14px; margin:4px 0 12px;}
+  .fine{font-size:13px; color:var(--ink-dim); text-align:center; margin-top:14px;}
+
+  /* Result */
+  .result{padding-top:44px;}
+  .score-card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 22px 28px; text-align:center; margin-bottom:16px;}
+  .score-number{font-family:var(--font-head); font-weight:700; font-size:84px; line-height:1; letter-spacing:-.03em;}
+  .score-number .out-of{color:var(--ink-dim); font-size:30px; font-weight:500;}
+  .band{display:inline-block; font-family:var(--font-head); font-weight:700; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--glow); background:var(--accent-soft); border-radius:999px; padding:7px 16px; margin:14px 0 20px;}
+  .meter-track{height:8px; background:var(--track); border-radius:999px; overflow:hidden; max-width:320px; margin:0 auto;}
+  .meter-fill{height:100%; width:0; background:var(--accent); border-radius:999px; transition:width 1s cubic-bezier(.2,.8,.2,1);}
+  .result-message{font-size:17px; color:var(--ink); margin:22px 0 0;}
+  .part-scores{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0 0;}
+  .part-scores div{background:var(--card-2); border:1px solid var(--border); border-radius:12px; padding:12px 8px; text-align:center;}
+  .part-scores div.worst{border-color:var(--accent); background:var(--accent-soft);}
+  .part-scores b{display:block; font-family:var(--font-head); font-size:22px; color:var(--ink);}
+  .part-scores span{font-size:11.5px; color:var(--ink-dim); white-space:nowrap;}
+  .gap{background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:12px; padding:18px; margin-top:16px;}
+  .gap .eyebrow{font-size:11px; margin-bottom:6px;}
+  .gap h3{font-size:20px; margin-bottom:8px;}
+  .gap ul{margin:0; padding:0; list-style:none;}
+  .gap li{position:relative; padding-left:18px; margin:8px 0; font-size:15.5px; color:var(--ink-body);}
+  .gap li::before{content:""; position:absolute; left:0; top:10px; width:6px; height:6px; border-radius:50%; background:var(--accent);}
+  .gap p.after{margin:12px 0 0; font-size:15.5px; color:var(--ink);}
+
+  /* Conversion */
+  .offer{margin-top:36px; border-radius:18px; overflow:hidden; background:linear-gradient(150deg,#D9560B 0%,#B8460A 100%); color:#fff;}
+  .offer img{width:100%; height:180px; object-fit:cover; object-position:40% 45%;}
+  .offer .in{padding:24px 22px;}
+  .offer .eyebrow{color:#FFE2CF;}
+  .offer h2{color:#fff; font-size:26px; line-height:1.15; margin-bottom:12px;}
+  .offer p{color:#FFF1E8; font-size:16px;}
+  .offer ul{list-style:none; margin:4px 0 20px; padding:0;}
+  .offer li{display:flex; gap:12px; padding:10px 0; border-top:1px solid rgba(255,255,255,.2); font-size:15.5px; color:#fff;}
+  .offer li b{font-family:var(--font-head); min-width:14px;}
+  .price{font-family:var(--font-head); font-weight:700; font-size:40px; line-height:1; margin:6px 0 6px;}
+  .price small{font-size:15px; font-weight:500; color:#FFE2CF;}
+  .offer .terms{font-size:13.5px; color:#FFE2CF; margin:0 0 18px;}
+  .offer .credit{font-size:12.5px; color:#FFE2CF; margin:14px 0 0; text-align:center;}
+  .second{margin-top:14px; display:grid; grid-template-columns:90px 1fr; gap:18px; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px;}
+  .second img{width:90px; border-radius:6px; box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .second .eyebrow{font-size:11px; margin-bottom:6px;}
+  .second h3{font-size:19px; line-height:1.25; margin-bottom:4px;}
+  .second .p47{font-family:var(--font-head); font-weight:700; font-size:22px; margin:0 0 8px;}
+  .second p{font-size:15px; color:var(--ink-body); margin-bottom:14px;}
+  .second .btn{padding:12px 16px; font-size:15px;}
+
+  footer{max-width:620px; margin:40px auto 0; padding:24px 20px 40px; border-top:1px solid var(--border); text-align:center;}
+  footer .line{font-family:var(--font-head); font-weight:700; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); margin:0 0 10px;}
+  footer p{font-size:12.5px; color:var(--ink-dim); margin:0 0 6px;}
+  .test-flag{background:#2E2B28; color:var(--ink-dim); font-size:12px; text-align:center; padding:6px 12px;}
+</style>
+</head>
+<body>
+
+<div class="test-flag">Review copy for Parry and Coach Kane. Not public.</div>
+
+<header class="topbar">
+  <div class="in">
+    <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy" width="30" height="30">
+    <div class="name">The Kane Academy<span>The Basketball Parent Scorecard</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Intro -->
+  <section id="screen-intro" class="screen active intro">
+    <p class="eyebrow">Free for Basketball Parents</p>
+    <h1>The Basketball Parent Scorecard</h1>
+    <p class="lede">Is your kid's basketball helping them or hurting them? 15 questions. 2 minutes. Answer honestly and see where your family stands.</p>
+    <div class="parts">
+      <div><b>The Team</b><span>5 questions</span></div>
+      <div><b>The Schedule</b><span>5 questions</span></div>
+      <div><b>The Money</b><span>5 questions</span></div>
+    </div>
+    <button class="btn" id="start-btn" type="button">Start the Scorecard →</button>
+    <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from 1,000+ conversations with basketball parents.</p>
+  </section>
+
+  <!-- Questions -->
+  <section id="screen-questions" class="screen checklist">
+    <p class="progress-label"><span id="part-label">Part 1 · The Team</span><span id="count-label">1 of 15</span></p>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <p class="q-text" id="q-text"></p>
+    <div class="q-actions">
+      <button class="q-btn" id="no-btn" type="button">Not really</button>
+      <button class="q-btn" id="yes-btn" type="button">Yes, that's me</button>
+    </div>
+    <div class="note" id="note">
+      <img src="assets/kane-face.webp" alt="Coach Dennis Kane" width="44" height="44">
+      <div>
+        <p class="eyebrow">Coach Kane's Note</p>
+        <p class="text" id="note-text"></p>
+      </div>
+    </div>
+    <div id="next-wrap" hidden>
+      <button class="btn" id="next-btn" type="button">Next →</button>
+    </div>
+    <button class="back" id="back-btn" type="button" hidden>← Back</button>
+  </section>
+
+  <!-- Email -->
+  <section id="screen-gate" class="screen gate">
+    <p class="eyebrow">Your Score Is Ready</p>
+    <h2>Where should we send your Parent Scorecard?</h2>
+    <p class="sub">Your score opens on this page right away. We will also email you a copy so you can come back to it.</p>
+    <form id="gate-form" novalidate>
+      <div class="field">
+        <label for="first-name">Your first name</label>
+        <input type="text" id="first-name" placeholder="First name" autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="email">Your email</label>
+        <input type="email" id="email" placeholder="you@email.com" autocomplete="email" inputmode="email">
+      </div>
+      <p class="form-error" id="form-error" hidden>Please enter your first name and a real email.</p>
+      <button class="btn" type="submit" id="submit-btn">Show My Score →</button>
+    </form>
+    <p class="fine">No spam. Reply to any email and we will remove you.</p>
+  </section>
+
+  <!-- Result + conversion -->
+  <section id="screen-result" class="screen result">
+    <div class="score-card">
+      <p class="eyebrow" id="score-label">Your Parent Score</p>
+      <div class="score-number"><span id="score-value">0</span><span class="out-of">/15</span></div>
+      <p class="band" id="band-name">&nbsp;</p>
+      <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+      <div class="part-scores" id="part-scores"></div>
+    </div>
+    <p class="result-message" id="result-message"></p>
+
+    <div class="gap" id="gap" hidden>
+      <p class="eyebrow">Your Biggest Gap</p>
+      <h3 id="gap-title"></h3>
+      <ul id="gap-list"></ul>
+      <p class="after">Knowing the gap is step one. What to do about it depends on your kid, your team and your family.</p>
+    </div>
+
+    <section class="offer">
+      <img src="assets/coach-sideline.webp" alt="Coach Kane kneeling on the sideline next to his bench during a game" width="960" height="480" loading="lazy">
+      <div class="in">
+        <p class="eyebrow">Your Next Step</p>
+        <h2>Want Coach Kane to look at your kid's situation?</h2>
+        <p>In one call, Coach Kane looks at your kid's game film and your team situation, and tells you what to fix first.</p>
+        <ul>
+          <li><b>1</b><span>An honest look at your kid's game film and role.</span></li>
+          <li><b>2</b><span>Your three biggest priorities, with what to do about each one.</span></li>
+          <li><b>3</b><span>A written report you can keep and share with your family.</span></li>
+        </ul>
+        <div class="price">$300 <small>Future Success Audit</small></div>
+        <p class="terms">Written report within 48 hours, or a full refund. Coach Kane takes 4 families a week.</p>
+        <a class="btn btn-dark" href="/services/audits/">Book a Future Success Audit →</a>
+        <p class="credit">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
+      </div>
+    </section>
+
+    <section class="second">
+      <img src="assets/parent-iq-cover.webp" alt="Cover of The Basketball Parent IQ System" width="90" height="117" loading="lazy">
+      <div>
+        <p class="eyebrow">Rather work through it on your own?</p>
+        <h3>The Basketball Parent IQ System</h3>
+        <p class="p47">$47</p>
+        <p>Fourteen days. Twenty minutes a night. What to say, what to spend and what to decide, on the day you need it.</p>
+        <a class="btn btn-ghost" href="/services/playbooks/">See the System →</a>
+      </div>
+    </section>
+  </section>
+
+</div>
+
+<footer>
+  <p class="line">The Kane Academy · The Work Over the Hype</p>
+  <p>440 Wins · CIF Champion · 1,000+ Parent Conversations · 71 College Players · 12 Pros</p>
+  <p>We use your email to send your score and basketball parenting emails. Reply to any email and we will remove you.</p>
+</footer>
+
+<script>
+(function () {
+  // Same Google Sheet web app the Confidence Score page uses. Test rows are tagged TEST.
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+
+  var PARTS = ['The Team', 'The Schedule', 'The Money'];
+
+  // q = what the parent reads, short = how it shows in their results, note = Coach Kane's note
+  var QUESTIONS = [
+    { part: 0, q: "We joined or stayed on a team without watching two full practices first.", short: "Joined a team without watching two practices",
+      note: "Games show you who the best players are. Practices show you how a coach makes every kid better. A good coach says sure, come Tuesday." },
+    { part: 0, q: "I don't know how many practices my kid gets for every game.", short: "Not sure how many practices you get per game",
+      note: "Games don't build skills. They only show the skills your kid already has. It should be at least one practice for every game." },
+    { part: 0, q: "I picked a team for its record, its trophies or its jerseys.", short: "Picked a team for its record or trophies",
+      note: "A record doesn't show you if the kids got better. Look at what the program posts. If it's all highlights and rankings, they care about being seen." },
+    { part: 0, q: "My kid took a spot on a top team where they sit most of the game.", short: "Your kid sits most of the game on a top team",
+      note: "Fourth best with fifteen real minutes beats tenth best with three. Kids get better by playing, not by wearing the jersey." },
+    { part: 0, q: "I've complained about playing time in the stands or in a text.", short: "Complained about minutes in the stands or by text",
+      note: "It will not change because you're upset. Don't fight it in the stands. Don't send the angry text." },
+
+    { part: 1, q: "My kid hasn't had 4 weeks off from basketball in the past year.", short: "No 4 weeks off in the past year",
+      note: "Not a weekend. Four weeks. Rest isn't quitting. It's how a body recovers and how a kid starts to miss the game." },
+    { part: 1, q: "My kid plays basketball all year, with no other sport.", short: "Basketball all year, no other sport",
+      note: "The body control you see in the best players wasn't built in an AAU gym. It was built in other sports that made their body move a different way." },
+    { part: 1, q: "My kid often plays 5 or more games in one weekend.", short: "5 or more games in a weekend",
+      note: "Hotels. Gas. Entry fees. Five games in two days. And at the end of the summer, the kid isn't any better." },
+    { part: 1, q: "I said yes to playing up because a coach told me my kid was special.", short: "Said yes to playing up on a coach's word",
+      note: "Some coaches mean it. Some are telling you what keeps your check coming. Get a second opinion from someone who doesn't make money from your decision." },
+    { part: 1, q: "We started travel ball early because I was afraid my kid would fall behind.", short: "Started travel ball early out of fear",
+      note: "There is no window that closes at nine or ten. That fear is sold to you by people who profit from it." },
+
+    { part: 2, q: "Basketball costs our family more than 5% of our household income.", short: "Basketball costs more than 5% of your income",
+      note: "I tell every family the same thing. Never spend more than five percent of your household income on youth sports." },
+    { part: 2, q: "Some of our basketball costs have gone on a credit card.", short: "Basketball costs on a credit card",
+      note: "Basketball should never cost your family its peace. When money is tight, your kid feels it, and it shows up in their game." },
+    { part: 2, q: "We stayed on a team because we already paid for it.", short: "Stayed on a team because you already paid",
+      note: "I get it. I wrote the same checks for my two sons. But that money is gone. Every season is a new decision." },
+    { part: 2, q: "I paid for a showcase or exposure team for a player under 14.", short: "Paid for exposure before age 14",
+      note: "No college coach ever offered a scholarship because a 12 year old scored 20 in a hotel gym. Development comes first. Exposure follows readiness." },
+    { part: 2, q: "I don't know what we spend on basketball in a full year, with everything added up.", short: "Not sure what basketball costs you in a year",
+      note: "Most families guess low. Fees are only the start. Hotels, gas, food and trainers add up faster than anyone tracks." }
+  ];
+
+  var BANDS = {
+    steady: { name: 'Steady Hand', msg: "You're making most of these decisions the right way. The goal now is to keep it that way as the season gets busier." },
+    leaks:  { name: 'A Few Leaks', msg: "A few of these decisions are costing your kid time, money or growth. None of them are hard to fix once you know what to do." },
+    flags:  { name: 'Red Flags',  msg: "Several of these are already hurting your kid's growth or your family's peace. This is worth fixing before you spend another dollar." }
+  };
+  var PERFECT_MSG = "A perfect score. You're making every one of these decisions the right way. A second opinion can help you keep it that way as your kid moves up.";
+
+  function bandFor(score) {
+    if (score >= 13) return 'steady';
+    if (score >= 9) return 'leaks';
+    return 'flags';
+  }
+
+  var idx = 0;
+  var answers = [];
+
+  function show(id) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function render() {
+    var item = QUESTIONS[idx];
+    document.getElementById('part-label').textContent = 'Part ' + (item.part + 1) + ' · ' + PARTS[item.part];
+    document.getElementById('count-label').textContent = (idx + 1) + ' of ' + QUESTIONS.length;
+    document.getElementById('progress-fill').style.width = (idx / QUESTIONS.length * 100) + '%';
+    document.getElementById('q-text').textContent = item.q;
+    var yes = document.getElementById('yes-btn'), no = document.getElementById('no-btn');
+    yes.disabled = no.disabled = false;
+    yes.classList.remove('chosen'); no.classList.remove('chosen');
+    document.getElementById('note').classList.remove('show');
+    document.getElementById('next-wrap').hidden = true;
+    document.getElementById('back-btn').hidden = idx === 0;
+  }
+
+  function advance() {
+    idx++;
+    if (idx >= QUESTIONS.length) {
+      document.getElementById('progress-fill').style.width = '100%';
+      show('screen-gate');
+    } else {
+      render();
+    }
+  }
+
+  document.getElementById('start-btn').addEventListener('click', function () { show('screen-questions'); render(); });
+
+  document.getElementById('no-btn').addEventListener('click', function () {
+    answers[idx] = false;
+    advance();
+  });
+
+  document.getElementById('yes-btn').addEventListener('click', function () {
+    answers[idx] = true;
+    var yes = document.getElementById('yes-btn');
+    yes.classList.add('chosen');
+    yes.disabled = true;
+    document.getElementById('no-btn').disabled = true;
+    document.getElementById('note-text').textContent = QUESTIONS[idx].note;
+    document.getElementById('note').classList.add('show');
+    document.getElementById('next-wrap').hidden = false;
+  });
+
+  document.getElementById('next-btn').addEventListener('click', advance);
+
+  document.getElementById('back-btn').addEventListener('click', function () {
+    if (idx > 0) { idx--; answers.length = idx; render(); }
+  });
+
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('first-name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var err = document.getElementById('form-error');
+    if (!name || !email || email.indexOf('@') === -1 || email.indexOf('.') === -1) { err.hidden = false; return; }
+    err.hidden = true;
+    document.getElementById('submit-btn').disabled = true;
+
+    var yesCount = answers.filter(Boolean).length;
+    var score = QUESTIONS.length - yesCount;
+    var band = bandFor(score);
+
+    // Gaps per part
+    var perPart = [0, 0, 0];
+    QUESTIONS.forEach(function (q, i) { if (answers[i]) perPart[q.part]++; });
+    var worst = -1, worstCount = 0;
+    perPart.forEach(function (c, p) { if (c > worstCount) { worstCount = c; worst = p; } });
+
+    var yesNums = [], yesText = [];
+    QUESTIONS.forEach(function (q, i) { if (answers[i]) { yesNums.push(i + 1); yesText.push(q.short); } });
+
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        firstName: name,
+        email: email,
+        guide: 'scorecard-TEST',
+        score: score,
+        band: BANDS[band].name + (worst >= 0 ? ' · Biggest gap: ' + PARTS[worst] : ''),
+        checkedNumbers: yesNums.join(', '),
+        checkedText: yesText.join(' | '),
+        path: 'scorecard-TEST'
+      })
+    }).catch(function (x) { console.error('Could not save to the sheet:', x); });
+
+    // Fill in the result
+    document.getElementById('score-label').textContent = name + "'s Parent Score";
+    document.getElementById('band-name').textContent = score === 15 ? 'Perfect Score' : BANDS[band].name;
+    document.getElementById('result-message').textContent = score === 15 ? PERFECT_MSG : BANDS[band].msg;
+
+    document.getElementById('part-scores').innerHTML = PARTS.map(function (p, i) {
+      return '<div' + (i === worst ? ' class="worst"' : '') + '><b>' + (5 - perPart[i]) + '/5</b><span>' + p + '</span></div>';
+    }).join('');
+
+    if (worst >= 0) {
+      document.getElementById('gap-title').textContent = PARTS[worst];
+      var list = document.getElementById('gap-list');
+      list.innerHTML = '';
+      QUESTIONS.forEach(function (q, i) {
+        if (answers[i] && q.part === worst) {
+          var li = document.createElement('li');
+          li.textContent = q.short;
+          list.appendChild(li);
+        }
+      });
+      document.getElementById('gap').hidden = false;
+    }
+
+    show('screen-result');
+
+    var el = document.getElementById('score-value');
+    var current = 0;
+    var timer = setInterval(function () {
+      el.textContent = Math.min(current, score);
+      if (current >= score) clearInterval(timer);
+      current++;
+    }, Math.max(600 / Math.max(score, 1), 40));
+    setTimeout(function () { document.getElementById('meter-fill').style.width = (score / 15 * 100) + '%'; }, 60);
+  });
+})();
+</script>
+</body>
+</html>
