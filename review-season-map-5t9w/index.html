@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AAU Season Map | Coach Dennis Kane</title>
+<meta name="description" content="The 10 questions to ask any team before you pay, scored in 2 minutes, plus the shape of your kid's basketball year. Free from Coach Dennis Kane.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="The AAU Season Map | Coach Kane">
+<meta property="og:description" content="The 10 questions to ask any team before you pay, plus the shape of your kid's basketball year.">
+<meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<meta property="og:url" content="https://kanebasketballacademy.com/review-season-map-5t9w/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AAU Season Map | Coach Kane">
+<meta name="twitter:description" content="The 10 questions to ask any team before you pay, plus the shape of your kid's basketball year.">
+<meta name="twitter:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#151413">
+<style>
+  /* Night Session: Kane orange, Glow, Night, Court, Chalk, Ash */
+  :root{
+    --bg:#151413; --card:#242220; --card-2:#1C1B19; --border:#36332F;
+    --ink:#FAF8F5; --ink-body:#D3CDC5; --ink-dim:#A8A29B;
+    --accent:#D9560B; --accent-hover:#BF4A08; --glow:#F08A4B;
+    --accent-soft:rgba(217,86,11,0.16); --track:#2E2B28;
+    --font-head:'Space Grotesk','Inter',sans-serif; --font-body:'Inter',system-ui,sans-serif;
+    /* calendar colors */
+    --c-team:#D9560B; --c-aau:#F2C14E; --c-skill:#E9D8C4; --c-other:#5E8C7A; --c-rest:#3A3633; --c-league:#C99A6B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink-body); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:660px; margin:0 auto; padding:0 20px;}
+  .eyebrow{font-family:var(--font-head); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--glow); font-weight:700; margin:0 0 12px;}
+  h1,h2,h3{font-family:var(--font-head); font-weight:700; margin:0; color:var(--ink); letter-spacing:-.01em;}
+  p{margin:0 0 14px;}
+  strong{color:var(--ink);}
+  [hidden]{display:none !important;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} html{scroll-behavior:auto;} }
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--accent); color:#fff; border:none; font-family:var(--font-body); font-weight:600; font-size:16px; padding:16px 24px; border-radius:10px; cursor:pointer; text-decoration:none; transition:background .15s ease;}
+  .btn:hover{background:var(--accent-hover);}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .btn-dark{background:#151413; color:var(--ink);}
+  .btn-dark:hover{background:#000;}
+  .btn-ghost{background:transparent; border:1px solid var(--border); color:var(--ink);}
+  .btn-ghost:hover{background:var(--card); border-color:var(--accent);}
+  button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--glow); outline-offset:3px;}
+
+  .topbar{border-bottom:1px solid var(--border); background:var(--bg);}
+  .topbar .wrap{display:flex; align-items:center; gap:12px; padding-top:14px; padding-bottom:14px;}
+  .topbar img{width:30px; height:30px;}
+  .topbar .name{font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--ink); line-height:1.2;}
+  .topbar .name span{display:block; font-family:var(--font-body); font-weight:400; font-size:12px; color:var(--ink-dim);}
+
+  /* Cover */
+  .cover{position:relative; overflow:hidden; background:var(--card-2); border-bottom:1px solid var(--border);}
+  .cover::after{content:"MAP"; position:absolute; top:-4px; right:-12px; font-family:var(--font-head); font-weight:700; font-size:118px; line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px rgba(217,86,11,.30); pointer-events:none;}
+  .cover .wrap{position:relative; z-index:1; padding-top:36px; padding-bottom:30px;}
+  .cover h1{font-size:40px; line-height:1.05; margin-bottom:16px; max-width:14ch;}
+  .cover .sub{font-size:17px; color:var(--ink-dim); margin:0 0 20px; max-width:46ch;}
+  .cover ol{list-style:none; margin:0 0 24px; padding:0; counter-reset:c;}
+  .cover ol li{counter-increment:c; display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid var(--border); color:var(--ink); font-size:16px;}
+  .cover ol li::before{content:counter(c); font-family:var(--font-head); font-weight:700; color:var(--glow); min-width:14px;}
+  .byline{display:flex; gap:12px; align-items:center;}
+  .byline img{width:44px; height:44px; border-radius:50%; object-fit:cover; border:1px solid var(--border);}
+  .byline .by{font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--ink); margin:0;}
+  .byline .creds{font-size:12.5px; color:var(--ink-dim); margin:0; line-height:1.5;}
+
+  /* Intake */
+  .intake{padding:30px 0 70px;}
+  .step{display:none;}
+  .step.active{display:block; animation:fadeUp .4s ease both;}
+  .progress-label{font-family:var(--font-head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); font-weight:700; margin-bottom:10px;}
+  .progress-track{height:4px; background:var(--track); border-radius:4px; margin-bottom:28px; overflow:hidden;}
+  .progress-fill{height:100%; width:0; background:var(--accent); transition:width .3s ease;}
+  .q-topic{font-size:13px; color:var(--ink-dim); margin:0 0 6px;}
+  .q-text{font-size:24px; line-height:1.3; margin-bottom:22px;}
+  .options{display:flex; flex-direction:column; gap:10px;}
+  .opt{width:100%; text-align:left; padding:16px 18px; border-radius:12px; font-family:var(--font-body); font-weight:600; font-size:16px; cursor:pointer; border:1px solid var(--border); background:var(--card); color:var(--ink); transition:border-color .15s ease, background .15s ease;}
+  .opt:hover{border-color:var(--accent);}
+  .opt.selected{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .opt.unsure{color:var(--ink-dim); font-weight:500;}
+  .back{background:none; border:none; padding:0; margin-top:22px; font:inherit; font-size:14.5px; color:var(--ink-dim); cursor:pointer;}
+  .back:hover{color:var(--ink);}
+  .gate-sub{color:var(--ink-dim); font-size:16px; margin:-10px 0 24px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input{width:100%; padding:14px 15px; font-size:16px; font-family:inherit; background:var(--card); border:1px solid var(--border); border-radius:10px; color:var(--ink);}
+  .field input:focus{outline:none; border-color:var(--accent);}
+  .field input::placeholder{color:#6E6862;}
+  .form-error{color:var(--glow); font-size:14px; margin:4px 0 12px;}
+  .fine{font-size:13px; color:var(--ink-dim); margin:14px 0 0; text-align:center;}
+
+  /* Results */
+  .results{animation:fadeUp .5s ease both;}
+  .result-head{padding:48px 0 8px;}
+  .result-head h2{font-size:30px; line-height:1.15; margin-bottom:18px;}
+  .scorecard{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px 22px; text-align:center;}
+  .scorecard .big{font-family:var(--font-head); font-weight:700; font-size:84px; line-height:.95; color:var(--ink); letter-spacing:-.03em;}
+  .scorecard .big small{font-size:28px; color:var(--ink-dim); font-weight:500; letter-spacing:0;}
+  .scorecard .lab{font-size:13px; color:var(--ink-dim); margin:6px 0 14px;}
+  .pill{display:inline-block; font-family:var(--font-head); font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--glow); background:var(--accent-soft); border-radius:999px; padding:7px 14px;}
+  .meter{height:8px; background:var(--track); border-radius:8px; margin:18px 0 0; overflow:hidden;}
+  .meter i{display:block; height:100%; width:0; background:var(--accent); border-radius:8px; transition:width .9s ease;}
+  .bandnote{color:var(--ink); font-size:16px; margin:16px 0 0; text-align:left;}
+  .toc{background:var(--card-2); border:1px solid var(--border); border-radius:14px; padding:6px 18px; margin:16px 0 0;}
+  .toc a{display:flex; gap:16px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--ink); font-size:15.5px;}
+  .toc a:last-child{border-bottom:none;}
+  .toc a span{font-family:var(--font-head); font-weight:700; font-size:13px; color:var(--glow); min-width:48px;}
+
+  section.part{position:relative; padding-top:72px; scroll-margin-top:10px;}
+  .part-num{position:absolute; top:44px; right:0; font-family:var(--font-head); font-weight:700; font-size:120px; line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px rgba(217,86,11,.32); pointer-events:none;}
+  .part-head{position:relative; margin-bottom:24px;}
+  .part-head h2{font-size:28px; line-height:1.15; margin-bottom:10px; max-width:18ch; padding-right:110px;}
+  .part-head p{position:relative; color:var(--ink-dim); margin:0; max-width:48ch;}
+  .part-head p.eyebrow{color:var(--glow); margin-bottom:12px;}
+
+  /* Part 1 lines */
+  .line{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 18px 16px; margin-bottom:10px;}
+  .line.low{border-color:rgba(217,86,11,.6);}
+  .line .top{display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:6px;}
+  .line .k{font-family:var(--font-head); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--glow); font-weight:700;}
+  .line .pts{flex:none; font-family:var(--font-head); font-weight:700; font-size:13px; color:var(--ink); background:var(--track); border-radius:999px; padding:3px 10px;}
+  .line.low .pts{background:var(--accent); color:#fff;}
+  .line.unknown .pts{background:transparent; border:1px dashed var(--ink-dim); color:var(--ink-dim);}
+  .line h3{font-size:17.5px; line-height:1.35; margin-bottom:10px;}
+  .line .ask{font-size:15px; color:var(--ink-body); margin:0; padding:10px 12px; background:var(--card-2); border-left:3px solid var(--accent); border-radius:0 10px 10px 0;}
+  .line .ask b{display:block; font-family:var(--font-head); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--glow); margin-bottom:2px;}
+
+  .todo{background:var(--accent-soft); border:1px solid rgba(217,86,11,.45); border-radius:14px; padding:18px 18px 8px; margin:0 0 16px;}
+  .todo h3{font-size:18px; margin-bottom:8px;}
+  .todo p{font-size:15px; color:var(--ink); margin:0 0 10px;}
+
+  /* Locked rows */
+  .locked{margin-top:22px; background:var(--card-2); border:1px solid var(--border); border-radius:16px; padding:20px;}
+  .locked h3{font-size:19px; line-height:1.3; margin-bottom:6px;}
+  .locked > p{font-size:15px; color:var(--ink-dim); margin-bottom:14px;}
+  .lk{display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-top:1px solid var(--border);}
+  .lk svg{flex:none; width:18px; height:18px; margin-top:3px; color:var(--glow);}
+  .lk div{font-size:15px; color:var(--ink);}
+  .lk div span{display:block; font-size:13px; color:var(--ink-dim);}
+  .locked .btn{margin-top:12px;}
+
+  /* Part 2 calendar */
+  .ages{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px;}
+  .ages button{padding:12px 6px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--ink-dim); font-family:var(--font-body); font-weight:600; font-size:14px; cursor:pointer;}
+  .ages button.on{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .cal{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px 14px 16px;}
+  .bar{display:grid; grid-template-columns:repeat(12,1fr); gap:3px;}
+  .mo{display:flex; flex-direction:column; align-items:center; gap:6px;}
+  .mo i{display:block; width:100%; height:64px; border-radius:6px; transform-origin:50% 100%; transition:background .35s ease;}
+  .mo span{font-size:11px; color:var(--ink-dim); font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 14px; margin:16px 2px 0;}
+  .legend span{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--ink-body);}
+  .legend i{width:12px; height:12px; border-radius:3px;}
+  .t-team{background:var(--c-team);} .t-aau{background:var(--c-aau);} .t-skill{background:var(--c-skill);}
+  .t-other{background:var(--c-other);} .t-rest{background:var(--c-rest); box-shadow:inset 0 0 0 1px #4d4843;} .t-league{background:var(--c-league);}
+  .phases{margin-top:14px;}
+  .phase{display:grid; grid-template-columns:86px 1fr; gap:14px; padding:12px 2px; border-top:1px solid var(--border);}
+  .phase .w{font-family:var(--font-head); font-weight:700; font-size:13px; color:var(--glow);}
+  .phase p{margin:0; font-size:15px;}
+  .phase p b{color:var(--ink);}
+  .calnote{font-size:13px; color:var(--ink-dim); margin:12px 2px 0;}
+
+  .rules{margin-top:22px;}
+  .rule{display:grid; grid-template-columns:44px 1fr; gap:14px; padding:16px 0; border-top:1px solid var(--border);}
+  .rule .n{font-family:var(--font-head); font-weight:700; font-size:34px; line-height:1; color:transparent; -webkit-text-stroke:1.2px var(--glow);}
+  .rule h3{font-size:18px; margin-bottom:4px;}
+  .rule p{margin:0; font-size:15px;}
+  .rule.hit{background:var(--accent-soft); border-radius:12px; padding:16px 14px; margin:0 -14px 8px; border-top-color:transparent;}
+  .rule .flag{display:none; margin-top:8px; font-size:14px; color:var(--ink); font-weight:600;}
+  .rule.hit .flag{display:block;}
+
+  /* Offers */
+  .offers{display:flex; flex-direction:column; gap:14px; margin-top:72px;}
+  .offer{border-radius:18px; overflow:hidden; background:linear-gradient(150deg,#D9560B 0%,#B8460A 100%); color:#fff;}
+  .offer img{width:100%; height:190px; object-fit:cover; object-position:40% 45%; filter:saturate(.85);}
+  .offer .in{padding:26px 22px 24px;}
+  .offer .eyebrow{color:#FFE2CF;}
+  .offer h2{color:#fff; font-size:26px; line-height:1.15; margin-bottom:12px;}
+  .offer p{color:#FFF1E8; font-size:16px;}
+  .offer ul{list-style:none; margin:4px 0 20px; padding:0;}
+  .offer li{display:flex; gap:12px; padding:10px 0; border-top:1px solid rgba(255,255,255,.2); font-size:15.5px; color:#fff;}
+  .offer li b{font-family:var(--font-head); min-width:16px;}
+  .price{font-family:var(--font-head); font-weight:700; font-size:40px; line-height:1; margin:6px 0 4px;}
+  .price small{font-size:15px; font-weight:500; color:#FFE2CF;}
+  .offer .terms{font-size:13.5px; color:#FFE2CF; margin:0 0 18px;}
+  .offer .credit{font-size:12.5px; color:#FFE2CF; margin:14px 0 0; text-align:center;}
+  .second{display:grid; grid-template-columns:96px 1fr; gap:18px; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px;}
+  .second img{width:96px; height:auto; border-radius:6px; box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .second .eyebrow{font-size:11px; margin-bottom:6px;}
+  .second h3{font-size:19px; line-height:1.25; margin-bottom:8px;}
+  .second p{font-size:15px; margin-bottom:14px;}
+  .second p.p47{font-family:var(--font-head); font-weight:700; font-size:22px; color:var(--ink); margin:-2px 0 8px;}
+  .second .btn{padding:12px 16px; font-size:15px;}
+  .offers.audit-first .offer{order:-1;}
+
+  footer{margin-top:72px; padding:28px 0 40px; border-top:1px solid var(--border); text-align:center;}
+  footer .fl{font-family:var(--font-head); font-weight:700; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--glow); margin:0 0 10px;}
+  footer p{font-size:12.5px; color:var(--ink-dim); margin:0 0 6px;}
+
+  @media (min-width:720px){
+    .cover h1{font-size:54px;}
+    .mo i{height:84px;}
+  }
+  @media (max-width:380px){
+    .mo span{font-size:9.5px;}
+    .bar{gap:2px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <img src="/images/logo-kane-academy-white.png" alt="The Kane Academy" width="30" height="30">
+    <div class="name">The Kane Academy<span>The AAU Season Map</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="cover" id="cover">
+    <div class="wrap">
+      <p class="eyebrow">Free for Basketball Parents</p>
+      <h1>The AAU Season Map</h1>
+      <p class="sub">Before you write the next check, take 2 minutes. You get two things:</p>
+      <ol>
+        <li>The 10 questions to ask any team before you pay, scored.</li>
+        <li>The shape of your kid's basketball year: when to play, train and rest.</li>
+      </ol>
+      <div class="byline">
+        <img src="assets/kane-face.webp" alt="Coach Dennis Kane" width="44" height="44">
+        <div>
+          <p class="by">Coach Dennis Kane</p>
+          <p class="creds">440 Wins · CIF Champion · 71 College Players · 12 Pros · 1,000+ Parent Conversations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intake" id="intake">
+    <div class="wrap" id="steps"></div>
+  </section>
+
+  <div class="results" id="results" hidden>
+    <div class="wrap">
+
+      <div class="result-head">
+        <p class="eyebrow">Your Season Map</p>
+        <h2 id="hello">Here is your Season Map.</h2>
+        <div class="scorecard">
+          <div class="big"><span id="scoreNum">0</span><small> / 50</small></div>
+          <div class="lab">Your Team Audit score</div>
+          <span class="pill" id="bandPill"></span>
+          <div class="meter"><i id="meter"></i></div>
+          <p class="bandnote" id="bandNote"></p>
+        </div>
+        <nav class="toc" aria-label="Season Map parts">
+          <a href="#part1"><span>Part 1</span>Your 10 answers, and what to ask</a>
+          <a href="#part2"><span>Part 2</span>The shape of your kid's year</a>
+        </nav>
+      </div>
+
+      <!-- Part 1 -->
+      <section class="part" id="part1">
+        <div class="part-num" aria-hidden="true">10</div>
+        <div class="part-head">
+          <p class="eyebrow">Part 1 · The Team Audit</p>
+          <h2>Your 10 answers.</h2>
+          <p>Each line shows your points and the exact question to ask. The lines in orange are the ones to raise first.</p>
+        </div>
+        <div class="todo" id="todo" hidden>
+          <h3 id="todoHead">Questions to ask before you pay</h3>
+          <p>You said "Not sure yet" on these. That is not a bad answer. It means you have homework before you write the check.</p>
+        </div>
+        <div id="lines"></div>
+
+        <div class="locked">
+          <p class="eyebrow">What the score does not tell you</p>
+          <h3>The score shows where to look. It does not tell you what to say.</h3>
+          <p>Most parents lose ground here. They see a problem, then say the wrong thing to the coach, or pay for one more season out of habit. The Basketball Parent IQ System covers the next step.</p>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The word for word conversations<span>Asking to watch practice, playing time, the full cost, and talking to other parents</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The decision rules<span>What to do when a line scores low: stay, adjust or change</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The money worksheet<span>Your real all in cost, and how much is too much for your family</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The Day 10 check in<span>Score the program again after talking to two bench parents</span></div></div>
+          <a class="btn" href="/services/playbooks/">Get the Basketball Parent IQ System · $47 →</a>
+        </div>
+      </section>
+
+      <!-- Part 2 -->
+      <section class="part" id="part2">
+        <div class="part-num" aria-hidden="true">12</div>
+        <div class="part-head">
+          <p class="eyebrow">Part 2 · The Year at a Glance</p>
+          <h2>The shape of your kid's year.</h2>
+          <p>This is the shape Coach Kane uses: when to play, when to train and when to rest. Tap an age to see how it changes.</p>
+        </div>
+
+        <div class="ages" role="group" aria-label="Choose an age">
+          <button type="button" data-age="k5">5th grade and under</button>
+          <button type="button" data-age="ms">Middle school</button>
+          <button type="button" data-age="hs">High school</button>
+        </div>
+
+        <div class="cal" aria-live="polite">
+          <div class="bar" id="bar"></div>
+          <div class="legend" id="legend"></div>
+          <div class="phases" id="phases"></div>
+          <p class="calnote">Season dates move a month or so by state and league. Keep the shape, and slide the months to fit your calendar.</p>
+        </div>
+
+        <div class="rules">
+          <p class="eyebrow">Coach Kane's year rules</p>
+          <div class="rule" id="rule1">
+            <div class="n">1</div>
+            <div><h3>6 practices for every game.</h3><p>Games show the skills your kid already has. Practice builds new ones. Count both before you sign up.</p><p class="flag" id="flag1"></p></div>
+          </div>
+          <div class="rule" id="rule2">
+            <div class="n">2</div>
+            <div><h3>4 to 6 weeks off basketball every year.</h3><p>No practices, no games, no training. This is when bodies heal and the hunger for the game comes back.</p><p class="flag" id="flag2"></p></div>
+          </div>
+          <div class="rule" id="rule3">
+            <div class="n">3</div>
+            <div><h3>One full rest day every week.</h3><p>No organized sports at all that day. Not negotiable.</p></div>
+          </div>
+          <div class="rule" id="rule4">
+            <div class="n">4</div>
+            <div><h3>A second sport through middle school.</h3><p>Kids who play more than one sport build a better body, get hurt less and keep their love for the game.</p><p class="flag" id="flag4"></p></div>
+          </div>
+        </div>
+
+        <div class="locked">
+          <p class="eyebrow">What the shape does not tell you</p>
+          <h3>This is the shape of a year. It is not your kid's plan.</h3>
+          <p>Your kid's plan depends on their team, their body, how much they love the game right now and what your family can afford. That part is not one size fits all.</p>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The weekly skill plan<span>Five focused sessions of 30 to 45 minutes, and the rest day built in. In the $47 System.</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The burnout checklist<span>The signs to watch for, and when to pull back. In the $47 System.</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>Your kid's year, month by month<span>Which tournaments, which training and which rest weeks, built by Coach Kane for your kid. In the Future Success Audit.</span></div></div>
+        </div>
+      </section>
+
+      <!-- Offers -->
+      <div class="offers" id="offers">
+        <section class="second">
+          <img src="assets/parent-iq-cover.webp" alt="Cover of The Basketball Parent IQ System" width="96" height="125" loading="lazy">
+          <div>
+            <p class="eyebrow">Start tonight</p>
+            <h3>The Basketball Parent IQ System</h3>
+            <p class="p47">$47</p>
+            <p>Fourteen days. Twenty minutes a night. What to say, what to spend and what to decide, on the day you need it. Includes the full AAU, Recruiting and NIL Playbook.</p>
+            <a class="btn btn-ghost" href="/services/playbooks/">See the System →</a>
+          </div>
+        </section>
+
+        <section class="offer">
+          <img src="assets/coach-sideline.webp" alt="Coach Kane kneeling on the sideline next to his bench during a game" width="960" height="480" loading="lazy">
+          <div class="in">
+            <p class="eyebrow">Want Coach Kane to build it with you?</p>
+            <h2>Get your kid's year, built by Coach Kane.</h2>
+            <p>One conversation about your kid. Then a written plan for the months ahead: which team, which tournaments, what to train and when to rest.</p>
+            <ul>
+              <li><b>1</b><span>An honest look at your kid's team, role and schedule.</span></li>
+              <li><b>2</b><span>A month by month plan for playing, training and rest.</span></li>
+              <li><b>3</b><span>The three things to work on first, in writing.</span></li>
+            </ul>
+            <div class="price">$300 <small>Future Success Audit</small></div>
+            <p class="terms">Written report within 48 hours, or a full refund. Coach Kane takes 4 families a week.</p>
+            <a class="btn btn-dark" href="/services/audits/">Book a Future Success Audit →</a>
+            <p class="credit">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <p class="fl">The Kane Academy · The Work Over the Hype</p>
+        <p>© 2026 The Kane Academy</p>
+        <p>We use your email to send your Season Map and basketball parenting emails. Reply to any email and we will remove you.</p>
+      </footer>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  // Same Google Sheet web app the Confidence Score page uses.
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+
+  var AGES = [
+    { v: 'k5', t: '5th grade or younger' },
+    { v: 'ms', t: 'Middle school (6th to 8th)' },
+    { v: 'hs', t: 'High school (9th to 12th)' }
+  ];
+  var MONTHS = [
+    { v: 'm6', t: '6 months or fewer' },
+    { v: 'm9', t: '7 to 9 months' },
+    { v: 'm11', t: '10 or 11 months' },
+    { v: 'm12', t: 'All 12 months' }
+  ];
+
+  // The 10 questions. a = the question to ask, written for the parent to say out loud.
+  var LINES = [
+    { k: 'Practice quality', q: 'You watched two full practices. Did the coach teach skills, instead of running scrimmages most of the time?',
+      a: '"Can we watch two practices before we commit?"' },
+    { k: 'Practice to game ratio', q: 'Count the practices and the games for the season. Are there at least 6 practices for every game?',
+      a: '"How many practices do we get for every game?"' },
+    { k: 'Coach communication', q: 'Did the coach explain the schedule, expectations and the development plan before the season started?',
+      a: '"What does a normal week look like, and what will you tell parents before problems start?"' },
+    { k: 'Playing time', q: 'Did the coach explain how playing time works, and does the coach follow it?',
+      a: '"How do you decide minutes, and how does every player get meaningful time to develop?"' },
+    { k: 'Your kid\'s development', q: 'Ask what your kid will work on this season. Did the coach have a real answer for your kid?',
+      a: '"What will my child work on and get better at this season?"' },
+    { k: 'Parent culture', q: 'Sit with the team parents at one game. Was it calm and supportive?',
+      a: 'Sit with the team parents for one full game and listen.', doIt: true },
+    { k: 'The full cost', q: 'Did you get the full season cost before you paid: fees, travel, hotels and gear?',
+      a: '"Beyond the team fee, what is the all in cost for the full season?"' },
+    { k: 'Players come back', q: 'Do most players come back to this program the next season?',
+      a: '"How many players came back from last season?"' },
+    { k: 'Coach background', q: 'Does the coach have real basketball experience, playing or coaching, that you can check?',
+      a: '"Where have you played or coached, and for how long?"' },
+    { k: 'End of the bench', q: 'Talk to two parents whose kids are not starters. Do they say their kid got better?',
+      a: '"Not just in games, has your kid gotten better as a player this season?"' }
+  ];
+  var ANS = [
+    { v: 5, t: 'Yes' },
+    { v: 3, t: 'Sometimes' },
+    { v: 1, t: 'No' },
+    { v: 0, t: 'Not sure yet', unsure: true }
+  ];
+
+  var BANDS = [
+    { min: 40, name: 'Strong program', note: 'Most lines check out. Keep watching it each season, because programs change. Look at any line under 5 points and ask about it.' },
+    { min: 30, name: 'Solid, with things to raise', note: 'The basics are there. Pick the lowest line below and raise it with the coach, calmly and in private, before the next payment.' },
+    { min: 20, name: 'Real concerns', note: 'Several lines are low. Have the conversation with the coach before you pay for another season. Changing teams is one option, not the first one.' },
+    { min: 0, name: 'Big gaps', note: 'Most lines are low or unknown. Before you write the next check, get honest answers to the questions below, or get a second opinion from someone who does not profit from your decision.' }
+  ];
+
+  // Year shapes: 12 months starting in September
+  var MO = ['Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'];
+  var TYPES = {
+    team: 'School or team season', aau: 'AAU or club', skill: 'Skill work', other: 'Another sport', rest: 'Rest', league: 'Local league'
+  };
+  var SHAPES = {
+    k5: { m: ['other','other','other','league','league','league','other','other','other','skill','skill','rest'],
+      p: [['Fall','<b>Another sport.</b> Soccer, football or flag football. Build the athlete first.'],
+          ['Winter','<b>Local league or rec.</b> Fun, lots of touches, no travel team yet.'],
+          ['Spring','<b>Another sport.</b> Baseball, track or swimming.'],
+          ['Summer','<b>Fun skill work, then rest.</b> A camp or two, driveway games, then a real break.']] },
+    ms: { m: ['other','other','skill','team','team','team','aau','aau','aau','skill','rest','other'],
+      p: [['Fall','<b>Another sport, then skills.</b> A fall sport, then a few weeks of footwork and weak hand work before tryouts.'],
+          ['Winter','<b>The school or team season.</b> Full focus on role, defense and effort.'],
+          ['Spring','<b>Local AAU, if they want it.</b> A team that practices far more than it plays. No national travel.'],
+          ['Summer','<b>Skills, then a real break.</b> Focused skill work, then 4 weeks off basketball.']] },
+    hs: { m: ['skill','skill','team','team','team','team','rest','aau','aau','aau','aau','rest'],
+      p: [['Fall','<b>Skills and strength.</b> Weak spots from last season, plus strength work before tryouts in November.'],
+          ['Winter','<b>The high school season.</b> Role, defense and earning the coach\'s trust.'],
+          ['Spring','<b>Rest first, then AAU.</b> 2 to 3 weeks off after the season, then a team that develops players.'],
+          ['Summer','<b>AAU, then rest.</b> Finish the summer with 2 to 3 more weeks off before fall.']] }
+  };
+
+  var answers = { lines: [] };
+  var stepsEl = document.getElementById('steps');
+  var TOTAL = 2 + LINES.length;
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  // Build the question screens
+  var html = '';
+  function stepHtml(i, label, topic, q, name, opts, back) {
+    var pct = Math.round(((i + 1) / TOTAL) * 100);
+    return '<div class="step' + (i === 0 ? ' active' : '') + '" data-step="' + i + '">' +
+      '<div class="progress-label">' + label + '</div>' +
+      '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      (topic ? '<p class="q-topic">' + topic + '</p>' : '') +
+      '<h2 class="q-text">' + q + '</h2>' +
+      '<div class="options" data-name="' + name + '">' + opts.map(function (o) {
+        return '<button type="button" class="opt' + (o.unsure ? ' unsure' : '') + '" data-value="' + o.v + '">' + o.t + '</button>';
+      }).join('') + '</div>' +
+      (back ? '<button type="button" class="back" data-back>← Back</button>' : '') +
+    '</div>';
+  }
+  html += stepHtml(0, 'About your kid · 1 of 2', '', 'What grade is your player in?', 'age', AGES, false);
+  html += stepHtml(1, 'About your kid · 2 of 2', '', 'How many months a year does your kid play organized basketball?', 'months', MONTHS, true);
+  LINES.forEach(function (l, i) {
+    html += stepHtml(i + 2, 'Team Audit · ' + (i + 1) + ' of 10', esc(l.k), esc(l.q), 'line' + i, ANS, true);
+  });
+  html += '<div class="step" data-step="' + (TOTAL) + '">' +
+    '<div class="progress-label">Last step</div>' +
+    '<div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>' +
+    '<h2 class="q-text">Your Season Map is ready.</h2>' +
+    '<p class="gate-sub">Tell us where to send it. Your score and your kid\'s year open on this page right away, and we email you a link to come back to it.</p>' +
+    '<form id="gate" novalidate>' +
+      '<div class="field"><label for="firstName">First name</label><input type="text" id="firstName" autocomplete="given-name" placeholder="Your first name"></div>' +
+      '<div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@email.com"></div>' +
+      '<p class="form-error" id="formError" hidden>Please enter your first name and a real email.</p>' +
+      '<button type="submit" class="btn" id="submitBtn">Show my Season Map →</button>' +
+    '</form>' +
+    '<p class="fine">No spam. Reply to any email and we will remove you.</p>' +
+    '<button type="button" class="back" data-back>← Back</button>' +
+  '</div>';
+  stepsEl.innerHTML = html;
+
+  var steps = stepsEl.querySelectorAll('.step');
+  var current = 0;
+  function showStep(i) {
+    steps[current].classList.remove('active');
+    current = i;
+    steps[current].classList.add('active');
+    var input = steps[current].querySelector('input');
+    if (input && window.innerWidth > 720) input.focus();
+    var top = document.getElementById('intake').getBoundingClientRect().top + window.scrollY - 10;
+    if (window.scrollY > top) window.scrollTo(0, top);
+  }
+
+  stepsEl.addEventListener('click', function (e) {
+    var back = e.target.closest('[data-back]');
+    if (back) { if (current > 0) showStep(current - 1); return; }
+    var btn = e.target.closest('.opt');
+    if (!btn) return;
+    var group = btn.parentNode;
+    group.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    var name = group.getAttribute('data-name');
+    var val = btn.getAttribute('data-value');
+    if (name.indexOf('line') === 0) answers.lines[+name.slice(4)] = +val;
+    else answers[name] = val;
+    setTimeout(function () { showStep(current + 1); }, 260);
+  });
+
+  function bandFor(score) {
+    for (var i = 0; i < BANDS.length; i++) if (score >= BANDS[i].min) return BANDS[i];
+    return BANDS[BANDS.length - 1];
+  }
+
+  function renderLines() {
+    var unsure = 0;
+    var out = LINES.map(function (l, i) {
+      var v = answers.lines[i];
+      var cls = v === 0 ? 'unknown' : (v <= 3 ? 'low' : '');
+      if (v === 0) unsure++;
+      var pts = v === 0 ? 'Ask first' : v + ' / 5';
+      var label = v === 0 ? 'Find out before you pay' : (v <= 3 ? (l.doIt ? 'Do this before the next season' : 'Raise this with the coach') : 'Keep checking it');
+      return '<div class="line ' + cls + '">' +
+        '<div class="top"><span class="k">' + (i + 1) + ' · ' + esc(l.k) + '</span><span class="pts">' + pts + '</span></div>' +
+        '<h3>' + esc(l.q) + '</h3>' +
+        '<p class="ask"><b>' + label + '</b>' + esc(l.a) + '</p>' +
+      '</div>';
+    }).join('');
+    document.getElementById('lines').innerHTML = out;
+    var todo = document.getElementById('todo');
+    if (unsure) {
+      todo.hidden = false;
+      document.getElementById('todoHead').textContent = unsure === 1 ? '1 question to ask before you pay' : unsure + ' questions to ask before you pay';
+    }
+    return unsure;
+  }
+
+  function renderShape(age) {
+    var s = SHAPES[age];
+    document.querySelectorAll('.ages button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-age') === age); });
+    document.getElementById('bar').innerHTML = s.m.map(function (t, i) {
+      return '<div class="mo"><i class="t-' + t + '" title="' + MO[i] + ': ' + TYPES[t] + '"></i><span>' + MO[i] + '</span></div>';
+    }).join('');
+    var used = [];
+    s.m.forEach(function (t) { if (used.indexOf(t) === -1) used.push(t); });
+    document.getElementById('legend').innerHTML = used.map(function (t) {
+      return '<span><i class="t-' + t + '"></i>' + TYPES[t] + '</span>';
+    }).join('');
+    document.getElementById('phases').innerHTML = s.p.map(function (p) {
+      return '<div class="phase"><div class="w">' + p[0] + '</div><p>' + p[1] + '</p></div>';
+    }).join('');
+  }
+  document.querySelector('.ages').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-age]');
+    if (b) renderShape(b.getAttribute('data-age'));
+  });
+
+  function flagRules() {
+    var r2 = document.getElementById('rule2'), r1 = document.getElementById('rule1'), r4 = document.getElementById('rule4');
+    if (answers.months === 'm12') {
+      r2.classList.add('hit');
+      document.getElementById('flag2').textContent = 'You said your kid plays all 12 months. Start here.';
+    } else if (answers.months === 'm11') {
+      r2.classList.add('hit');
+      document.getElementById('flag2').textContent = 'You said 10 or 11 months. Check that the time off is a real 4 to 6 weeks.';
+    }
+    if (answers.lines[1] !== undefined && answers.lines[1] <= 3) {
+      r1.classList.add('hit');
+      document.getElementById('flag1').textContent = answers.lines[1] === 0 ? 'You are not sure of the ratio yet. Ask before you pay.' : 'Your answer on question 2 says this one needs work.';
+    }
+    if (answers.age !== 'hs' && (answers.months === 'm12' || answers.months === 'm11')) {
+      r4.classList.add('hit');
+      document.getElementById('flag4').textContent = 'With basketball 10 or more months a year, there is little room for a second sport.';
+    }
+  }
+
+  document.addEventListener('submit', function (e) {
+    if (e.target.id !== 'gate') return;
+    e.preventDefault();
+    var name = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var err = document.getElementById('formError');
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; return; }
+    for (var i = 0; i < LINES.length; i++) if (answers.lines[i] === undefined) { showStep(i + 2); return; }
+    if (!answers.age || !answers.months) { showStep(0); return; }
+    err.hidden = true;
+    document.getElementById('submitBtn').disabled = true;
+
+    var score = answers.lines.reduce(function (a, b) { return a + b; }, 0);
+    var band = bandFor(score);
+    var ageLabel = AGES.filter(function (a) { return a.v === answers.age; })[0].t;
+    var monthLabel = MONTHS.filter(function (m) { return m.v === answers.months; })[0].t;
+    var lineText = LINES.map(function (l, i) {
+      var v = answers.lines[i]; return (i + 1) + ' ' + l.k + ': ' + (v === 0 ? 'not sure' : v);
+    });
+
+    // Save the lead to Kane's Google Sheet, in the same columns the quiz uses.
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        firstName: name,
+        email: email,
+        guide: 'map-TEST',
+        score: score,
+        band: band.name,
+        checkedNumbers: ageLabel + ' | ' + monthLabel,
+        checkedText: lineText.join(' | '),
+        path: 'season-map-TEST'
+      })
+    }).catch(function (x) { console.error('Could not save to the sheet:', x); });
+
+    document.getElementById('hello').textContent = name + ', here is your Season Map.';
+    document.getElementById('scoreNum').textContent = score;
+    document.getElementById('bandPill').textContent = band.name;
+    document.getElementById('bandNote').textContent = band.note;
+    renderLines();
+    renderShape(answers.age);
+    flagRules();
+    if (score < 30 || answers.months === 'm12') document.getElementById('offers').classList.add('audit-first');
+
+    document.getElementById('cover').hidden = true;
+    document.getElementById('intake').hidden = true;
+    document.getElementById('results').hidden = false;
+    window.scrollTo(0, 0);
+    setTimeout(function () { document.getElementById('meter').style.width = (score * 2) + '%'; }, 120);
+  });
+})();
+</script>
+</body>
+</html>
