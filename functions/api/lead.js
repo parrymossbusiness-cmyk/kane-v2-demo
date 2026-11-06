@@ -23,6 +23,15 @@ const DEFAULT_TAGS = {
   'scorecard': 'Lead: Parent Scorecard'
 };
 
+// guide value -> Kit sequence ID. Leads are added to these only when SEQUENCES_LIVE is true.
+// Keep it false until the emails in Kit are published, or Kit skips the unpublished emails.
+const SEQUENCES_LIVE = false;
+const SEQUENCES = {
+  'map': 2960260,            // MAP: Season Map follow-up
+  'preseason': 2960311,      // QUIZ: Parent IQ Quiz and Tryout Blueprint follow-up
+  'blueprint-page': 2960311
+};
+
 // Kit custom fields. Created in Kit automatically if missing.
 const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url'];
 
@@ -129,6 +138,10 @@ async function addToKit(env, lead) {
   if (tagName) {
     const id = await tagId(env, tagName);
     await kit(env, '/tags/' + id + '/subscribers', 'POST', { email_address: lead.email });
+  }
+  const seq = SEQUENCES[lead.guide];
+  if (SEQUENCES_LIVE && seq) {
+    await kit(env, '/sequences/' + seq + '/subscribers', 'POST', { email_address: lead.email });
   }
   return tagName || 'no tag for guide ' + lead.guide;
 }
