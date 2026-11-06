@@ -25,7 +25,7 @@ const DEFAULT_TAGS = {
 
 // guide value -> Kit sequence ID. Leads are added to these only when SEQUENCES_LIVE is true.
 // Keep it false until the emails in Kit are published, or Kit skips the unpublished emails.
-const SEQUENCES_LIVE = false;
+const SEQUENCES_LIVE = true;
 const SEQUENCES = {
   'map': 2960260,            // MAP: Season Map follow-up
   'preseason': 2960311,      // QUIZ: Parent IQ Quiz and Tryout Blueprint follow-up
