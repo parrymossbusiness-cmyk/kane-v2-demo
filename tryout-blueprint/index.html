@@ -74,10 +74,10 @@
   </main>
   <footer class="footer wrap"><p>© 2026 The Kane Academy</p><details><summary>Your email &amp; privacy</summary><p>We use the email you submit to send you this guide and basketball-parenting emails from The Kane Academy. Reply to any email and we will remove you. No child’s personal information is requested on this form.</p></details></footer>
 
+  <script src="/js/lead.js"></script>
   <script>
   (function () {
-    // Same Google Sheet web app the Confidence Score page uses.
-    var SHEET_URL = "https://script.google.com/macros/s/AKfycbySUOM1WH_X01EIl94VukpBiRRnQqlxtE_BkqRX5KFm3HEVxUzzY9Ynks4TmWT1lJH2bg/exec";
+    // Leads are saved by /js/lead.js to the main sheet and Kit.
     var form = document.getElementById('signup-form');
     if (!form) return;
     form.addEventListener('submit', function (e) {
@@ -92,21 +92,16 @@
       err.style.display = 'none';
       var btn = form.querySelector('button');
       btn.disabled = true;
-      fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          firstName: name,
-          email: email,
-          guide: 'blueprint-page',
-          score: '',
-          band: '',
-          checkedNumbers: '',
-          checkedText: '',
-          path: 'blueprint-signup'
-        })
-      }).catch(function (x) { console.error('Could not save to the sheet:', x); });
+      window.KaneLead.send({
+        firstName: name,
+        email: email,
+        guide: 'blueprint-page',
+        score: '',
+        band: '',
+        checkedNumbers: '',
+        checkedText: '',
+        path: 'blueprint-signup'
+      });
       form.hidden = true;
       document.getElementById('success').hidden = false;
     });

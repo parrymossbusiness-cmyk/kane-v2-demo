@@ -387,10 +387,10 @@
   </div>
 </main>
 
+<script src="/js/lead.js"></script>
 <script>
 (function () {
-  // Same Google Sheet web app the Confidence Score page uses.
-  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
+  // Leads are saved by /js/lead.js (sheet + Kit).
 
   var AGES = [
     { v: 'k5', t: '5th grade or younger' },
@@ -620,24 +620,33 @@
       var v = answers.lines[i]; return (i + 1) + ' ' + l.k + ': ' + (v === 0 ? 'not sure' : v);
     });
 
-    // Save the lead to Kane's Google Sheet, in the same columns the quiz uses.
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({
-        firstName: name,
-        email: email,
-        guide: 'map',
-        score: score,
-        band: band.name,
-        checkedNumbers: ageLabel + ' | ' + monthLabel,
-        checkedText: lineText.join(' | '),
-        path: 'season-map'
-      })
-    }).catch(function (x) { console.error('Could not save to the sheet:', x); });
+    // Save the lead to Kane's Google Sheet and Kit, in the same columns the quiz uses.
+    window.KaneLead.send({
+      firstName: name,
+      email: email,
+      guide: 'map',
+      score: score,
+      band: band.name,
+      checkedNumbers: ageLabel + ' | ' + monthLabel,
+      checkedText: lineText.join(' | '),
+      path: 'season-map',
+      resultUrl: resultLink(name)
+    });
 
-    document.getElementById('hello').textContent = name + ', here is your Season Map.';
+    showResults(name);
+  });
+
+  // A personal link that reopens this parent's map with their answers.
+  // Format: /map/?r=<age>.<months>.<10 digits>&n=<first name>
+  function resultLink(name) {
+    return 'https://kanebasketballacademy.com/map/?r=' + answers.age + '.' + answers.months + '.' +
+      answers.lines.join('') + '&n=' + encodeURIComponent(name);
+  }
+
+  function showResults(name) {
+    var score = answers.lines.reduce(function (a, b) { return a + b; }, 0);
+    var band = bandFor(score);
+    document.getElementById('hello').textContent = name ? name + ', here is your Season Map.' : 'Here is your Season Map.';
     document.getElementById('scoreNum').textContent = score;
     document.getElementById('bandPill').textContent = band.name;
     document.getElementById('bandNote').textContent = band.note;
@@ -651,7 +660,24 @@
     document.getElementById('results').hidden = false;
     window.scrollTo(0, 0);
     setTimeout(function () { document.getElementById('meter').style.width = (score * 2) + '%'; }, 120);
-  });
+  }
+
+  // Reopen a saved map from the email link.
+  (function restore() {
+    var p = new URLSearchParams(window.location.search);
+    var r = p.get('r');
+    if (!r) return;
+    var parts = r.split('.');
+    if (parts.length !== 3) return;
+    var age = parts[0], months = parts[1], digits = parts[2];
+    var okAge = AGES.some(function (a) { return a.v === age; });
+    var okMonths = MONTHS.some(function (m) { return m.v === months; });
+    if (!okAge || !okMonths || !/^[0135]{10}$/.test(digits)) return;
+    answers.age = age;
+    answers.months = months;
+    answers.lines = digits.split('').map(Number);
+    showResults((p.get('n') || '').slice(0, 40));
+  })();
 })();
 </script>
 </body>
