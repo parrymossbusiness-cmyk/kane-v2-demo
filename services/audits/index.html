@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Future Success Audit — $300 | The Kane Academy</title>
+<title>Future Success Audit or AAU Plan, $300 | The Kane Academy</title>
 <meta name="description" content="Book a 50-minute call with Coach Dennis Kane for a direct read on your kid's AAU, middle school, or high school situation. Three priorities with solutions, written report within 48 hours.">
 <link rel="canonical" href="https://kanebasketballacademy.com/services/audits/">
 
-<meta property="og:title" content="Future Success Audit — $300 | The Kane Academy">
+<meta property="og:title" content="Future Success Audit or AAU Plan, $300 | The Kane Academy">
 <meta property="og:description" content="Book a 50-minute call with Coach Dennis Kane for a direct read on your kid's AAU, middle school, or high school situation. Three priorities with solutions, written report within 48 hours.">
 <meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
 <meta property="og:type" content="product">
 <meta property="og:url" content="https://kanebasketballacademy.com/services/audits/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Future Success Audit — $300 | The Kane Academy">
+<meta name="twitter:title" content="Future Success Audit or AAU Plan, $300 | The Kane Academy">
 <meta name="twitter:description" content="Book a 50-minute call with Coach Dennis Kane for a direct read on your kid's AAU, middle school, or high school situation. Three priorities with solutions, written report within 48 hours.">
 <meta name="twitter:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
 
@@ -413,6 +413,20 @@
       font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--orange); margin-bottom: 18px; text-align: center;
     }
+
+    /* Two audit options */
+    .options { display: grid; gap: 14px; margin: 8px 0 40px; scroll-margin-top: 16px; }
+    .option { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; scroll-margin-top: 16px; }
+    .option.featured { border: 2px solid var(--orange); }
+    .option .opt-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+    .option h2 { font-family: 'Fraunces', Georgia, serif; font-size: 1.45rem; line-height: 1.2; color: var(--navy); margin-bottom: 8px; }
+    .option p { color: var(--text); font-size: 0.98rem; margin-bottom: 14px; }
+    .option ul { list-style: none; margin: 0 0 18px; padding: 0; }
+    .option li { display: flex; gap: 10px; padding: 7px 0; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--text); }
+    .option li::before { content: "\2713"; color: var(--green); font-weight: 700; }
+    .option .opt-price { font-family: 'Fraunces', Georgia, serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 12px; }
+    .option .opt-price span { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; color: var(--muted); }
+    .options-note { font-size: 0.85rem; color: var(--muted); text-align: center; margin: -26px 0 40px; }
   </style>
 </head>
 <body>
@@ -433,10 +447,38 @@
       <span>One 50-Minute Call</span> &bull; <span>$300</span>
     </div>
 
-    <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="cta-btn">
-      Book Your Audit, $300
+    <a href="#options" class="cta-btn">
+      Choose Your Audit, $300
     </a>
-    <p class="guarantee-sub">Three priorities with solutions &bull; Written report within 48 hours, or a full refund</p>
+    <p class="guarantee-sub">Two options, same price &bull; Written report within 48 hours, or a full refund</p>
+
+    <div class="options" id="options">
+      <section class="option" id="read">
+        <p class="opt-label">Option 1</p>
+        <h2>The Future Success Audit</h2>
+        <p>An honest read on where your kid stands right now, and what to do first.</p>
+        <ul>
+          <li>One 50 minute call with Coach Kane</li>
+          <li>The real problem versus what it looks like from the sideline</li>
+          <li>Three priorities, each with a solution, in writing</li>
+        </ul>
+        <div class="opt-price">$300 <span>one call &bull; written report</span></div>
+        <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400?client_reference_id=audit-future-success" class="cta-btn">Book the Future Success Audit, $300</a>
+      </section>
+      <section class="option featured" id="aau-plan">
+        <p class="opt-label">Option 2</p>
+        <h2>The AAU Plan</h2>
+        <p>Your kid's basketball year, month by month, built by Coach Kane for your kid.</p>
+        <ul>
+          <li>One 50 minute call with Coach Kane</li>
+          <li>Which team and which tournaments are worth it</li>
+          <li>A written month by month plan: when to play, when to train and when to rest</li>
+        </ul>
+        <div class="opt-price">$300 <span>one call &bull; written plan</span></div>
+        <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400?client_reference_id=audit-aau-plan" class="cta-btn">Book the AAU Plan, $300</a>
+      </section>
+    </div>
+    <p class="options-note">Both come with a written report within 48 hours of your call, or a full refund.</p>
 
     <section class="testimonial">
       <div class="vt-media">
@@ -471,11 +513,11 @@
           <div class="step-num">3</div>
           <div class="item-content">
             <h3>Within 48 hours</h3>
-            <p>A written Audit Report lands in your inbox within 48 hours of your call: the read, the three priorities and their solutions, and what a full development plan would cover if you went further. If it does not arrive within 48 hours, you get a full refund.</p>
+            <p>Your written report lands in your inbox within 48 hours of your call. The Future Success Audit gives you the read, the three priorities and their solutions. The AAU Plan gives you your kid's year, month by month. If it does not arrive within 48 hours, you get a full refund.</p>
           </div>
         </li>
       </ul>
-      <p class="credit-note">The $300 Audit fee credits in full toward the Kane Development System if you enroll within 14 days of your audit.</p>
+      <p class="credit-note">Either $300 audit fee credits in full toward the Kane Development System if you enroll within 14 days of your audit.</p>
     </section>
 
     <div class="quote-box">
@@ -511,6 +553,10 @@
     <section class="card faq">
       <h2>Audit questions</h2>
       <details>
+        <summary>Which option should I pick?</summary>
+        <p>Pick the Future Success Audit if something is wrong right now and you want an honest read and what to do first. Pick the AAU Plan if you are planning the year: which team, which tournaments, and when to train and rest. Not sure? Book either one and tell Coach Kane on the call.</p>
+      </details>
+      <details>
         <summary>What if we don't upgrade to the Kane Development System afterward?</summary>
         <p>Nothing is owed and nothing changes. The Audit stands on its own: you keep the call, the three priorities, and the written report whether or not you ever enroll in the Kane Development System. The $300 credit toward the full program is only available if you enroll within 14 days of your audit.</p>
       </details>
@@ -529,8 +575,8 @@
     </section>
 
     <div class="bottom-cta">
-      <a href="https://buy.stripe.com/6oU9AUgjx9jq1aL1pwds400" class="cta-btn">
-        Book Your Audit, $300
+      <a href="#options" class="cta-btn">
+        Choose Your Audit, $300
       </a>
       <p class="guarantee-sub">Secure Checkout via Stripe &bull; Report within 48 hours, or a full refund</p>
     </div>

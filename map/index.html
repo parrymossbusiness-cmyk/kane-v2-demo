@@ -9,7 +9,7 @@
 <meta property="og:title" content="The AAU Season Map | Coach Kane">
 <meta property="og:description" content="The 10 questions to ask any team before you pay, plus the shape of your kid's basketball year.">
 <meta property="og:image" content="https://kanebasketballacademy.com/images/og-default.jpg">
-<meta property="og:url" content="https://kanebasketballacademy.com/review-season-map-5t9w/">
+<meta property="og:url" content="https://kanebasketballacademy.com/map/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The AAU Season Map | Coach Kane">
@@ -290,7 +290,7 @@
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The decision rules<span>What to do when a line scores low: stay, adjust or change</span></div></div>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The money worksheet<span>Your real all in cost, and how much is too much for your family</span></div></div>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The Day 10 check in<span>Score the program again after talking to two bench parents</span></div></div>
-          <a class="btn" href="/review-season-map-system-8h2k/">Get the Basketball Parent IQ System · $47 →</a>
+          <a class="btn" href="/services/playbooks/season-map/">Get the Basketball Parent IQ System · $47 →</a>
         </div>
       </section>
 
@@ -342,7 +342,7 @@
           <p>Your kid's plan depends on their team, their body, how much they love the game right now and what your family can afford. That part is not one size fits all.</p>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The weekly skill plan<span>Four focused sessions of 30 to 45 minutes a week, with rest days built in. In the $47 System.</span></div></div>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The burnout checklist<span>The signs to watch for, and when to pull back. In the $47 System.</span></div></div>
-          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>Your kid's year, month by month<span>Which tournaments, which training and which rest weeks, built by Coach Kane for your kid. In the Future Success Audit.</span></div></div>
+          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>Your kid's year, month by month<span>Which tournaments, which training and which rest weeks, built by Coach Kane for your kid. In the AAU Plan audit.</span></div></div>
         </div>
       </section>
 
@@ -355,14 +355,14 @@
             <h3>The Basketball Parent IQ System</h3>
             <p class="p47">$47</p>
             <p>Fourteen days. Twenty minutes a night. What to say, what to spend and what to decide, on the day you need it. Includes the full AAU, Recruiting and NIL Playbook.</p>
-            <a class="btn btn-ghost" href="/review-season-map-system-8h2k/">See the System →</a>
+            <a class="btn btn-ghost" href="/services/playbooks/season-map/">See the System →</a>
           </div>
         </section>
 
         <section class="offer">
           <img src="assets/coach-sideline.webp" alt="Coach Kane kneeling on the sideline next to his bench during a game" width="960" height="480" loading="lazy">
           <div class="in">
-            <p class="eyebrow">Want Coach Kane to build it with you?</p>
+            <p class="eyebrow">The AAU Plan</p>
             <h2>Get your kid's year, built by Coach Kane.</h2>
             <p>One conversation about your kid. Then a written plan for the months ahead: which team, which tournaments, what to train and when to rest.</p>
             <ul>
@@ -370,9 +370,9 @@
               <li><b>2</b><span>A month by month plan for playing, training and rest.</span></li>
               <li><b>3</b><span>The three things to work on first, in writing.</span></li>
             </ul>
-            <div class="price">$300 <small>Future Success Audit</small></div>
+            <div class="price">$300 <small>The AAU Plan audit</small></div>
             <p class="terms">Written report within 48 hours, or a full refund. Coach Kane takes 4 families a week.</p>
-            <a class="btn btn-dark" href="/services/audits/">Book a Future Success Audit →</a>
+            <a class="btn btn-dark" href="/services/audits/#aau-plan">Book the AAU Plan →</a>
             <p class="credit">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
           </div>
         </section>
@@ -628,12 +628,12 @@
       body: JSON.stringify({
         firstName: name,
         email: email,
-        guide: 'map-TEST',
+        guide: 'map',
         score: score,
         band: band.name,
         checkedNumbers: ageLabel + ' | ' + monthLabel,
         checkedText: lineText.join(' | '),
-        path: 'season-map-TEST'
+        path: 'season-map'
       })
     }).catch(function (x) { console.error('Could not save to the sheet:', x); });
 
