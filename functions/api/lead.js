@@ -12,9 +12,6 @@
   so test rows are easy to find and delete.
 */
 
-const DEFAULT_SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec';
-
 // guide value from the page -> Kit tag. The tag starts the matching Kit sequence.
 const DEFAULT_TAGS = {
   'map': 'Lead: Season Map',
@@ -33,7 +30,7 @@ const SEQUENCES = {
 };
 
 // Kit custom fields. Created in Kit automatically if missing.
-const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url'];
+const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url', 'checked_numbers', 'checked_text'];
 
 const ALLOWED_ORIGINS = [
   'https://kanebasketballacademy.com',
@@ -119,7 +116,9 @@ async function addToKit(env, lead) {
     score: lead.score === '' ? '' : String(lead.score),
     band: lead.band,
     source: lead.src,
-    result_url: lead.resultUrl
+    result_url: lead.resultUrl,
+    checked_numbers: lead.checkedNumbers,
+    checked_text: lead.checkedText
   };
   Object.keys(fields).forEach(function (k) { if (fields[k] === '') delete fields[k]; });
 
@@ -144,17 +143,6 @@ async function addToKit(env, lead) {
     await kit(env, '/sequences/' + seq + '/subscribers', 'POST', { email_address: lead.email });
   }
   return tagName || 'no tag for guide ' + lead.guide;
-}
-
-async function saveToSheet(env, lead) {
-  const res = await fetch(env.SHEET_URL || DEFAULT_SHEET_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(lead),
-    redirect: 'follow'
-  });
-  if (!res.ok) throw new Error('sheet ' + res.status);
-  return true;
 }
 
 export async function onRequestPost(context) {
@@ -184,21 +172,19 @@ export async function onRequestPost(context) {
     resultUrl: clean(d.resultUrl, 500)
   };
 
-  const results = await Promise.allSettled([
-    saveToSheet(env, lead),
-    env.KIT_API_KEY ? addToKit(env, lead) : Promise.resolve('skipped: no KIT_API_KEY')
-  ]);
-
-  const sheet = results[0].status === 'fulfilled';
-  const kitResult = results[1].status === 'fulfilled' ? results[1].value : 'error';
-  if (!sheet) console.error('Sheet save failed:', results[0].reason && results[0].reason.message);
-  if (results[1].status === 'rejected') console.error('Kit failed:', results[1].reason && results[1].reason.message);
+  let kitResult = 'error';
+  let kitError;
+  try {
+    kitResult = env.KIT_API_KEY ? await addToKit(env, lead) : 'skipped: no KIT_API_KEY';
+  } catch (e) {
+    kitError = String(e && e.message);
+    console.error('Kit failed:', kitError);
+  }
 
   return json({
-    ok: sheet || kitResult !== 'error',
-    sheet: sheet,
+    ok: kitResult !== 'error',
     kit: kitResult,
-    kitError: results[1].status === 'rejected' ? String(results[1].reason && results[1].reason.message) : undefined
+    kitError: kitError
   });
 }
 

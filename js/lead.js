@@ -7,7 +7,6 @@
      so each sale can be matched to the lead in Stripe and Kit.
 */
 (function () {
-  var SHEET_URL = "https://script.google.com/macros/s/AKfycbxGUhQj6VzFQIK0nzyQw6SOBvCItjOplwMeqjI7TlbXtydbiHUaPi0OyDkvYQMU1Gwv6Q/exec";
   var KEY = 'kane_lead';
 
   function load() {
@@ -70,15 +69,6 @@
     save(s);
     tagStripeLinks();
 
-    function direct() {
-      return fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(lead)
-      }).catch(function (x) { console.error('Could not save to the sheet:', x); });
-    }
-
     return fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -87,12 +77,8 @@
     }).then(function (r) {
       if (!r.ok) throw new Error('lead api ' + r.status);
       return r.json();
-    }).then(function (res) {
-      if (!res || !res.sheet) return direct();
-      return res;
     }).catch(function (x) {
-      console.error('Lead API failed, saving to the sheet directly:', x);
-      return direct();
+      console.error('Lead API failed:', x);
     });
   }
 
