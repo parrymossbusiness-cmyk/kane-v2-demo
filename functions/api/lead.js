@@ -17,7 +17,8 @@ const DEFAULT_TAGS = {
   'map': 'Lead: Season Map',
   'preseason': 'Lead: Parent IQ Quiz',
   'blueprint-page': 'Lead: Blueprint Page',
-  'scorecard': 'Lead: Parent Scorecard'
+  'scorecard': 'Lead: Parent Scorecard',
+  'season': 'Lead: Full Season Quiz'
 };
 
 // guide value -> Kit sequence ID. Leads are added to these only when SEQUENCES_LIVE is true.
