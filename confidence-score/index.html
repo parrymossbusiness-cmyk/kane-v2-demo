@@ -147,7 +147,7 @@
     <p class="eyebrow">The Basketball Parent Coach</p>
     <h1 id="intro-heading">The Basketball Parent IQ Quiz</h1>
     <p class="lede">Seven questions. Two minutes. Answer honestly and get your Basketball Parent IQ, plus exactly what it means for your kid right now.</p>
-    <p class="gift-note">Thank you for asking for the <b>Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.</p>
+    <p class="gift-note">Thank you for asking for <b class="guide-name">The Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.</p>
     <button class="btn" id="start-btn" type="button">Question #1 <span>&rarr;</span></button>
     <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from real conversations with basketball parents, not guesswork.</p>
   </section>
@@ -177,7 +177,7 @@
 
   <section id="screen-gate" class="screen gate">
     <h2>Your Basketball Parent IQ is ready.</h2>
-    <p>Tell us where to send it. You'll get your IQ score, plus the full Pre-Season &amp; Tryout Blueprint as our gift.</p>
+    <p>Tell us where to send it. You'll get your IQ score, plus <span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> as our gift.</p>
     <form id="gate-form">
       <div class="field">
         <label for="first-name">First name</label>
@@ -195,7 +195,7 @@
 
   <section id="screen-skip" class="screen gate">
     <h2>Where should Coach Kane send it?</h2>
-    <p>Enter your name and email, and your Pre-Season &amp; Tryout Blueprint goes straight to your inbox.</p>
+    <p>Enter your name and email, and <span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> goes straight to your inbox.</p>
     <form id="skip-form">
       <div class="field">
         <label for="skip-first-name">First name</label>
@@ -214,9 +214,9 @@
   <section id="screen-sent" class="screen sent">
     <p class="eyebrow">The Basketball Parent Coach</p>
     <h2>Your Blueprint is Ready</h2>
-    <p>We've logged your request. You can access the complete Pre-Season &amp; Tryout Blueprint right now below:</p>
+    <p>We've logged your request. You can open <span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> right now below:</p>
     <p style="margin-top: 24px;">
-      <a class="btn" href="https://kanebasketballacademy.com/blueprint/?v=2">Open The Blueprint <span>&rarr;</span></a>
+      <a class="btn guide-link" href="https://kanebasketballacademy.com/preseason-blueprint/">Open The Blueprint <span>&rarr;</span></a>
     </p>
   </section>
 
@@ -229,7 +229,7 @@
     </div>
     <p class="result-message" id="result-message"></p>
     <a class="btn" id="cta-link" href="/services/playbooks/?src=quiz">Get The Basketball Parent IQ System &middot; $47 <span>&rarr;</span></a>
-    <p class="result-note" style="margin-top: 20px;">Your Pre-Season &amp; Tryout Blueprint is on the way to your email inbox.</p>
+    <p class="result-note" style="margin-top: 20px;"><span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> is on the way to your inbox. <a class="guide-link" href="https://kanebasketballacademy.com/preseason-blueprint/" style="color:inherit;text-decoration:underline">Open it now</a>.</p>
   </section>
 
   <footer>
@@ -252,8 +252,37 @@
   var answers = []; // true/false per question
 
   var GUIDES = {
+    season: {
+      title: "The Full Season Blueprint",
+      url: "https://kanebasketballacademy.com/blueprint/",
+      items: [
+        "I've asked my child \"How many minutes did you get?\" on the way home.",
+        "I've said the coach has favorites where my child could hear it.",
+        "I've talked to the coach about playing time right after a game or from the sideline.",
+        "I've asked the coach about minutes before my child asked the coach himself.",
+        "I've worried about minutes even when my child plays a quarter to half of most games.",
+        "The mood at home changes after a game where my child barely played.",
+        "I praise points more than effort plays like loose balls, box-outs and sprinting back."
+      ],
+      comments: [
+        "Minutes are the coach's call. Ask about them first and he learns that's the number you're watching. Ask \"Did we play hard?\" instead.",
+        "It feels loyal. It teaches him his minutes belong to other people, and that's the start of every excuse. Ask what the coach says he needs to work on.",
+        "That's the worst time for that talk. Ask for a private meeting. Not after the game. Not on the sideline. Wait a full day first.",
+        "The talk that earns minutes is between the player and the coach. He asks, \"Coach, what do I need to improve to earn more minutes?\" You drive.",
+        "A quarter to half the game is normal. Under five minutes a game over several tournaments is different. That's the red flag worth a private meeting.",
+        "If your kid is stuck at the end of the bench, your reaction at home decides whether he quits or pushes through. Same voice, same warmth, same night.",
+        "Coaches notice effort before anything else. Praise the effort plays, and he learns what earns minutes."
+      ],
+      messages: {
+        perfect: "You are doing this right. The Basketball Parent IQ System will help you keep it that way for the whole season.",
+        steady:  "You are already doing most of this right. The Basketball Parent IQ System will help you keep that steady hand all season, even when minutes are low.",
+        leaking: "A few of these are already costing your child some confidence. The Basketball Parent IQ System walks through exactly how to close these gaps before the next game.",
+        redflag: "Right now, several habits that quietly hurt a kid's confidence are in play. The Basketball Parent IQ System is the fastest way to turn this around before low minutes turn into quitting."
+      }
+    },
     preseason: {
       title: "The Pre-Season & Tryout Blueprint",
+      url: "https://kanebasketballacademy.com/preseason-blueprint/",
       items: [
         "I've told my child something like \"today's the day, go prove yourself\" before a tryout.",
         "I've pointed out or sized up other kids in the gym before or during a tryout.",
@@ -301,6 +330,8 @@
       return;
     }
     guideData = data;
+    document.querySelectorAll('.guide-name').forEach(function (el) { el.textContent = data.title; });
+    document.querySelectorAll('.guide-link').forEach(function (el) { el.href = data.url; });
     showScreen('screen-intro');
   }
 
