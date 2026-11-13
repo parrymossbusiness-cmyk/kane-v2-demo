@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Full Season Blueprint | Coach Kane</title>
+  <meta name="description" content="Get Coach Kane's free Full Season Blueprint for basketball parents: the car ride home, playing time, and mental toughness.">
+  <link rel="canonical" href="https://www.kanebasketballacademy.com/full-season/">
+  <meta property="og:title" content="The Full Season Blueprint | Coach Kane">
+  <meta property="og:description" content="What to say on the car ride home, how to read playing time, and how to build mental toughness. Free for basketball parents.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.kanebasketballacademy.com/full-season/">
+  <meta name="theme-color" content="#1c1b1a">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tryout-blueprint/assets/blueprint.css?v=20260915-mobile">
+  <style>
+    .fs .checks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; color: #d4cfc9; font-size: 16px; }
+    .fs .checks li { display: flex; gap: 10px; align-items: baseline; }
+    .fs .checks li span { color: var(--bright); font-weight: 700; flex: none; }
+    .fs .signup-card h2 { margin-bottom: 6px; }
+    .fs #success a { color: inherit; font-weight: 600; text-decoration: underline; }
+  </style>
+</head>
+<body class="fs">
+  <header class="header wrap">
+    <a class="brand" href="/" aria-label="The Kane Academy home"><img src="/tryout-blueprint/assets/logo.png" alt="The Kane Academy" width="74" height="74"><span>COACH KANE<span class="brand-sub">THE BASKETBALL PARENT COACH</span></span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="headline">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span> FREE GUIDE FOR BASKETBALL PARENTS</p>
+        <h1 id="headline">Low minutes.<br>Bad games.<br><span>Know what to say.</span></h1>
+        <p class="intro">Get Coach Kane&rsquo;s free <strong>Full Season Blueprint</strong>.</p>
+        <ul class="checks">
+          <li><span aria-hidden="true">✓</span> What to say on the car ride home</li>
+          <li><span aria-hidden="true">✓</span> How to read your kid&rsquo;s playing time</li>
+          <li><span aria-hidden="true">✓</span> How to build mental toughness after a mistake</li>
+        </ul>
+      </div>
+      <div class="signup-card" id="get-guide">
+        <div class="card-topline"><span>THE FULL SEASON BLUEPRINT</span><span aria-hidden="true">FREE GUIDE</span></div>
+        <h2>Where should Coach Kane send it?</h2>
+        <form id="signup-form" novalidate>
+          <label for="signup-name">First name</label>
+          <input id="signup-name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+          <label for="signup-email">Email address</label>
+          <input id="signup-email" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email" required>
+          <button class="button" type="submit">Send Me The Blueprint <span aria-hidden="true">↗</span></button>
+          <p class="small" id="signup-error" style="display:none;color:#bc4400;margin-top:12px">Please enter your first name and a real email address.</p>
+        </form>
+        <div id="success" hidden>
+          <h3>You&rsquo;re in.</h3>
+          <p>Coach Kane just emailed you the link. Check your inbox, and your spam folder just in case.</p>
+          <p>Want it now? <a href="/blueprint/?src=full-season-page">Open the Full Season Blueprint</a>.</p>
+        </div>
+        <p class="small consent">By requesting the guide, you agree to receive it and basketball-parenting emails from The Kane Academy. Reply to any email and we will remove you.</p>
+        <div class="card-bottom"><span aria-hidden="true">✓</span> Free guide. No purchase required.</div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><p>&copy; 2026 The Kane Academy</p></footer>
+
+  <script src="/js/lead.js"></script>
+  <script>
+  (function () {
+    var form = document.getElementById('signup-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('signup-name').value.trim();
+      var email = document.getElementById('signup-email').value.trim();
+      var err = document.getElementById('signup-error');
+      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      form.querySelector('button').disabled = true;
+      window.KaneLead.send({
+        firstName: name, email: email, guide: 'season-page',
+        score: '', band: '', checkedNumbers: '', checkedText: '', path: 'full-season-signup'
+      });
+      form.hidden = true;
+      document.querySelector('.signup-card h2').hidden = true;
+      document.getElementById('success').hidden = false;
+    });
+  })();
+  </script>
+</body>
+</html>
