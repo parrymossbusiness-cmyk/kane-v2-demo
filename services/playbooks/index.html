@@ -350,6 +350,15 @@
       color: var(--muted);
       margin-top: 48px;
     }
+
+    /* Quiz score at the top, shown only when the parent arrives from the quiz */
+    .iq-card { background: var(--navy); color: #fff; border-radius: 16px; padding: 26px 22px 24px; text-align: center; margin: 0 0 34px; }
+    .iq-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F2B08F; margin: 0 0 6px; }
+    .iq-num { font-family: 'Fraunces', Georgia, serif; font-size: 4rem; line-height: 1; margin: 0; }
+    .iq-num span { font-size: 1.6rem; opacity: 0.7; }
+    .iq-band { display: inline-block; margin: 12px 0 0; padding: 5px 14px; border-radius: 999px; background: rgba(255,255,255,0.12); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .iq-msg { margin: 16px auto 0; max-width: 34rem; font-size: 1.02rem; line-height: 1.55; color: #E7E3DD; }
+    .iq-next { margin: 18px 0 0; font-weight: 700; color: #F2B08F; }
   </style>
 </head>
 <body>
@@ -360,6 +369,13 @@
   </header>
 
   <main class="container">
+    <section class="iq-card" id="iq-result" hidden aria-live="polite">
+      <p class="iq-label">Your Basketball Parent IQ</p>
+      <p class="iq-num"><b id="iq-value">0</b><span>/140</span></p>
+      <p class="iq-band" id="iq-band"></p>
+      <p class="iq-msg" id="iq-msg"></p>
+      <p class="iq-next">Here is how to raise it, starting tonight.</p>
+    </section>
     <span class="badge">The Basketball Parent IQ System</span>
     <h1>How to build their confidence at home.</h1>
     <p class="lead">
@@ -458,6 +474,22 @@
   </main>
 
   <script src="/js/video-testimonials.js" defer></script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var iq = parseInt(q.get('iq'), 10);
+    if (isNaN(iq) || iq < 0 || iq > 140 || iq % 20) return;
+    var band = (q.get('band') || '').slice(0, 40);
+    var msg = '';
+    try { var r = (JSON.parse(localStorage.getItem('kane_lead')) || {}).lastResult; if (r && r.iq === iq) { msg = r.message || ''; band = band || r.band; } } catch (e) {}
+    document.getElementById('iq-value').textContent = iq;
+    document.getElementById('iq-band').textContent = band;
+    if (!band) document.getElementById('iq-band').hidden = true;
+    document.getElementById('iq-msg').textContent = msg;
+    if (!msg) document.getElementById('iq-msg').hidden = true;
+    document.getElementById('iq-result').hidden = false;
+  })();
+</script>
 <script src="/js/lead.js"></script>
 </body>
 </html>

@@ -255,6 +255,7 @@
     season: {
       title: "The Full Season Blueprint",
       giftNote: "Thank you for asking for Coach Kane's Parent IQ Quiz. Answer the seven questions, and he will send your score to your inbox, along with what to do when your kid's minutes are low.",
+      resultPage: '/services/playbooks/',
       resultNote: 'Free bonus: Coach Kane\'s Full Season Blueprint, on playing time, the car ride home and mental toughness. <a class="guide-link" href="https://kanebasketballacademy.com/blueprint/?src=quiz-result" style="color:inherit;text-decoration:underline">Open it now</a>.',
       gateCopy: "Tell us where to send it. You'll get your IQ score, plus a free bonus: Coach Kane's Full Season Blueprint. It covers what to say on the car ride home, how to read playing time, and how to build mental toughness.",
       url: "https://kanebasketballacademy.com/blueprint/",
@@ -445,7 +446,7 @@
     // IQ style score: each of the 7 points is worth 20, so a perfect score is 140.
     var iq = score * 20;
 
-    revealResult(score, iq, band);
+    if (!guideData.resultPage) revealResult(score, iq, band);
 
     var checkedNumbers = [];
     var checkedText = [];
@@ -463,6 +464,20 @@
       checkedText: checkedText.join(' | '),
       path: 'quiz'
     });
+
+    // Season quiz: show the score on the $47 page, with the full offer and testimonials.
+    if (guideData.resultPage) {
+      var msg = score === 7 ? guideData.messages.perfect : guideData.messages[band];
+      try {
+        var d = JSON.parse(localStorage.getItem('kane_lead')) || {};
+        d.lastResult = { iq: iq, band: BAND_NAMES[band], message: msg };
+        localStorage.setItem('kane_lead', JSON.stringify(d));
+      } catch (e) {}
+      var src = (window.KaneLead && window.KaneLead.src()) || 'quiz';
+      setTimeout(function () {
+        window.location.href = guideData.resultPage + '?src=' + encodeURIComponent('quiz-' + guideKey + '-' + src).slice(0, 60) + '&iq=' + iq + '&band=' + encodeURIComponent(BAND_NAMES[band]);
+      }, 300);
+    }
   }
 
   function revealResult(score, iq, band) {
