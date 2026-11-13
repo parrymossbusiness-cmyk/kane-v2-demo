@@ -127,6 +127,24 @@
     .cover::after{display:none;}
     h2.part-head{font-size:26px;}
   }
+
+  /* Testimonials */
+  .proof{display:flex; flex-direction:column; gap:12px; margin:26px 0 30px;}
+  .proof .eyebrow{margin-bottom:2px;}
+  .vt{display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px;}
+  .vt-media{position:relative; width:150px; aspect-ratio:9/16; border-radius:10px; overflow:hidden; background:#000;}
+  .vt-media video{width:100%; height:100%; object-fit:cover; display:block;}
+  .vt-play{position:absolute; inset:0; margin:auto; width:54px; height:54px; border-radius:50%; border:none; background:rgba(217,86,11,.92); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.4);}
+  .vt-play svg{width:22px; height:22px; margin-left:3px;}
+  .vt-len{position:absolute; right:8px; top:8px; font-size:11.5px; font-weight:600; color:#fff; background:rgba(0,0,0,.6); border-radius:999px; padding:2px 8px;}
+  .vt.playing .vt-play,.vt.playing .vt-len{display:none;}
+  .vt q,.tq q{display:block; quotes:none; color:var(--ink); margin-bottom:10px;}
+  .vt q{font-family:var(--font-head); font-weight:700; font-size:19px; line-height:1.3;}
+  .tq{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 18px 16px;}
+  .tq q{font-size:16.5px; line-height:1.45;}
+  .vt .who,.tq .who{font-size:14px; color:var(--ink); font-weight:600; margin:0;}
+  .vt .who span,.tq .who span{display:block; font-weight:400; font-size:13px; color:var(--ink-dim);}
+  @media (max-width:520px){ .vt{grid-template-columns:110px 1fr; gap:14px; padding:12px;} .vt-media{width:110px;} .vt q{font-size:16.5px;} }
 </style>
 </head>
 <body>
@@ -322,6 +340,36 @@
     <p>The three topics above cover the moments parents ask me about most. The habits that shape your kid show up every single day: every car ride, every bad game, every hard talk with a coach.</p>
     <p>As a head coach, my high school teams won 440 games. Twelve of my players went on to play pro. Seventy-one played in college. The same things that win games build good men. Mental toughness. Confidence. Resilience. They are built on the court and at home.</p>
     <p>The Basketball Parent IQ System gives you my frameworks for building all three.</p>
+    <div class="proof">
+      <p class="eyebrow">From a dad who never played</p>
+      <div class="vt">
+        <div class="vt-media">
+          <video preload="none" playsinline poster="/services/playbooks/season-map/assets/parent-dad.jpg" aria-label="A father talks about Coach Kane training his son"><source src="/services/playbooks/season-map/assets/parent-dad.mp4" type="video/mp4"></video>
+          <button class="vt-play" type="button" aria-label="Play the video from Abe Lopez"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+          <span class="vt-len">1:18</span>
+        </div>
+        <div>
+          <q>"I tried to teach him as much as I can, but I didn't know anything about basketball. I never played."</q>
+          <p class="who">Abe Lopez<span>His son started with Coach Kane at 10. He is now a high school freshman.</span></p>
+        </div>
+      </div>
+      <p class="eyebrow" style="margin-top:14px">What his players say</p>
+      <div class="vt">
+        <div class="vt-media">
+          <video preload="none" playsinline poster="/videos/oliver-roberts.jpg" aria-label="Oliver Roberts talks about Coach Kane"><source src="/videos/oliver-roberts.mp4" type="video/mp4"></video>
+          <button class="vt-play" type="button" aria-label="Play the video from Oliver Roberts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+          <span class="vt-len">1:06</span>
+        </div>
+        <div>
+          <q>"Coach Kane is really big on the fundamentals, and he's big on getting things perfect before you move on to the next step."</q>
+          <p class="who">Oliver Roberts<span>Coached by Kane in summer AAU. Now plays Division II at the University of Mount Olive.</span></p>
+        </div>
+      </div>
+      <div class="tq">
+        <q>"He was my AAU coach, and he ultimately just changed my life as a person and a basketball player."</q>
+        <p class="who">Pierce<span>Played AAU for Coach Kane. Now a sophomore playing college basketball.</span></p>
+      </div>
+    </div>
     <p class="product">The Basketball Parent IQ System &middot; $47</p>
     <ul>
       <li>The 14-day parent blueprint, 20 minutes a night</li>
@@ -341,6 +389,17 @@
   <p class="footer-stats">440 Wins. CIF Champion.<br>1,000+ Parent Conversations.<br>12 Pros. 71 College Players.<br>And A Development Plan<br>For You And Your Kid.</p>
 </footer>
 
+<script>
+  document.querySelectorAll('.vt').forEach(function (box) {
+    var v = box.querySelector('video'), b = box.querySelector('.vt-play');
+    if (!v || !b) return;
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.vt video').forEach(function (o) { if (o !== v) o.pause(); });
+      v.controls = true; box.classList.add('playing');
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    });
+  });
+</script>
 <script src="/js/lead.js"></script>
 </body>
 </html>
