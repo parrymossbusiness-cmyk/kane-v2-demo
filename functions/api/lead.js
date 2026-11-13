@@ -25,7 +25,8 @@ const SEQUENCES_LIVE = true;
 const SEQUENCES = {
   'map': 2960260,            // MAP: Season Map follow-up
   'preseason': 2960311,      // QUIZ: Parent IQ Quiz and Tryout Blueprint follow-up
-  'blueprint-page': 2960311
+  'blueprint-page': 2960311,
+  'season': 2969487          // IQ QUIZ: Low Minutes reel follow-up (/iq/ DM link and the season quiz)
 };
 
 // Kit custom fields. Created in Kit automatically if missing.
