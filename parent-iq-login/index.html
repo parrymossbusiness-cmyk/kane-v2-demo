@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#151413">
+<title>Log In | The Basketball Parent IQ System</title>
+<style>
+  :root { --night:#151413; --court:#242220; --line:#36332F; --chalk:#FAF8F5; --muted:#A8A29B; --orange:#D9560B; --glow:#F08A4B; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:var(--night); color:var(--chalk); font:17px/1.6 Inter, system-ui, -apple-system, sans-serif; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+  .card { width:100%; max-width:420px; background:var(--court); border:1px solid var(--line); border-radius:18px; padding:32px 24px; }
+  .logo { display:flex; align-items:center; gap:10px; margin-bottom:24px; }
+  .logo img { width:36px; height:36px; }
+  .logo span { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--glow); }
+  h1 { font-size:26px; line-height:1.2; margin:0 0 8px; }
+  p { margin:0 0 20px; color:var(--muted); font-size:16px; }
+  label { display:block; font-size:14px; font-weight:600; margin-bottom:6px; color:var(--chalk); }
+  input { width:100%; font:inherit; color:var(--chalk); background:var(--night); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px; }
+  input:focus { outline:2px solid var(--orange); border-color:transparent; }
+  button { width:100%; font:inherit; font-weight:700; color:#fff; background:var(--orange); border:0; border-radius:12px; padding:14px; cursor:pointer; }
+  button[disabled] { opacity:.6; cursor:default; }
+  .msg { display:none; margin-top:16px; padding:14px; border-radius:12px; font-size:15px; line-height:1.5; }
+  .msg.ok { display:block; background:#1d2a1f; border:1px solid #2f5a37; color:#cfe8d3; }
+  .msg.bad { display:block; background:#2B1210; border:1px solid #5a2a24; color:#f3d3cd; }
+  .help { margin-top:22px; font-size:14px; color:var(--muted); text-align:center; }
+  .help a { color:var(--glow); }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="logo"><img src="/images/logo-kane-academy-white.png" alt=""><span>Kane Academy</span></div>
+  <h1>Open your Basketball Parent IQ System</h1>
+  <p id="lead">Type the email you used to pay. We'll send you a link. Tap it, and this phone or computer stays logged in for a year.</p>
+  <form id="f">
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+    <button id="go" type="submit">Send my link</button>
+  </form>
+  <div id="msg" class="msg" role="status"></div>
+  <div class="help">Still stuck? <a href="sms:+13103453033?&body=Hi,%20I%20need%20help%20logging%20in%20to%20the%20Parent%20IQ%20System.">Text us for help</a></div>
+</main>
+<script>
+  var q = new URLSearchParams(location.search);
+  var lead = document.getElementById('lead');
+  var why = q.get('why');
+  if (why === 'device') lead.textContent = 'You were logged out here because your System was opened on 3 other devices. Type the email you used to pay, and we\'ll send you a new link.';
+  if (why === 'expired') lead.textContent = 'That link is older than 24 hours. Type the email you used to pay, and we\'ll send you a new one.';
+  if (why === 'checkout') lead.textContent = 'Thanks for your order. Type the email you used to pay, and we\'ll send you a link to open your System.';
+
+  var msg = document.getElementById('msg'), go = document.getElementById('go');
+  function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; }
+
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    go.disabled = true; go.textContent = 'Sending...';
+    fetch('/api/piq-login', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, next: q.get('next') || '/parent-iq/' }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.open) { location.href = '/parent-iq/'; return; }
+        if (d.ok) show('ok', 'Check your email. Your link is on its way to ' + email + '. If you don\'t see it in a minute, check your spam folder.');
+        else if (d.error === 'nobuy') show('bad', 'We don\'t see a purchase for ' + email + '. Try the email on your Stripe receipt.');
+        else if (d.error === 'slow') show('bad', 'We\'ve sent several links in the last hour. Please check your email, including spam, or try again later.');
+        else if (d.error === 'email') show('bad', 'Please check the email address and try again.');
+        else show('bad', 'Something went wrong on our side. Please try again in a minute.');
+      })
+      .catch(function () { show('bad', 'Something went wrong. Please check your connection and try again.'); })
+      .then(function () { go.disabled = false; go.textContent = 'Send my link'; });
+  });
+</script>
+</body>
+</html>
