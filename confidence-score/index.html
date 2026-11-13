@@ -147,7 +147,7 @@
     <p class="eyebrow">The Basketball Parent Coach</p>
     <h1 id="intro-heading">The Basketball Parent IQ Quiz</h1>
     <p class="lede">Seven questions. Two minutes. Answer honestly and get your Basketball Parent IQ, plus exactly what it means for your kid right now.</p>
-    <p class="gift-note">Thank you for asking for <b class="guide-name">The Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.</p>
+    <p class="gift-note" id="gift-note">Thank you for asking for <b class="guide-name">The Pre-Season &amp; Tryout Blueprint</b>. Coach Kane will send it to your inbox the moment you finish these seven questions, along with your score.</p>
     <button class="btn" id="start-btn" type="button">Question #1 <span>&rarr;</span></button>
     <p class="meta-line">By <b>Coach Dennis Kane</b>. Built from real conversations with basketball parents, not guesswork.</p>
   </section>
@@ -177,7 +177,7 @@
 
   <section id="screen-gate" class="screen gate">
     <h2>Your Basketball Parent IQ is ready.</h2>
-    <p>Tell us where to send it. You'll get your IQ score, plus <span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> as our gift.</p>
+    <p id="gate-copy">Tell us where to send it. You'll get your IQ score, plus <span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> as our gift.</p>
     <form id="gate-form">
       <div class="field">
         <label for="first-name">First name</label>
@@ -254,6 +254,8 @@
   var GUIDES = {
     season: {
       title: "The Full Season Blueprint",
+      giftNote: "Thank you for asking for Coach Kane's Parent IQ Quiz. Answer the seven questions, and he will send your score to your inbox, along with what to do when your kid's minutes are low.",
+      gateCopy: "Tell us where to send it. You'll get your IQ score, plus a free bonus: Coach Kane's Full Season Blueprint. It covers what to say on the car ride home, how to read playing time, and how to build mental toughness.",
       url: "https://kanebasketballacademy.com/blueprint/",
       items: [
         "I've asked my child \"How many minutes did you get?\" on the way home.",
@@ -331,6 +333,8 @@
     }
     guideData = data;
     document.querySelectorAll('.guide-name').forEach(function (el) { el.textContent = data.title; });
+    if (data.giftNote) document.getElementById('gift-note').textContent = data.giftNote;
+    if (data.gateCopy) document.getElementById('gate-copy').textContent = data.gateCopy;
     document.querySelectorAll('.guide-link').forEach(function (el) { el.href = data.url; });
     showScreen('screen-intro');
   }
