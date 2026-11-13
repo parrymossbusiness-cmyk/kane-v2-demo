@@ -1,15 +1,12 @@
 /*
   POST /api/lead
-  Saves one lead to the Google Sheet (same Apps Script as before),
-  then adds the parent to Kit with a tag and custom fields.
+  Adds the parent to Kit with a tag and custom fields.
 
   Cloudflare settings (Pages project > Settings > Variables and Secrets):
     KIT_API_KEY  (secret, required for Kit)  Kit > Settings > Developer > V4 API key
-    SHEET_URL    (optional) a new Apps Script URL, if it ever changes
     KIT_TAGS     (optional) JSON to rename tags, e.g. {"map":"Lead: Season Map"}
 
-  A lead with "+test" in the email is marked TEST in the sheet's Path column,
-  so test rows are easy to find and delete.
+  A lead with "+test" in the email is marked TEST in its path, so test leads are easy to find.
 */
 
 // guide value from the page -> Kit tag. The tag starts the matching Kit sequence.

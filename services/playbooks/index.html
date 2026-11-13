@@ -337,6 +337,8 @@
       .testimonial-text { text-align: center; }
     }
 
+    .testimonial.quote-only { grid-template-columns: 1fr; }
+
     .bottom-cta {
       text-align: center;
       padding-top: 10px;
@@ -414,6 +416,18 @@
 
     <section class="testimonial">
       <div class="vt-media">
+        <video preload="none" playsinline poster="/services/playbooks/season-map/assets/parent-dad.jpg" aria-label="A father talks about Coach Kane training his son"><source src="/services/playbooks/season-map/assets/parent-dad.mp4" type="video/mp4"></video>
+        <button class="vt-play" type="button" aria-label="Play video from Abe Lopez"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
+        <span class="vt-length">1:18</span>
+      </div>
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;I tried to teach him as much as I can, but I didn&rsquo;t know anything about basketball. I never played.&rdquo;</p>
+        <p class="testimonial-name">Abe Lopez<span>His son started with Coach Kane at 10. He is now a high school freshman.</span></p>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="vt-media">
         <video preload="none" playsinline poster="/videos/oliver-roberts.jpg" aria-label="Oliver Roberts talks about Coach Kane"><source src="/videos/oliver-roberts.mp4" type="video/mp4"></video>
         <button class="vt-play" type="button" aria-label="Play video from Oliver Roberts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12 7.5-12 7.5z" fill="#fff"/></svg></button>
         <span class="vt-length">1:06</span>
@@ -421,6 +435,13 @@
       <div class="testimonial-text">
         <p class="testimonial-quote">&ldquo;I&rsquo;m much more than a screener. I shoot the ball well. And I give a lot of that props to him.&rdquo;</p>
         <p class="testimonial-name">Oliver Roberts<span>Plays Division II basketball at the University of Mount Olive</span></p>
+      </div>
+    </section>
+
+    <section class="testimonial quote-only">
+      <div class="testimonial-text">
+        <p class="testimonial-quote">&ldquo;He was my AAU coach, and he ultimately just changed my life as a person and a basketball player.&rdquo;</p>
+        <p class="testimonial-name">Pierce<span>Played AAU for Coach Kane. Now a sophomore playing college basketball.</span></p>
       </div>
     </section>
 

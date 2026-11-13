@@ -1,7 +1,6 @@
 /*
   Kane Academy lead helper.
-  1. KaneLead.send(data): saves a lead through /api/lead (sheet + Kit).
-     If that fails, it saves straight to the Google Sheet so no lead is lost.
+  1. KaneLead.send(data): saves a lead to Kit through /api/lead.
   2. Remembers the parent's email and the reel source (?src=) on this browser.
   3. Adds the parent's email (prefilled_email) to every Stripe link on the page,
      so each sale can be matched to the lead in Stripe and Kit.
