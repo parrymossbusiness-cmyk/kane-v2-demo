@@ -229,7 +229,7 @@
     </div>
     <p class="result-message" id="result-message"></p>
     <a class="btn" id="cta-link" href="/services/playbooks/?src=quiz">Get The Basketball Parent IQ System &middot; $47 <span>&rarr;</span></a>
-    <p class="result-note" style="margin-top: 20px;"><span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> is on the way to your inbox. <a class="guide-link" href="https://kanebasketballacademy.com/preseason-blueprint/" style="color:inherit;text-decoration:underline">Open it now</a>.</p>
+    <p class="result-note" id="result-note" style="margin-top: 20px;"><span class="guide-name">The Pre-Season &amp; Tryout Blueprint</span> is on the way to your inbox. <a class="guide-link" href="https://kanebasketballacademy.com/preseason-blueprint/" style="color:inherit;text-decoration:underline">Open it now</a>.</p>
   </section>
 
   <footer>
@@ -255,6 +255,7 @@
     season: {
       title: "The Full Season Blueprint",
       giftNote: "Thank you for asking for Coach Kane's Parent IQ Quiz. Answer the seven questions, and he will send your score to your inbox, along with what to do when your kid's minutes are low.",
+      resultNote: 'Free bonus: Coach Kane\'s Full Season Blueprint, on playing time, the car ride home and mental toughness. <a class="guide-link" href="https://kanebasketballacademy.com/blueprint/?src=quiz-result" style="color:inherit;text-decoration:underline">Open it now</a>.',
       gateCopy: "Tell us where to send it. You'll get your IQ score, plus a free bonus: Coach Kane's Full Season Blueprint. It covers what to say on the car ride home, how to read playing time, and how to build mental toughness.",
       url: "https://kanebasketballacademy.com/blueprint/",
       items: [
@@ -335,6 +336,7 @@
     document.querySelectorAll('.guide-name').forEach(function (el) { el.textContent = data.title; });
     if (data.giftNote) document.getElementById('gift-note').textContent = data.giftNote;
     if (data.gateCopy) document.getElementById('gate-copy').textContent = data.gateCopy;
+    if (data.resultNote) document.getElementById('result-note').innerHTML = data.resultNote;
     document.querySelectorAll('.guide-link').forEach(function (el) { el.href = data.url; });
     showScreen('screen-intro');
   }
@@ -376,7 +378,9 @@
     currentIndex++;
     if (currentIndex >= guideData.items.length) {
       document.getElementById('progress-fill').style.width = '100%';
-      showScreen('screen-gate');
+      var known = knownLead();
+      if (known) finish(known.firstName, known.email);
+      else showScreen('screen-gate');
     } else {
       renderQuestion();
     }
@@ -423,7 +427,19 @@
       return;
     }
     errorEl.style.display = 'none';
+    finish(firstName, email);
+  });
 
+  // Email we already have from the sign-up page or a Kit email link (saved by /js/lead.js).
+  function knownLead() {
+    try {
+      var d = JSON.parse(localStorage.getItem('kane_lead')) || {};
+      if (d.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return { email: d.email, firstName: d.firstName || '' };
+    } catch (e) {}
+    return null;
+  }
+
+  function finish(firstName, email) {
     var score = 7 - checkedCount;
     var band = bandFor(score);
     // IQ style score: each of the 7 points is worth 20, so a perfect score is 140.
@@ -447,7 +463,7 @@
       checkedText: checkedText.join(' | '),
       path: 'quiz'
     });
-  });
+  }
 
   function revealResult(score, iq, band) {
     // Same band name the sheet and Kit get, so the page and the email always match.
