@@ -530,8 +530,22 @@
     var val = btn.getAttribute('data-value');
     if (name.indexOf('line') === 0) answers.lines[+name.slice(4)] = +val;
     else answers[name] = val;
-    setTimeout(function () { showStep(current + 1); }, 260);
+    setTimeout(function () {
+      // Email already captured (from the AAU sign-up page or an email link): skip the email step.
+      var known = (current + 1 === TOTAL) ? knownLead() : null;
+      if (known) { complete(known.firstName, known.email); return; }
+      showStep(current + 1);
+    }, 260);
   });
+
+  // Email we already have from the sign-up page or a Kit email link (saved by /js/lead.js).
+  function knownLead() {
+    try {
+      var d = JSON.parse(localStorage.getItem('kane_lead')) || {};
+      if (d.email && d.firstName && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return { email: d.email, firstName: d.firstName };
+    } catch (e) {}
+    return null;
+  }
 
   function bandFor(score) {
     for (var i = 0; i < BANDS.length; i++) if (score >= BANDS[i].min) return BANDS[i];
@@ -607,10 +621,14 @@
     var email = document.getElementById('email').value.trim();
     var err = document.getElementById('formError');
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; return; }
-    for (var i = 0; i < LINES.length; i++) if (answers.lines[i] === undefined) { showStep(i + 2); return; }
-    if (!answers.age || !answers.months) { showStep(0); return; }
     err.hidden = true;
     document.getElementById('submitBtn').disabled = true;
+    complete(name, email);
+  });
+
+  function complete(name, email) {
+    for (var i = 0; i < LINES.length; i++) if (answers.lines[i] === undefined) { showStep(i + 2); return; }
+    if (!answers.age || !answers.months) { showStep(0); return; }
 
     var score = answers.lines.reduce(function (a, b) { return a + b; }, 0);
     var band = bandFor(score);
@@ -634,7 +652,7 @@
     });
 
     showResults(name);
-  });
+  }
 
   // A personal link that reopens this parent's map with their answers.
   // Format: /map/?r=<age>.<months>.<10 digits>&n=<first name>
