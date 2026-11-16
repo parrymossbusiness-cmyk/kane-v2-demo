@@ -680,3 +680,8 @@ article.post-body p { margin: 0 0 1.25rem; }
 .text-center { text-align: center; }
 .max-w-prose { max-width: 680px; }
 .mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ---------- Footer social icons ---------- */
+.footer-social { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; color: #D8D2CA; transition: color 0.15s, border-color 0.15s; }
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--orange); border-color: var(--orange); }
