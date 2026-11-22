@@ -72,6 +72,16 @@
   .byline img{width:44px; height:44px; border-radius:50%; object-fit:cover; border:1px solid var(--border);}
   .byline .by{font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--ink); margin:0;}
   .byline .creds{font-size:12.5px; color:var(--ink-dim); margin:0; line-height:1.5;}
+  .cover.slim::after{display:none;}
+  .cover.slim .wrap{padding-top:18px; padding-bottom:16px;}
+  .cover.slim .eyebrow{margin-bottom:10px;}
+  .cover.slim .byline{align-items:flex-start;}
+  .cover.slim .byline img{width:40px; height:40px;}
+  .cover.slim .creds{font-size:13.5px; color:var(--ink-body);}
+  .intake{padding-top:26px;}
+  .gate-quiet{font-size:13px; color:var(--ink-dim); margin:14px 0 0; text-align:center; line-height:1.5;}
+  .guarantee{font-size:14.5px; line-height:1.55; color:var(--ink-body); margin:12px 0 0;}
+  .guarantee a{color:inherit;}
 
   /* Intake */
   .intake{padding:30px 0 70px;}
@@ -226,21 +236,12 @@
 </header>
 
 <main>
-  <section class="cover" id="cover">
+  <section class="cover slim" id="cover">
     <div class="wrap">
-      <p class="eyebrow">Free for Basketball Parents</p>
-      <h1>The AAU Season Map</h1>
-      <p class="sub">Before you write the next check, take 2 minutes. You get two things:</p>
-      <ol>
-        <li>The 10 questions to ask any team before you pay, scored.</li>
-        <li>The shape of your kid's basketball year: when to play, train and rest.</li>
-      </ol>
+      <p class="eyebrow">The AAU Season Map</p>
       <div class="byline">
         <img src="assets/kane-face.webp" alt="Coach Dennis Kane" width="44" height="44">
-        <div>
-          <p class="by">Coach Dennis Kane</p>
-          <p class="creds">440 Wins · CIF Champion · 71 College Players · 12 Pros · 1,000+ Parent Conversations</p>
-        </div>
+        <p class="creds">By <strong>Coach Dennis Kane</strong>, 440 wins, CIF Champion, 71 college players, 12 pros, built from more than a thousand real conversations with basketball parents.</p>
       </div>
     </div>
   </section>
@@ -342,7 +343,6 @@
           <p>Your kid's plan depends on their team, their body, how much they love the game right now and what your family can afford. That part is not one size fits all.</p>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The weekly skill plan<span>Four focused sessions of 30 to 45 minutes a week, with rest days built in. In the $47 System.</span></div></div>
           <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>The burnout checklist<span>The signs to watch for, and when to pull back. In the $47 System.</span></div></div>
-          <div class="lk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div>Your kid's year, month by month<span>Which tournaments, which training and which rest weeks, built by Coach Kane for your kid. In the AAU Plan audit.</span></div></div>
         </div>
       </section>
 
@@ -355,33 +355,17 @@
             <h3>The Basketball Parent IQ System</h3>
             <p class="p47">$47</p>
             <p>Fourteen days. Twenty minutes a night. What to say, what to spend and what to decide, on the day you need it. Includes the full AAU, Recruiting and NIL Playbook.</p>
-            <a class="btn btn-ghost" href="/services/playbooks/season-map/">See the System →</a>
+            <a class="btn" href="/services/playbooks/season-map/">See the System →</a>
+            <p class="guarantee">Run the first four nights. If the car ride home doesn't feel different, <a href="mailto:coach@coachdenniskane.com?subject=Refund%2C%20Basketball%20Parent%20IQ%20System">one email</a> gets you a full refund.</p>
           </div>
         </section>
 
-        <section class="offer">
-          <img src="assets/coach-sideline.webp" alt="Coach Kane kneeling on the sideline next to his bench during a game" width="960" height="480" loading="lazy">
-          <div class="in">
-            <p class="eyebrow">The AAU Plan</p>
-            <h2>Get your kid's year, built by Coach Kane.</h2>
-            <p>One conversation about your kid. Then a written plan for the months ahead: which team, which tournaments, what to train and when to rest.</p>
-            <ul>
-              <li><b>1</b><span>An honest look at your kid's team, role and schedule.</span></li>
-              <li><b>2</b><span>A month by month plan for playing, training and rest.</span></li>
-              <li><b>3</b><span>The three things to work on first, in writing.</span></li>
-            </ul>
-            <div class="price">$300 <small>The AAU Plan audit</small></div>
-            <p class="terms">Written report within 48 hours, or a full refund. Coach Kane takes 4 families a week.</p>
-            <a class="btn btn-dark" href="/services/audits/#aau-plan">Book the AAU Plan →</a>
-            <p class="credit">Join the Kane Development System within 14 days and your $300 counts toward it.</p>
-          </div>
-        </section>
       </div>
 
       <footer>
         <p class="fl">The Kane Academy · The Work Over the Hype</p>
         <p>© 2026 The Kane Academy</p>
-        <p>We use your email to send your Season Map and basketball parenting emails. Reply to any email and we will remove you.</p>
+        <p>Your Season Map opens on this page. We use your email to send the link that reopens it, plus basketball parenting emails. Reply to any email and we will remove you.</p>
       </footer>
     </div>
   </div>
@@ -494,14 +478,14 @@
     '<div class="progress-label">Last step</div>' +
     '<div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>' +
     '<h2 class="q-text">Your Season Map is ready.</h2>' +
-    '<p class="gate-sub">Tell us where to send it. Your score and your kid\'s year open on this page right away, and we email you a link to come back to it.</p>' +
+    '<p class="gate-sub">Where should Coach Kane send your map, your Team Audit score, and the link that reopens them any time?</p>' +
     '<form id="gate" novalidate>' +
       '<div class="field"><label for="firstName">First name</label><input type="text" id="firstName" autocomplete="given-name" placeholder="Your first name"></div>' +
-      '<div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@email.com"></div>' +
+      '<div class="field"><label for="email">Email address</label><input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@email.com"></div>' +
       '<p class="form-error" id="formError" hidden>Please enter your first name and a real email.</p>' +
       '<button type="submit" class="btn" id="submitBtn">Show my Season Map →</button>' +
     '</form>' +
-    '<p class="fine">You’ll also get Coach Kane’s emails for basketball parents. Unsubscribe anytime.</p>' +
+    '<p class="gate-quiet">Free. Your answers stay private, and they are never posted or shared. You\'ll also get Coach Kane\'s emails for basketball parents, and you can unsubscribe anytime.</p>' +
     '<button type="button" class="back" data-back>← Back</button>' +
   '</div>';
   stepsEl.innerHTML = html;
@@ -531,20 +515,19 @@
     if (name.indexOf('line') === 0) answers.lines[+name.slice(4)] = +val;
     else answers[name] = val;
     setTimeout(function () {
-      // Email already captured (from the AAU sign-up page or an email link): skip the email step.
-      var known = (current + 1 === TOTAL) ? knownLead() : null;
-      if (known) { complete(known.firstName, known.email); return; }
+      // Every road into the map runs the reveal gate. A parent we already know sees it filled in.
+      if (current + 1 === TOTAL) prefillGate();
       showStep(current + 1);
     }, 260);
   });
 
-  // Email we already have from the sign-up page or a Kit email link (saved by /js/lead.js).
-  function knownLead() {
+  // Fill the gate for a parent we already know (from a Kit email link, saved by /js/lead.js).
+  function prefillGate() {
     try {
       var d = JSON.parse(localStorage.getItem('kane_lead')) || {};
-      if (d.email && d.firstName && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return { email: d.email, firstName: d.firstName };
+      if (d.email) document.getElementById('email').value = d.email;
+      if (d.firstName) document.getElementById('firstName').value = d.firstName;
     } catch (e) {}
-    return null;
   }
 
   function bandFor(score) {
@@ -638,7 +621,7 @@
       var v = answers.lines[i]; return (i + 1) + ' ' + l.k + ': ' + (v === 0 ? 'not sure' : v);
     });
 
-    // Save the lead to Kane's Google Sheet and Kit, in the same columns the quiz uses.
+    // Create the subscriber in Kit now, with score, band, guide, source and result link.
     window.KaneLead.send({
       firstName: name,
       email: email,
@@ -648,6 +631,7 @@
       checkedNumbers: ageLabel + ' | ' + monthLabel,
       checkedText: lineText.join(' | '),
       path: 'season-map',
+      src: (window.KaneLead.src && window.KaneLead.src()) || 'map-direct',
       resultUrl: resultLink(name)
     });
 
@@ -671,7 +655,6 @@
     renderLines();
     renderShape(answers.age);
     flagRules();
-    if (score < 30 || answers.months === 'm12') document.getElementById('offers').classList.add('audit-first');
 
     document.getElementById('cover').hidden = true;
     document.getElementById('intake').hidden = true;

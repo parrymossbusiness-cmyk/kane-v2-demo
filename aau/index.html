@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AAU Season Map | Coach Kane</title>
-  <meta name="description" content="Coach Kane's free AAU Season Map for basketball parents. Check your kid's AAU team before you pay, and see how to plan the whole year.">
+  <meta name="description" content="Coach Kane's free AAU Season Map for basketball parents. Check your kid's AAU team before you pay, and see how to plan the whole year. No email needed to start.">
   <link rel="canonical" href="https://www.kanebasketballacademy.com/aau/">
   <meta property="og:title" content="The AAU Season Map | Coach Kane">
   <meta property="og:image" content="https://kanebasketballacademy.com/images/og-aau-v2.jpg">
@@ -17,47 +17,59 @@
   <meta property="og:url" content="https://www.kanebasketballacademy.com/aau/">
   <meta name="theme-color" content="#1c1b1a">
   <link rel="icon" href="/favicon.ico">
+  <link rel="preload" as="image" href="/images/coach.kane.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tryout-blueprint/assets/blueprint.css?v=20260915-mobile">
   <style>
-    .fs .checks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; color: #d4cfc9; font-size: 16px; }
-    .fs .checks li { display: flex; gap: 10px; align-items: baseline; }
-    .fs .checks li span { color: var(--bright); font-weight: 700; flex: none; }
-    .fs .signup-card h2 { margin-bottom: 6px; }
-    .fs #success a { color: inherit; font-weight: 600; text-decoration: underline; }
+    .door { max-width: 640px; margin: 0 auto; padding: 44px 0 56px; }
+    .door h1 { font-size: clamp(38px, 9vw, 58px); line-height: 1.05; }
+    .cred { margin: 20px 0 0; font-size: 16px; line-height: 1.6; color: #d4cfc9; }
+    .cred strong { color: var(--paper); font-weight: 600; }
+    .coach-photo { margin: 26px 0 0; }
+    .coach-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 45%; border-radius: 6px; }
+    .door .intro { max-width: none; }
+    .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 11px; color: #d4cfc9; font-size: 16px; line-height: 1.55; }
+    .checks li { display: flex; gap: 10px; align-items: baseline; }
+    .checks li span { color: var(--bright); font-weight: 700; flex: none; }
+    .checks.objections { margin-top: 18px; padding-top: 18px; border-top: 1px solid #ffffff20; }
+    .start { margin-top: 28px; width: 100%; }
+    .quiet { text-align: center; font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+    @media (max-width: 700px) {
+      .door { padding: 30px 0 44px; }
+      .cred, .checks { font-size: 17px; }
+      .quiet { font-size: 14px; }
+    }
   </style>
 </head>
 <body class="fs">
   <header class="header wrap">
     <a class="brand" href="/" aria-label="The Kane Academy home"><img src="/tryout-blueprint/assets/logo.png" alt="The Kane Academy" width="74" height="74"><span>COACH KANE<span class="brand-sub">THE BASKETBALL PARENT COACH</span></span></a>
   </header>
-  <main id="main">
-    <section class="hero wrap" aria-labelledby="headline">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> FREE TOOL FOR AAU PARENTS</p>
-        <h1 id="headline">Paying for AAU?<br>Playing all year?<br><span>Get your AAU Season Map.</span></h1>
-        <p class="intro">Coach Kane&rsquo;s free <strong>AAU Season Map</strong> helps you check your kid&rsquo;s AAU team before you pay, and plan the whole year.</p>
-        <ul class="checks">
-          <li><span aria-hidden="true">✓</span> 10 team questions, about 3 minutes</li>
-          <li><span aria-hidden="true">✓</span> Your AAU team score, plus a map of your kid&rsquo;s year</li>
-        </ul>
-      </div>
-      <div class="signup-card" id="get-guide">
-        <div class="card-topline"><span>THE AAU SEASON MAP</span><span aria-hidden="true">FREE</span></div>
-        <h2>Where should Coach Kane send your map?</h2>
-        <form id="signup-form" novalidate>
-          <label for="signup-name">First name</label>
-          <input id="signup-name" type="text" placeholder="Your first name" autocomplete="given-name" required>
-          <label for="signup-email">Email address</label>
-          <input id="signup-email" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email" required>
-          <button class="button" type="submit">Get My Season Map <span aria-hidden="true">→</span></button>
-          <p class="small" id="signup-error" style="display:none;color:#bc4400;margin-top:12px">Please enter your first name and a real email address.</p>
-        </form>
-        <p class="small consent">By starting, you agree to receive your Season Map and basketball-parenting emails from The Kane Academy. Reply to any email and we will remove you.</p>
-        <div class="card-bottom"><span aria-hidden="true">✓</span> Free. No purchase required.</div>
-      </div>
+  <main id="main" class="wrap">
+    <section class="door" aria-labelledby="headline">
+      <p class="eyebrow"><span class="dot"></span> FREE TOOL FOR AAU PARENTS</p>
+      <h1 id="headline">Paying for AAU?<br>Playing all year?<br><span>Get your AAU Season Map.</span></h1>
+      <p class="cred">By <strong>Coach Dennis Kane</strong>, 440 wins, CIF Champion, 71 college players, 12 pros, built from more than a thousand real conversations with basketball parents.</p>
+
+      <figure class="coach-photo">
+        <img src="/images/coach.kane.webp" alt="Coach Dennis Kane showing a young player a dribble move in the gym" width="640" height="480" fetchpriority="high">
+      </figure>
+
+      <p class="intro">Coach Kane&rsquo;s free <strong>AAU Season Map</strong> helps you check your kid&rsquo;s AAU team before you pay, and plan the whole year.</p>
+      <ul class="checks">
+        <li><span aria-hidden="true">✓</span> 10 team questions, about 3 minutes</li>
+        <li><span aria-hidden="true">✓</span> Your AAU team score, plus a map of your kid&rsquo;s year</li>
+      </ul>
+      <ul class="checks objections">
+        <li><span aria-hidden="true">✓</span> Your score judges the program, and it never labels your kid.</li>
+        <li><span aria-hidden="true">✓</span> Free means free, and you see your full map with no purchase required.</li>
+        <li><span aria-hidden="true">✓</span> Your answers stay private, and they are never posted or shared.</li>
+      </ul>
+
+      <a class="button start" id="start-btn" href="/map/?src=aau-dm">See My Season Map <span aria-hidden="true">→</span></a>
+      <p class="quiet">Free tool. No purchase required. No email needed to start.</p>
     </section>
   </main>
   <footer class="footer wrap"><p>&copy; 2026 The Kane Academy</p></footer>
@@ -65,23 +77,17 @@
   <script src="/js/lead.js"></script>
   <script>
   (function () {
-    var form = document.getElementById('signup-form');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = document.getElementById('signup-name').value.trim();
-      var email = document.getElementById('signup-email').value.trim();
-      var err = document.getElementById('signup-error');
-      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.style.display = 'block'; return; }
-      err.style.display = 'none';
-      form.querySelector('button').disabled = true;
-      var sent = window.KaneLead.send({
-        firstName: name, email: email, guide: 'map',
-        score: '', band: '', checkedNumbers: '', checkedText: '', path: 'aau-signup', src: 'aau-dm'
-      });
-      // Go to the map once Kit has the lead, or after 1.5 seconds at most.
-      var go = function () { window.location.href = '/map/?src=aau-dm'; };
-      Promise.race([Promise.resolve(sent), new Promise(function (r) { setTimeout(r, 1500); })]).then(go, go);
-    });
+    // Keep the traffic tag the parent arrived with (for example src=fb-native).
+    // A visit with no tag is a DM link, so it is tagged aau-dm.
+    var params = new URLSearchParams(window.location.search);
+    var raw = (params.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+    var src = raw || 'aau-dm';
+    try {
+      var d = JSON.parse(localStorage.getItem('kane_lead')) || {};
+      d.src = src;
+      localStorage.setItem('kane_lead', JSON.stringify(d));
+    } catch (e) {}
+    document.getElementById('start-btn').href = '/map/?src=' + encodeURIComponent(src);
   })();
   </script>
 </body>
