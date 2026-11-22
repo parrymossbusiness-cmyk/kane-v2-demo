@@ -351,7 +351,7 @@
     var r = result();
     var src = (window.KaneLead && window.KaneLead.src()) || 'iq-dm';
 
-    window.KaneLead.send({
+    var sent = window.KaneLead.send({
       firstName: firstName,
       email: email,
       guide: guideKey,
@@ -371,10 +371,14 @@
     } catch (e) {}
 
     // The score page is the $47 page, in score mode. Tag survives as quiz-season-<src>.
-    setTimeout(function () {
+    // Wait for Kit to get the lead before leaving the page (at most 2.5 seconds).
+    var go = function () {
+      if (go.done) return; go.done = true;
       window.location.href = '/services/playbooks/?src=' + encodeURIComponent(('quiz-' + guideKey + '-' + src).slice(0, 40)) +
         '&iq=' + r.iq + '&band=' + encodeURIComponent(r.bandName) + '&f=' + r.flags.join('-');
-    }, 300);
+    };
+    Promise.resolve(sent).then(go, go);
+    setTimeout(go, 2500);
   }
 
   showScreen('screen-checklist');
