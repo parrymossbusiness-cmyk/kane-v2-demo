@@ -59,6 +59,8 @@
       checkedNumbers: clean(data.checkedNumbers, 500),
       checkedText: clean(data.checkedText, 3000),
       playerLevel: clean(data.playerLevel, 40),
+      placement: clean(data.placement, 40),
+      situation: clean(data.situation, 1500),
       path: clean(data.path, 40),
       src: clean(data.src || load().src || '', 40),
       resultUrl: clean(data.resultUrl, 500)

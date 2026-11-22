@@ -16,8 +16,14 @@ const DEFAULT_TAGS = {
   'blueprint-page': 'Lead: Blueprint Page',
   'scorecard': 'Lead: Parent Scorecard',
   'season': 'Lead: Full Season Quiz',
-  'season-page': 'Lead: Full Season Blueprint'
+  'season-page': 'Lead: Full Season Blueprint',
+  'blueprint': 'Lead: In-Season Parent Guide'
 };
+
+// Extra tags by path. An audit applicant is tagged so the offer emails skip them.
+const PATH_TAGS = { 'audit-application': 'Audit applicant' };
+// Paths that are not added to the guide's email sequence.
+const NO_SEQUENCE_PATHS = ['audit-application'];
 
 // guide value -> Kit sequence ID. Leads are added to these only when SEQUENCES_LIVE is true.
 // Keep it false until the emails in Kit are published, or Kit skips the unpublished emails.
@@ -26,11 +32,12 @@ const SEQUENCES = {
   'map': 2960260,            // MAP: Season Map follow-up
   'preseason': 2960311,      // QUIZ: Parent IQ Quiz and Tryout Blueprint follow-up
   'blueprint-page': 2960311,
-  'season': 2969487          // IQ QUIZ: Low Minutes reel follow-up (/iq/ DM link and the season quiz)
+  'season': 2969487,         // IQ QUIZ: Low Minutes reel follow-up (/iq/ DM link and the season quiz)
+  'blueprint': 2982499       // IN-SEASON In-Season Parent Guide follow-up (Emails 1 and 2; Email 3 runs from a Kit automation)
 };
 
 // Kit custom fields. Created in Kit automatically if missing.
-const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url', 'checked_numbers', 'checked_text', 'player_level'];
+const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url', 'checked_numbers', 'checked_text', 'player_level', 'placement', 'situation'];
 
 const ALLOWED_ORIGINS = [
   'https://kanebasketballacademy.com',
@@ -119,7 +126,9 @@ async function addToKit(env, lead) {
     result_url: lead.resultUrl,
     checked_numbers: lead.checkedNumbers,
     checked_text: lead.checkedText,
-    player_level: lead.playerLevel
+    player_level: lead.playerLevel,
+    placement: lead.placement,
+    situation: lead.situation
   };
   Object.keys(fields).forEach(function (k) { if (fields[k] === '') delete fields[k]; });
 
@@ -134,13 +143,19 @@ async function addToKit(env, lead) {
   if (env.KIT_TAGS) {
     try { tags = Object.assign({}, DEFAULT_TAGS, JSON.parse(env.KIT_TAGS)); } catch (e) {}
   }
+  const basePath = lead.path.replace(/^TEST /, '');
+  const extraTag = PATH_TAGS[basePath];
+  if (extraTag) {
+    const xid = await tagId(env, extraTag);
+    await kit(env, '/tags/' + xid + '/subscribers', 'POST', { email_address: lead.email });
+  }
   const tagName = tags[lead.guide];
   if (tagName) {
     const id = await tagId(env, tagName);
     await kit(env, '/tags/' + id + '/subscribers', 'POST', { email_address: lead.email });
   }
   const seq = SEQUENCES[lead.guide];
-  if (SEQUENCES_LIVE && seq) {
+  if (SEQUENCES_LIVE && seq && NO_SEQUENCE_PATHS.indexOf(basePath) === -1) {
     await kit(env, '/sequences/' + seq + '/subscribers', 'POST', { email_address: lead.email });
   }
   return tagName || 'no tag for guide ' + lead.guide;
@@ -169,6 +184,8 @@ export async function onRequestPost(context) {
     checkedNumbers: clean(d.checkedNumbers, 500),
     checkedText: clean(d.checkedText, 3000),
     playerLevel: clean(d.playerLevel, 40).replace(/[^a-z-]/g, ''),
+    placement: clean(d.placement, 40).replace(/[^a-z-]/g, ''),
+    situation: clean(d.situation, 1500),
     path: (isTest ? 'TEST ' : '') + clean(d.path, 40),
     src: clean(d.src, 40),
     resultUrl: clean(d.resultUrl, 500)
