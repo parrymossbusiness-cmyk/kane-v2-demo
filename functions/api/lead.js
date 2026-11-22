@@ -7,7 +7,50 @@
     KIT_TAGS     (optional) JSON to rename tags, e.g. {"map":"Lead: Season Map"}
 
   A lead with "+test" in the email is marked TEST in its path, so test leads are easy to find.
+
+  Audit applications (path "audit-application") also send an email to APPLY_NOTIFY_TO
+  with the parent's name, email and situation lines. It uses the same Resend key as the
+  Parent IQ login emails (RESEND_KEY, sender PIQ_FROM). Reply-To is the parent, so a reply goes to them.
 */
+
+const APPLY_NOTIFY_TO = 'coach@coachdenniskane.com';
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+async function notifyApplication(env, lead) {
+  if (!env.RESEND_KEY) return 'skipped: no RESEND_KEY';
+  const situation = lead.situation || '(no situation lines)';
+  const text =
+    'A parent applied for the Future Success Audit.\n\n' +
+    'Name: ' + lead.firstName + '\n' +
+    'Email: ' + lead.email + '\n' +
+    'Source: ' + (lead.src || 'none') + '\n\n' +
+    'Their situation, in their words:\n' + situation + '\n\n' +
+    'Reply to this email to answer the parent directly.';
+  const html =
+    '<p>A parent applied for the Future Success Audit.</p>' +
+    '<p><b>Name:</b> ' + esc(lead.firstName) + '<br><b>Email:</b> ' + esc(lead.email) +
+    '<br><b>Source:</b> ' + esc(lead.src || 'none') + '</p>' +
+    '<p><b>Their situation, in their words:</b></p>' +
+    '<p style="white-space:pre-wrap;border-left:3px solid #D9560B;padding-left:12px">' + esc(situation) + '</p>' +
+    '<p>Reply to this email to answer the parent directly.</p>';
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + env.RESEND_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: env.PIQ_FROM || 'Coach Kane <login@kanebasketballacademy.com>',
+      to: [APPLY_NOTIFY_TO],
+      reply_to: lead.email,
+      subject: (lead.path.indexOf('TEST') === 0 ? '[TEST] ' : '') + 'Audit application: ' + lead.firstName,
+      text: text,
+      html: html
+    })
+  });
+  if (!res.ok) throw new Error('resend ' + res.status + ' ' + (await res.text()).slice(0, 200));
+  return 'sent';
+}
 
 // guide value from the page -> Kit tag. The tag starts the matching Kit sequence.
 const DEFAULT_TAGS = {
@@ -200,10 +243,18 @@ export async function onRequestPost(context) {
     console.error('Kit failed:', kitError);
   }
 
+  // Audit applications: email the inbox with name, email and situation, whatever Kit did.
+  let notify;
+  if (lead.path.replace(/^TEST /, '') === 'audit-application') {
+    try { notify = await notifyApplication(env, lead); }
+    catch (e) { notify = 'error'; console.error('Notify failed:', String(e && e.message)); }
+  }
+
   return json({
     ok: kitResult !== 'error',
     kit: kitResult,
-    kitError: kitError
+    kitError: kitError,
+    notify: notify
   });
 }
 
