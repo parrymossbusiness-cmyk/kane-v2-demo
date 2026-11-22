@@ -58,6 +58,7 @@
       band: clean(data.band, 120),
       checkedNumbers: clean(data.checkedNumbers, 500),
       checkedText: clean(data.checkedText, 3000),
+      playerLevel: clean(data.playerLevel, 40),
       path: clean(data.path, 40),
       src: clean(data.src || load().src || '', 40),
       resultUrl: clean(data.resultUrl, 500)

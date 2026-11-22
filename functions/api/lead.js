@@ -30,7 +30,7 @@ const SEQUENCES = {
 };
 
 // Kit custom fields. Created in Kit automatically if missing.
-const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url', 'checked_numbers', 'checked_text'];
+const FIELD_LABELS = ['guide', 'score', 'band', 'source', 'result_url', 'checked_numbers', 'checked_text', 'player_level'];
 
 const ALLOWED_ORIGINS = [
   'https://kanebasketballacademy.com',
@@ -118,7 +118,8 @@ async function addToKit(env, lead) {
     source: lead.src,
     result_url: lead.resultUrl,
     checked_numbers: lead.checkedNumbers,
-    checked_text: lead.checkedText
+    checked_text: lead.checkedText,
+    player_level: lead.playerLevel
   };
   Object.keys(fields).forEach(function (k) { if (fields[k] === '') delete fields[k]; });
 
@@ -167,6 +168,7 @@ export async function onRequestPost(context) {
     band: clean(d.band, 120),
     checkedNumbers: clean(d.checkedNumbers, 500),
     checkedText: clean(d.checkedText, 3000),
+    playerLevel: clean(d.playerLevel, 40).replace(/[^a-z-]/g, ''),
     path: (isTest ? 'TEST ' : '') + clean(d.path, 40),
     src: clean(d.src, 40),
     resultUrl: clean(d.resultUrl, 500)

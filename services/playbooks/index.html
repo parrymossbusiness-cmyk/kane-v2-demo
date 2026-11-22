@@ -359,6 +359,18 @@
     .iq-band { display: inline-block; margin: 12px 0 0; padding: 5px 14px; border-radius: 999px; background: rgba(255,255,255,0.12); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .iq-msg { margin: 16px auto 0; max-width: 34rem; font-size: 1.02rem; line-height: 1.55; color: #E7E3DD; }
     .iq-next { margin: 18px 0 0; font-weight: 700; color: #F2B08F; }
+
+    /* Score mode: the parent's own flagged habits, under the score */
+    .flags-card { border-left: 4px solid var(--orange); }
+    .flags-card h2 { margin-bottom: 10px; }
+    .flags-intro { color: var(--muted); margin-bottom: 20px; }
+    .flag-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .flag-list li { padding-top: 16px; border-top: 1px solid var(--border); }
+    .flag-list li:first-child { padding-top: 0; border-top: 0; }
+    .flag-list strong { display: block; color: var(--navy); font-size: 1.05rem; margin-bottom: 4px; }
+    .flag-list span { color: var(--text); line-height: 1.55; }
+    .score-guarantee { text-align: center; font-size: 1rem; line-height: 1.55; color: var(--text); margin: 14px auto 36px; max-width: 30rem; }
+    .score-guarantee a { color: inherit; }
   </style>
 </head>
 <body>
@@ -376,6 +388,11 @@
       <p class="iq-msg" id="iq-msg"></p>
       <p class="iq-next">Here is how to raise it, starting tonight.</p>
     </section>
+    <section class="card flags-card" id="iq-flags" hidden>
+      <h2>Your score is the average. These are the specifics.</h2>
+      <p class="flags-intro" id="flags-intro">These are the habits you said yes to, in the order I'd fix them.</p>
+      <ul class="flag-list" id="flag-list"></ul>
+    </section>
     <span class="badge">The Basketball Parent IQ System</span>
     <h1>How to build their confidence at home.</h1>
     <p class="lead">
@@ -386,10 +403,12 @@
       <span>Instant Access</span> &bull; <span>$47 One-Time</span>
     </div>
 
-    <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401?client_reference_id=playbooks" data-ref-src="playbooks" class="cta-btn">
-      Get The Basketball Parent IQ System &mdash; $47
-    </a>
-    <p class="guarantee-sub">Instant access via email &bull; 14-day parent development framework</p>
+    <div id="hero-buy">
+      <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401?client_reference_id=playbooks" data-ref-src="playbooks" class="cta-btn">
+        Get The Basketball Parent IQ System &mdash; $47
+      </a>
+      <p class="guarantee-sub">Instant access via email &bull; 14-day parent development framework</p>
+    </div>
 
     <section class="card">
       <h2>Everything Included Inside The System</h2>
@@ -425,7 +444,7 @@
       </ul>
     </section>
 
-    <div class="quote-box">
+    <div class="quote-box" id="quote-box">
       <p>&ldquo;Talent decides what your child can do. What surrounds them decides what they are willing to try. That is the part you control.&rdquo;</p>
       <div class="quote-author">Coach Dennis Kane &mdash; 440 Wins | CIF Champion | 12 Pros | 71 College Players</div>
     </div>
@@ -466,6 +485,13 @@
       </div>
     </section>
 
+    <div id="score-buy" hidden>
+      <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401?client_reference_id=playbooks" data-ref-src="playbooks" class="cta-btn">
+        Get The Basketball Parent IQ System &mdash; $47
+      </a>
+      <p class="score-guarantee">Run the first four nights. If the car ride home doesn't feel different, <a href="mailto:coach@coachdenniskane.com?subject=Refund%2C%20Basketball%20Parent%20IQ%20System">one email</a> gets you a full refund.</p>
+    </div>
+
     <div class="bottom-cta">
       <a href="https://buy.stripe.com/eVq6oI4APgLS2eP7NUds401?client_reference_id=playbooks" data-ref-src="playbooks" class="cta-btn">
         Get The Basketball Parent IQ System &mdash; $47
@@ -479,6 +505,7 @@
   </main>
 
   <script src="/js/video-testimonials.js" defer></script>
+<script src="/js/iq-flags.js"></script>
 <script>
   (function () {
     var q = new URLSearchParams(location.search);
@@ -493,6 +520,31 @@
     document.getElementById('iq-msg').textContent = msg;
     if (!msg) document.getElementById('iq-msg').hidden = true;
     document.getElementById('iq-result').hidden = false;
+
+    // Score mode. Order: score, flags, contents, testimonials, buy, guarantee, buy at the bottom.
+    var flagStr = q.get('f') || '';
+    if (!flagStr) { try { var lr = (JSON.parse(localStorage.getItem('kane_lead')) || {}).lastResult; if (lr && lr.iq === iq && lr.flags) flagStr = lr.flags.join('-'); } catch (e) {} }
+    var flags = window.KaneIQ ? window.KaneIQ.parse(flagStr) : [];
+    // A perfect score has no flags. Any other score needs its flags to show the block.
+    if (window.KaneIQ && (flags.length || iq === 140)) {
+      var list = document.getElementById('flag-list');
+      if (!flags.length) {
+        document.getElementById('flags-intro').textContent = "You didn't say yes to a single habit. The System is how you keep it that way when minutes get tight.";
+        list.hidden = true;
+      }
+      flags.forEach(function (n) {
+        var f = window.KaneIQ.flags[n];
+        var li = document.createElement('li');
+        var s = document.createElement('strong'); s.textContent = f.name;
+        var sp = document.createElement('span'); sp.textContent = f.line;
+        li.appendChild(s); li.appendChild(sp); list.appendChild(li);
+      });
+      document.getElementById('iq-flags').hidden = false;
+    }
+    document.getElementById('hero-buy').hidden = true;
+    var scoreBuy = document.getElementById('score-buy');
+    scoreBuy.hidden = false;
+    scoreBuy.parentNode.insertBefore(document.getElementById('quote-box'), scoreBuy.nextSibling);
   })();
 </script>
 <script src="/js/lead.js"></script>
